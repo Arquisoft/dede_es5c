@@ -56,3 +56,4 @@ Encontrarás más información sobre el repositorio en los otros archivos README
 ## DEVELOPMENT TEAM
 - Natalia Fernández Riego, UO277516
 - Lucas Martinez Rego, UO277440
+- Xurde Garcia Fernández, UO271033
