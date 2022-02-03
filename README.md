@@ -50,3 +50,8 @@ Encontrarás más información sobre el repositorio en los otros archivos README
 - Documentación: https://github.com/arquisoft/dede_es5c/tree/master/docs
 - Webapp: https://github.com/arquisoft/dede_es5c/tree/master/webapp
 - Restapi: https://github.com/github.com/arquisoft/dede_es5c/tree/master/restapi
+
+
+- Lucas Martinez Rego, UO277440
+
+
