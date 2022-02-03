@@ -28,6 +28,7 @@ Este comando creará dos imagenes de docker si no existen en tu equipo (la webap
  - [Metricas RestApi - http://localhost:5000/metrics](http://localhost:5000/metrics)
  - [Servidor Prometheus - http://localhost:9090](http://localhost:9090)
  - [Servidor Grafana http://localhost:9091](http://localhost:9091)
+
  
 Si quieres ejecutar el proyecto sin Docker primero complila y ejecuta la restapi:
 
@@ -52,6 +53,6 @@ Encontrarás más información sobre el repositorio en los otros archivos README
 - Restapi: https://github.com/github.com/arquisoft/dede_es5c/tree/master/restapi
 
 
+## DEVELOPMENT TEAM
+- Natalia Fernández Riego, UO277516
 - Lucas Martinez Rego, UO277440
-
-
