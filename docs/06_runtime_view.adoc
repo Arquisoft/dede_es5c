@@ -30,28 +30,47 @@ There are many notations for describing scenarios, e.g.
 
 ****
 
-=== <Runtime Scenario 1>
+=== Iniciar sesión
 
 
-* _<insert runtime diagram or textual description of the scenario>_
-* _<insert description of the notable aspects of the interactions between the
-building block instances depicted in this diagram.>_
-
-It is possible to use a sequence diagram:
+* Inicio de sesión en la aplicaión web
 
 [plantuml,"Sequence diagram",png]
 ----
-actor Alice
-actor Bob
-database Pod as "Bob's Pod"
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-Alice  --> Pod: Store route
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
+actor Usuario
+participant Aplicación
+participant "Login de Solid" as Login
+database POD
+Usuario -> Aplicación: click en iniciar sesión
+Aplicación -> Login: llama a
+Usuario -> Login: se logea
+Login -> Aplicación: le devuelve el POD del usuario
+Aplicación -> POD: pide acceso
+POD -> Aplicación: le devuelve la información del usuario
+Aplicación -> Usuario: le notifica el inicio de sesión
 ----
-=== <Runtime Scenario 2>
+=== Comprar producto
 
-=== ...
+* Compra de un producto en la aplicaión web
 
-=== <Runtime Scenario n>
+[plantuml,"Sequence diagram",png]
+----
+actor Usuario
+participant Aplicación
+database Mongo
+database POD
+Usuario -> Aplicación: selecciona los productos
+Aplicación-> Mongo: pide los datos de los productos
+Mongo -> Aplicación: retorna los productos
+Aplicación-> Usuario: muestra los datos de los productos
+Usuario -> Aplicación: hace click en comprar
+Aplicación-> POD: pide la dirección del usuario
+POD -> Aplicación: devuelve la dirección del usuario
+Aplicación-> Aplicación: calcula costes de envío
+Aplicación -> Usuario: muestra el precio y pide confirmación
+Usuario -> Aplicación: confirma la compra
+Aplicación-> Mongo: elimina los productos del stock
+Mongo -> Mongo: se actualiza la BBDD
+Aplicación -> Usuario: muestra el envío del pedido
+----
+
