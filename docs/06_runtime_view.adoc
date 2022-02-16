@@ -33,9 +33,9 @@ There are many notations for describing scenarios, e.g.
 === Iniciar sesión
 
 
-* Inicio de sesión en la aplicaión web
+* Inicio de sesión en la aplicación web
 
-[plantuml,"Sequence diagram",png]
+[plantuml,"Sequence diagram 1",png]
 ----
 actor Usuario
 participant Aplicación
@@ -51,9 +51,9 @@ Aplicación -> Usuario: le notifica el inicio de sesión
 ----
 === Comprar producto
 
-* Compra de un producto en la aplicaión web
+* Compra de un producto en la aplicación web
 
-[plantuml,"Sequence diagram",png]
+[plantuml,"Sequence diagram 2",png]
 ----
 actor Usuario
 participant Aplicación
