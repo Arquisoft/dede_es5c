@@ -2,6 +2,10 @@
 == Introduction and Goals
 
 [role="arc42help"]
+
+DeDe (Decentralized Delivery) es un sistema de venta online a crear por una empresa de venta de productos. Esta estará basada en los principios SOLID, y estará diseñada de tal manera que cualquier persona podrá acceder a la tienda virtual con un sistema que asegurará la privacidad y la seguridad.
+
+
 ****
 Describes the relevant requirements and the driving forces that software architects and development team must consider. These include
 
@@ -13,6 +17,18 @@ Describes the relevant requirements and the driving forces that software archite
 === Requirements Overview
 
 [role="arc42help"]
+
+* Requisitos funcionales:
+- El sistema emulará un sistema de compra online donde los usuarios finales podrán seleccionar y encargar productos a comprar-
+- Una vez que el usuario seleccione los productos a comprar, el sistema calculará los costes de envío consultando la dirección deseada del usuario en su pod y calculando los costes de acuerdo a la distancia del centro de distribución a dicha dirección.
+- El sistema mostrará los costes finales de los productos a comprar y una vez que el usuario decida comprarlos, registrará el evento que simulará que la venta ya ha sido realizada y se procederá al envío correspondiente.
+- El sistema permitirá a los usuarios visualizar los pedidos realizados.
+
+* Requisitos no funcionales:
+- La aplicación debe ser implementada utilizando el framework React y Typescript.
+- La aplicación deberá ser accesible y estar desplegada utilizando un sistema de integración continua.
+- El sistema debe de ser compatible con el proyecto SOLID.
+
 ****
 .Contents
 Short description of the functional requirements, driving forces, extract (or abstract)
@@ -33,6 +49,20 @@ Keep these excerpts as short as possible. Balance readability of this document w
 === Quality Goals
 
 [role="arc42help"]
+
+
+
+[options="header",cols="1,2,2"]
+|===
+|Prioridad|Objetivo|Descripción
+| 1 | Privacidad | El sistema deberá prestar especial atención a la seguridad y al respeto de la privacidad de los usuarios
+| 2 | Usabilidad | La aplicación debe ser fácil e intuitiva de usar para todos los usuarios, estos no deberían de tener dudas de cómo se usa.
+| 3 | Rendimiento | La aplicación deberá de tener una capacidad de respuesta lo suficientemente rápida.
+| 4 | Mantenibilidad | El sistema debe ser mantenible, debemos poder mantener y extender nuestro software fácilmente (nunca se sabe cuando vamos a tener que extender alguna funcionalidad).
+| 5 | Testeabilidad | El sistema debe de ser testable, reduciendo así al mínimo los problemas, teniendo así un sistema que funcione correctamente.
+|===
+
+
 ****
 .Contents
 The top three (max five) quality goals for the architecture whose fulfillment is of highest importance to the major stakeholders. We really mean quality goals for the architecture. Don't confuse them with project goals. They are not necessarily identical.
@@ -69,7 +99,8 @@ Table with role names, person names, and their expectations with respect to the 
 
 [options="header",cols="1,2,2"]
 |===
-|Role/Name|Contact|Expectations
-| _<Role-1>_ | _<Contact-1>_ | _<Expectation-1>_
-| _<Role-2>_ | _<Contact-2>_ | _<Expectation-2>_
+|Role/ Nombre|Contacto|Expectativas
+| Clientes | Profesores de la asignatura de Arquitectura del Software | Son los encargados de supervisar el proyecto, asegurándose de que este cumpla los requisitos establecidos
+| Usuarios | Usuarios de la aplicación | Interés en la aplicación final y el uso de esta
+| Equipo de desarollo | Equipo encargado de llevar a cabo el desarrollo de la aplicación (en este caso, el grupo ES5-C) | Desarrollo de una aplicación segura, que respete la privacidad y con los requisitos establecidos, utilizando las nuevas tecnologías
 |===
