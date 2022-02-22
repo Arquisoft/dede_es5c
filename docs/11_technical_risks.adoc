@@ -3,6 +3,20 @@
 
 
 [role="arc42help"]
+Lista de riesgos :
+
+- Falta de experiencia con los framework React y React Native. Tendremos que documentarnos  antes de empezar
+a usarlo.
+Para ello veremos los videos recomendados en clase y mantendremos una buena comunicación para que los bloqueos
+técnicos de un integrante puedan ser rápidamente suplidos gracias a la ayuda del equipo.
+
+- Poca experiencia  con JavaScript y experiencia nula con Node.js. Tendremos que informarnos de su funcionamiento antes
+de comenzar a utilizarlos.
+
+- Deuda técnica:
+Tendremos que estar atentos constantemente para reducir al máximo la deuda técnica, ya que el no prestarle atención
+podría conllevar un crecimiento exponencial de la misma que podría dar lugar a bloqueos que podemos evitar prestándole
+atención a que la deuda no se dispare.
 ****
 .Contents
 A list of identified technical risks or technical debts, ordered by priority
