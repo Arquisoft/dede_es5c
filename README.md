@@ -2,7 +2,7 @@
 
 [![pages-build-deployment](https://github.com/Arquisoft/dede_es5c/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/Arquisoft/dede_es5c/actions/workflows/pages/pages-build-deployment)
 [![CI for ASW2122](https://github.com/Arquisoft/dede_es5c/actions/workflows/asw2122.yml/badge.svg)](https://github.com/Arquisoft/dede_es5c/actions/workflows/asw2122.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Arquisoft_dede_es2c&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Arquisoft_dede_es2c)
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=Arquisoft_dede_es5c)](https://sonarcloud.io/summary/new_code?id=Arquisoft_dede_es5c)
 [![codecov](https://codecov.io/gh/Arquisoft/dede_es5c/branch/master/graph/badge.svg?token=m6xoLkXarQ)](https://codecov.io/gh/Arquisoft/dede_es5c)
 
 <p float="left">
