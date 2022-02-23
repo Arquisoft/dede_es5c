@@ -4,13 +4,26 @@
 
 [role="arc42help"]
 
-=== Restricciones técnicas
+
+[options="header",cols="1,1,2"]
+|===
+|Tipo de restricción|Restricción|Descripción
+|Restricción técnica | SOLID - PODs | La aplicación debe de ser compatible con la tecnología SOLID,
+                                    almacenando los datos en los PODs de los usuarios.
+|Restricción técnica | Pruebas | Se deben realizar pruebas a lo largo del desarrollo del sistema para comprobar
+                                ek buen funcionamiento de este.
+|Restricción técnica | Docker | El sistema tiene que poder ser desplegable en contenedores Docker.
+|Restricción técnica | Git (GitHub) | El sistema va a ser alojado en un repositorio público compartido por los compañeros
+                                    y por los profesores de la asignatura.
+|Restricción organizativa | Tiempo (fecha de entrega) | La aplicación debe estar acabada y desplegada para la fecha
+                                                        de entrega asignada.
+|Restricción organizativa | Equipo | Los equipos están formados por miembros de 5 o 6 personas.
+|Convenio | Presupuesto | Las herramientas usadas son gratuitas.
+|Convenio | arc42 | La documentación debe seguir arc42.
+|Convenio | Idioma | La aplicación en su totalidad será desarrollada en Español.
+|===
 
 
-=== Restricciones administrativas
-
-
-=== Restricciones políticas
 
 ****
 .Contents
