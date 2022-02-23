@@ -2,7 +2,6 @@
 == System Scope and Context
 
 
-[role="arc42help"]
 
 
 El objetivo principal de este proyecto es crear un sistema para gestionar una empresa
@@ -15,7 +14,6 @@ propio de cada usuario donde se guarda su información.
 
 === Business Context
 
-[role="arc42help"]
 
 
 [options="header",cols="1,2,2"]
@@ -51,7 +49,6 @@ g-> Pod : Datos sobre él mismo
 |===
 
 
-[role="arc42help"]
 
 
 
