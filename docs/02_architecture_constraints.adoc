@@ -2,18 +2,42 @@
 == Architecture Constraints
 
 
-[role="arc42help"]
-****
-.Contents
-Any requirement that constrains software architects in their freedom of design and implementation decisions or decision about the development process. These constraints sometimes go beyond individual systems and are valid for whole organizations and companies.
 
-.Motivation
-Architects should know exactly where they are free in their design decisions and where they must adhere to constraints.
-Constraints must always be dealt with; they may be negotiable, though.
+=== Restricciones técnicas
 
-.Form
-Simple tables of constraints with explanations.
-If needed you can subdivide them into
-technical constraints, organizational and political constraints and
-conventions (e.g. programming or versioning guidelines, documentation or naming conventions)
-****
+[options="header",cols="1,1,2"]
+|===
+|Tipo de restricción|Restricción|Descripción
+|Técnica | SOLID - PODs | La aplicación debe de ser compatible con la tecnología SOLID,
+                                    almacenando los datos en los PODs de los usuarios.
+|Técnica | Pruebas | Se deben realizar pruebas a lo largo del desarrollo del sistema para comprobar
+                                ek buen funcionamiento de este.
+|Técnica | Docker | El sistema tiene que poder ser desplegable en contenedores Docker.
+|Técnica | Git (GitHub) | El sistema va a ser alojado en un repositorio público compartido por los compañeros
+                                    y por los profesores de la asignatura.
+
+|===
+
+
+=== Restricciones organizativas
+
+[options="header",cols="1,1,2"]
+|===
+|Tipo de restricción|Restricción|Descripción
+|Organizativa | Tiempo (fecha de entrega) | La aplicación debe estar acabada y desplegada para la fecha
+de entrega asignada.
+|Organizativa | Equipo | Los equipos están formados por miembros de 5 o 6 personas.
+|===
+
+
+=== Convenios
+
+[options="header",cols="1,1,2"]
+|===
+|Tipo de restricción|Restricción|Descripción
+|Convenio | Presupuesto | Las herramientas usadas son gratuitas.
+|Convenio | arc42 | La documentación debe seguir arc42.
+|Convenio | Idioma | La aplicación en su totalidad será desarrollada en Español.
+|===
+
+

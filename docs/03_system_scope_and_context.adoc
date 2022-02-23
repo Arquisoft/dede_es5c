@@ -3,64 +3,55 @@
 
 
 [role="arc42help"]
-****
-.Contents
-System scope and context - as the name suggests - delimits your system (i.e. your scope) from all its communication partners
-(neighboring systems and users, i.e. the context of your system). It thereby specifies the external interfaces.
 
-If necessary, differentiate the business context (domain specific inputs and outputs) from the technical context (channels, protocols, hardware).
 
-.Motivation
-The domain interfaces and technical interfaces to communication partners are among your system's most critical aspects. Make sure that you completely understand them.
+El objetivo principal de este proyecto es crear un sistema para gestionar una empresa
+de venta de ropa, respetando la privacidad de los clientes siguiendo los principios SOLID
+y almacenando los datos de estos en pods. Un pod es un espacio de almacenamiento
+propio de cada usuario donde se guarda su información.
 
-.Form
-Various options:
 
-* Context diagrams
-* Lists of communication partners and their interfaces.
-****
 
 
 === Business Context
 
 [role="arc42help"]
-****
-.Contents
-Specification of *all* communication partners (users, IT-systems, ...) with explanations of domain specific inputs and outputs or interfaces.
-Optionally you can add domain specific formats or communication protocols.
 
-.Motivation
-All stakeholders should understand which data are exchanged with the environment of the system.
 
-.Form
-All kinds of diagrams that show the system as a black box and specify the domain interfaces to communication partners.
+[options="header",cols="1,2,2"]
+|===
+|Socio de comunicación|Entradas|Salidas
+| Pod |  | Datos descentralizados de cada usuario
+| DeDe | Información de los usuarios de los pods | Interfaz para realizar la compra
+| Usuario | Interfaz para realizar compra o gestionar su cuenta | Datos sobre él mismo (siempre que de los permisos necesarios)
+|===
 
-Alternatively (or additionally) you can use a table.
-The title of the table is the name of your system, the three columns contain the name of the communication partner, the inputs, and the outputs.
-****
+[plantuml,"Sequence diagram punto 3",png]
+----
+actor User as g
+package Pod {
+}
+package DeDe {
+}
+Pod->DeDe : Datos del usuario
+DeDe->g : Interfaz para la compra
+g-> Pod : Datos sobre él mismo
 
-**<Diagram or Table>**
+----
 
-**<optionally: Explanation of external domain interfaces>**
 
 === Technical Context
 
+|===
+|Tecnología | Descripción
+|SOLID | Usados para respetar la privacidad de los clientes
+|MongoDB | Sistema de base de datos NoSQL usado para almacenar los datos de los usuarios
+|TypeScript | Lenguaje de programación usado para desarrollar la aplicación. Superconjunto de Javascript
+|React | Biblioteca Javascript de código abierto diseñada para crear interfaces de usuario con el objetivo de facilitar el desarrollo de aplicaciones en una sola página
+|===
+
+
 [role="arc42help"]
-****
-.Contents
-Technical interfaces (channels and transmission media) linking your system to its environment. In addition a mapping of domain specific input/output to the channels, i.e. an explanation with I/O uses which channel.
 
-.Motivation
-Many stakeholders make architectural decision based on the technical interfaces between the system and its context. Especially infrastructure or hardware designers decide these technical interfaces.
 
-.Form
-E.g. UML deployment diagram describing channels to neighboring systems,
-together with a mapping table showing the relationships between channels and input/output.
 
-****
-
-**<Diagram or Table>**
-
-**<optionally: Explanation of technical interfaces>**
-
-**<Mapping Input/Output to Channels>**
