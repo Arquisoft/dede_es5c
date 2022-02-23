@@ -466,10 +466,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#section-runtime-view">6. Runtime View</a>
 <ul class="sectlevel2">
-<li><a href="#_runtime_scenario_1">6.1. &lt;Runtime Scenario 1&gt;</a></li>
-<li><a href="#_runtime_scenario_2">6.2. &lt;Runtime Scenario 2&gt;</a></li>
-<li><a href="#">6.3. &#8230;&#8203;</a></li>
-<li><a href="#_runtime_scenario_n">6.4. &lt;Runtime Scenario n&gt;</a></li>
+<li><a href="#_iniciar_sesión">6.1. Iniciar sesión</a></li>
+<li><a href="#_comprar_producto">6.2. Comprar producto</a></li>
 </ul>
 </li>
 <li><a href="#section-deployment-view">7. Deployment View</a>
@@ -536,7 +534,10 @@ For documentation of your own system you use better the <em>plain</em> version.<
 <div class="sect1">
 <h2 id="section-introduction-and-goals">1. Introduction and Goals</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
+<div class="paragraph arc42help">
+<p>DeDe (Decentralized Delivery) es un sistema de venta online a crear por una empresa de venta de productos. Esta estará basada en los principios SOLID, y estará diseñada de tal manera que cualquier persona podrá acceder a la tienda virtual con un sistema que asegurará la privacidad y la seguridad.</p>
+</div>
+<div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
 <p>Describes the relevant requirements and the driving forces that software architects and development team must consider. These include</p>
@@ -558,7 +559,46 @@ For documentation of your own system you use better the <em>plain</em> version.<
 </div>
 <div class="sect2">
 <h3 id="_requirements_overview">1.1. Requirements Overview</h3>
-<div class="sidebarblock arc42help">
+<div class="ulist arc42help">
+<ul>
+<li>
+<p>Requisitos funcionales:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>El sistema emulará un sistema de compra online donde los usuarios finales podrán seleccionar y encargar productos a comprar-</p>
+</li>
+<li>
+<p>Una vez que el usuario seleccione los productos a comprar, el sistema calculará los costes de envío consultando la dirección deseada del usuario en su pod y calculando los costes de acuerdo a la distancia del centro de distribución a dicha dirección.</p>
+</li>
+<li>
+<p>El sistema mostrará los costes finales de los productos a comprar y una vez que el usuario decida comprarlos, registrará el evento que simulará que la venta ya ha sido realizada y se procederá al envío correspondiente.</p>
+</li>
+<li>
+<p>El sistema permitirá a los usuarios visualizar los pedidos realizados.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Requisitos no funcionales:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>La aplicación debe ser implementada utilizando el framework React y Typescript.</p>
+</li>
+<li>
+<p>La aplicación deberá ser accesible y estar desplegada utilizando un sistema de integración continua.</p>
+</li>
+<li>
+<p>El sistema debe de ser compatible con el proyecto SOLID.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
 <div class="title">Contents</div>
@@ -584,7 +624,48 @@ If requirements documents exist this overview should refer to these documents.</
 </div>
 <div class="sect2">
 <h3 id="_quality_goals">1.2. Quality Goals</h3>
-<div class="sidebarblock arc42help">
+<table class="tableblock frame-all grid-all stretch arc42help">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Prioridad</th>
+<th class="tableblock halign-left valign-top">Objetivo</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Privacidad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">El sistema deberá prestar especial atención a la seguridad y al respeto de la privacidad de los usuarios</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usabilidad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación debe ser fácil e intuitiva de usar para todos los usuarios, estos no deberían de tener dudas de cómo se usa.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rendimiento</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación deberá de tener una capacidad de respuesta lo suficientemente rápida.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mantenibilidad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">El sistema debe ser mantenible, debemos poder mantener y extender nuestro software fácilmente (nunca se sabe cuando vamos a tener que extender alguna funcionalidad).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Testeabilidad</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">El sistema debe de ser testable, reduciendo así al mínimo los problemas, teniendo así un sistema que funcione correctamente.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
 <div class="title">Contents</div>
@@ -649,21 +730,26 @@ These stakeholders determine the extent and the level of detail of your work and
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Role/Name</th>
-<th class="tableblock halign-left valign-top">Contact</th>
-<th class="tableblock halign-left valign-top">Expectations</th>
+<th class="tableblock halign-left valign-top">Role/ Nombre</th>
+<th class="tableblock halign-left valign-top">Contacto</th>
+<th class="tableblock halign-left valign-top">Expectativas</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;Role-1&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;Contact-1&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;Expectation-1&gt;</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clientes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Profesores de la asignatura de Arquitectura del Software</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Son los encargados de supervisar el proyecto, asegurándose de que este cumpla los requisitos establecidos</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;Role-2&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;Contact-2&gt;</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>&lt;Expectation-2&gt;</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usuarios</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Usuarios de la aplicación</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Interés en la aplicación final y el uso de esta</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Equipo de desarollo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Equipo encargado de llevar a cabo el desarrollo de la aplicación (en este caso, el grupo ES5-C)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Desarrollo de una aplicación segura, que respete la privacidad y con los requisitos establecidos, utilizando las nuevas tecnologías</p></td>
 </tr>
 </tbody>
 </table>
@@ -1196,37 +1282,34 @@ You will mainly capture scenarios in your documentation to communicate your arch
 </div>
 </div>
 <div class="sect2">
-<h3 id="_runtime_scenario_1">6.1. &lt;Runtime Scenario 1&gt;</h3>
+<h3 id="_iniciar_sesión">6.1. Iniciar sesión</h3>
 <div class="ulist">
 <ul>
 <li>
-<p><em>&lt;insert runtime diagram or textual description of the scenario&gt;</em></p>
-</li>
-<li>
-<p><em>&lt;insert description of the notable aspects of the interactions between the
-building block instances depicted in this diagram.&gt;</em></p>
+<p>Inicio de sesión en la aplicación web</p>
 </li>
 </ul>
 </div>
-<div class="paragraph">
-<p>It is possible to use a sequence diagram:</p>
+<div class="imageblock">
+<div class="content">
+<img src="./images/Sequence%20diagram%201.png" alt="Sequence diagram 1" width="563" height="395">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_comprar_producto">6.2. Comprar producto</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Compra de un producto en la aplicación web</p>
+</li>
+</ul>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/Sequence%20diagram.png" alt="Sequence diagram" width="353" height="336">
+<img src="./images/Sequence%20diagram%202.png" alt="Sequence diagram 2" width="684" height="597">
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_runtime_scenario_2">6.2. &lt;Runtime Scenario 2&gt;</h3>
-
-</div>
-<div class="sect2">
-<h3 id="">6.3. &#8230;&#8203;</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_runtime_scenario_n">6.4. &lt;Runtime Scenario n&gt;</h3>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1636,7 +1719,30 @@ more precisely down to a level of scenarios that can be discussed and evaluated.
 <div class="sect1">
 <h2 id="section-technical-risks">11. Risks and Technical Debts</h2>
 <div class="sectionbody">
-<div class="sidebarblock arc42help">
+<div class="paragraph arc42help">
+<p>Lista de riesgos :</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Falta de experiencia con los framework React y React Native. Tendremos que documentarnos  antes de empezar
+a usarlo.
+Para ello veremos los videos recomendados en clase y mantendremos una buena comunicación para que los bloqueos
+técnicos de un integrante puedan ser rápidamente suplidos gracias a la ayuda del equipo.</p>
+</li>
+<li>
+<p>Poca experiencia  con JavaScript y experiencia nula con Node.js. Tendremos que informarnos de su funcionamiento antes
+de comenzar a utilizarlos.</p>
+</li>
+<li>
+<p>Deuda técnica:
+Tendremos que estar atentos constantemente para reducir al máximo la deuda técnica, ya que el no prestarle atención
+podría conllevar un crecimiento exponencial de la misma que podría dar lugar a bloqueos que podemos evitar prestándole
+atención a que la deuda no se dispare.</p>
+</li>
+</ul>
+</div>
+<div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
 <div class="title">Contents</div>
