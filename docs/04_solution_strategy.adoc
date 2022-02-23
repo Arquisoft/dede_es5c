@@ -3,6 +3,30 @@
 
 
 [role="arc42help"]
+
+=== Decisiones tecnológicas
+
+Se usarán las siguientes tecnologías a lo largo del desarollo del prollecto.
+
+|===
+|Tecnología | Razón
+|JavaScript | Usado como lenguaje principal para el desarollo del sistema
+|React | Usado para el desarrollo de la aplicación web
+|Node.js | Entorno de ejecución para JavaScrip
+|MongoDB |  Usado para almacenar los datos de los usuarios
+|===
+
+
+
+=== Objetivos de calidad
+
+|===
+|Objetivo de calidad | Razón
+|Usabilidad | El usuario tiene que aprender a usar la aplicación fácilmente y la interfaz debería de ser intuitiva
+|Robustez | El usuario espera NO encontrar errores ni bugs mientras navega por la aplicación
+|Privacidad | El usuario debe sentir que sus datos van a ser usados de una manera que garantice su seguridad
+|===
+
 ****
 .Contents
 A short summary and explanation of the fundamental decisions and solution strategies, that shape the system's architecture. These include
