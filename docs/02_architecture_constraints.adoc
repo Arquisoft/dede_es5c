@@ -15,7 +15,7 @@
 |Restricción técnica | Docker | El sistema tiene que poder ser desplegable en contenedores Docker.
 |Restricción técnica | Git (GitHub) | El sistema va a ser alojado en un repositorio público compartido por los compañeros
                                     y por los profesores de la asignatura.
-|Restricción organizativa | Tiempo (fecha de entrega) | La aplicación debe estar acabada y desplegada para la fecha
+|Restricción organizativa| Tiempo (fecha de entrega) | La aplicación debe estar acabada y desplegada para la fecha
                                                         de entrega asignada.
 |Restricción organizativa | Equipo | Los equipos están formados por miembros de 5 o 6 personas.
 |Convenio | Presupuesto | Las herramientas usadas son gratuitas.
