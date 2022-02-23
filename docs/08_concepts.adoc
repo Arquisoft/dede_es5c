@@ -1,5 +1,5 @@
 [[section-concepts]]
-== Cross-cutting Concepts
+== Conceptos Transversales
 
 
 [role="arc42help"]
@@ -45,23 +45,14 @@ A potential (but not mandatory) structure for this section could be:
 
 Note: it might be difficult to assign individual concepts to one specific topic
 on this list.
-
-image:08-Crosscutting-Concepts-Structure-EN.png["Possible topics for crosscutting concepts"]
 ****
 
+=== Modelo de Dominio
 
-=== Domain model
+Principales elementos de DeDe:
 
-image:UmlDiagram.png["Example UML Diagram"]
-
-
-
-=== _<Concept 2>_
-
-_<explanation>_
-
-...
-
-=== _<Concept n>_
-
-_<explanation>_
+* Usuario: persona que utiliza la aplicación web.
+* Administrador: persona que se encarga de realizar modificaciones en la aplicación.
+* POD: sistema que almacena la información del usuario. Permite descentralizar los datos del usuario y es éste el que debe proporcionar el acceso a estos datos.
+* Servidor web: contiene la aplicación web(front) y la API REST(back).
+* Base de Datos: alojada en MongoDB y contendrá todos los productos de la tienda.
