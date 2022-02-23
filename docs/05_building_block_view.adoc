@@ -1,7 +1,7 @@
 [[section-building-block-view]]
 
 
-== Building Block View
+== Vista de bloque de creación
 
 [role="arc42help"]
 ****
@@ -34,7 +34,7 @@ Thus it contains the white box description of selected building blocks of level 
 *Level 3* zooms into selected building blocks of level 2, and so on.
 ****
 
-=== Whitebox Overall System
+=== Sistema general de caja blanca
 
 [role="arc42help"]
 ****
@@ -57,89 +57,14 @@ In the best case you will get away with examples or simple signatures.
 
 ****
 
-_**<Overview Diagram>**_
+Este es un esquema de cómo es la aplicación en el nivel más general
 
-Motivation::
+image:05_building_blocks_level1.png["Diagrama general"]
 
-_<text explanation>_
-
-
-Contained Building Blocks::
-_<Description of contained building block (black boxes)>_
-
-Important Interfaces::
-_<Description of important interfaces>_
-
-[role="arc42help"]
-****
-Insert your explanations of black boxes from level 1:
-
-If you use tabular form you will only describe your black boxes with name and
-responsibility according to the following schema:
-
-[cols="1,2" options="header"]
-|===
-| **Name** | **Responsibility**
-| _<black box 1>_ | _<Text>_
-| _<black box 2>_ | _<Text>_
-|===
+El usuario interacciona con la aplicación, y esta, con el POD del usuario y la base de datos de Mongo.
 
 
-
-If you use a list of black box descriptions then you fill in a separate black box template for every important building block .
-Its headline is the name of the black box.
-****
-
-
-==== <Name black box 1>
-
-[role="arc42help"]
-****
-Here you describe <black box 1>
-according the the following black box template:
-
-* Purpose/Responsibility
-* Interface(s), when they are not extracted as separate paragraphs. This interfaces may include qualities and performance characteristics.
-* (Optional) Quality-/Performance characteristics of the black box, e.g.availability, run time behavior, ....
-* (Optional) directory/file location
-* (Optional) Fulfilled requirements (if you need traceability to requirements).
-* (Optional) Open issues/problems/risks
-
-****
-
-_<Purpose/Responsibility>_
-
-_<Interface(s)>_
-
-_<(Optional) Quality/Performance Characteristics>_
-
-_<(Optional) Directory/File Location>_
-
-_<(Optional) Fulfilled Requirements>_
-
-_<(optional) Open Issues/Problems/Risks>_
-
-
-
-
-==== <Name black box 2>
-
-_<black box template>_
-
-==== <Name black box n>
-
-_<black box template>_
-
-
-==== <Name interface 1>
-
-...
-
-==== <Name interface m>
-
-
-
-=== Level 2
+=== Nivel 2
 
 [role="arc42help"]
 ****
@@ -150,57 +75,14 @@ Please prefer relevance over completeness. Specify important, surprising, risky,
 Leave out normal, simple, boring or standardized parts of your system
 ****
 
-==== White Box _<building block 1>_
+==== Servidor de DeDe
 
 [role="arc42help"]
 ****
 ...describes the internal structure of _building block 1_.
 ****
 
-_<white box template>_
+image:05_building_blocks_level2.png["Diagrama nivel 2"]
 
-==== White Box _<building block 2>_
+La aplicación consta de dos partes, el front, hecho en React con el cual el usuario va a interactuar, y el back, hecho en Node.js que se encargará de hacer cualquier consulta con la base de datos o el POD del usuario.
 
-
-_<white box template>_
-
-...
-
-==== White Box _<building block m>_
-
-
-_<white box template>_
-
-
-
-=== Level 3
-
-[role="arc42help"]
-****
-Here you can specify the inner structure of (some) building blocks from level 2 as white boxes.
-
-When you need more detailed levels of your architecture please copy this
-part of arc42 for additional levels.
-****
-
-
-==== White Box <_building block x.1_>
-
-[role="arc42help"]
-****
-Specifies the internal structure of _building block x.1_.
-****
-
-
-_<white box template>_
-
-
-==== White Box <_building block x.2_>
-
-_<white box template>_
-
-
-
-==== White Box <_building block y.1_>
-
-_<white box template>_
