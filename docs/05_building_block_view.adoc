@@ -8,7 +8,6 @@
 
 === Sistema general de caja blanca
 
-[role="arc42help"]
 
 
 Este es un esquema de cómo es la aplicación en el nivel más general
@@ -20,12 +19,10 @@ El usuario interacciona con la aplicación, y esta, con el POD del usuario y la 
 
 === Nivel 2
 
-[role="arc42help"]
 
 
 ==== Servidor de DeDe
 
-[role="arc42help"]
 
 
 image:05_building_blocks_level2.png["Diagrama nivel 2"]

@@ -2,7 +2,6 @@
 == Solution Strategy
 
 
-[role="arc42help"]
 
 === Decisiones tecnológicas
 

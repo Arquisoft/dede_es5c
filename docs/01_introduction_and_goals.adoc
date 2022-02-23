@@ -1,7 +1,6 @@
 [[section-introduction-and-goals]]
 == Introduction and Goals
 
-[role="arc42help"]
 
 DeDe (Decentralized Delivery) es un sistema de venta online a crear por una empresa de venta de productos. Esta estará basada en los principios SOLID, y estará diseñada de tal manera que cualquier persona podrá acceder a la tienda virtual con un sistema que asegurará la privacidad y la seguridad.
 
@@ -9,7 +8,6 @@ DeDe (Decentralized Delivery) es un sistema de venta online a crear por una empr
 
 === Requirements Overview
 
-[role="arc42help"]
 
 * Requisitos funcionales:
 - El sistema emulará un sistema de compra online donde los usuarios finales podrán seleccionar y encargar productos a comprar-
@@ -24,7 +22,6 @@ DeDe (Decentralized Delivery) es un sistema de venta online a crear por una empr
 
 === Quality Goals
 
-[role="arc42help"]
 
 
 
@@ -42,8 +39,6 @@ DeDe (Decentralized Delivery) es un sistema de venta online a crear por una empr
 
 
 === Stakeholders
-
-[role="arc42help"]
 
 
 [options="header",cols="1,2,2"]

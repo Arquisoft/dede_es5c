@@ -2,7 +2,6 @@
 == Design Decisions
 
 
-[role="arc42help"]
 * ADR 1: Almacenar localizaciones en una base de datos centralizada.
 - Contexto
 Debemos almacenar los datos de la cuenta del usuario para validar cuando estos se logean

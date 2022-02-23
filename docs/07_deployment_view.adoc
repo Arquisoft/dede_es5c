@@ -3,7 +3,6 @@
 
 == Vista de Despliegue
 
-[role="arc42help"]
 
 
 image:07_deployment_view.png["Diagrama de despligue"]

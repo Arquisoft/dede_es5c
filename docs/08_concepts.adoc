@@ -2,7 +2,6 @@
 == Conceptos Transversales
 
 
-[role="arc42help"]
 
 === Modelo de Dominio
 

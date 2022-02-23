@@ -2,7 +2,6 @@
 == Risks and Technical Debts
 
 
-[role="arc42help"]
 Lista de riesgos :
 
 - Falta de experiencia con los framework React y React Native. Tendremos que documentarnos  antes de empezar

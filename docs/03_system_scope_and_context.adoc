@@ -26,7 +26,7 @@ propio de cada usuario donde se guarda su información.
 | Usuario | Interfaz para realizar compra o gestionar su cuenta | Datos sobre él mismo (siempre que de los permisos necesarios)
 |===
 
-[plantuml,"Sequence diagram 1",png]
+[plantuml,"Sequence diagram punto 3",png]
 ----
 actor User as g
 package Pod {

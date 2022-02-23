@@ -2,14 +2,12 @@
 == Quality Requirements
 
 
-[role="arc42help"]
 
 
 
 === Quality Tree
 
 image:10-Quality_Tree.png["Arbol de calidad"]
-[role="arc42help"]
 
 
 === Quality Scenarios
@@ -22,5 +20,4 @@ image:10-Quality_Tree.png["Arbol de calidad"]
 | La aplicación tendrá tiempos de espera razonables ante las interacciones del cliente | Rendimiento | Baja
 | Será fácil hacer pruebas para probar el correcto funcionamiento de la aplicación | Testeabilidad | Media
 |===
-[role="arc42help"]
 

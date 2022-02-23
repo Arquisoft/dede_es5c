@@ -2,11 +2,9 @@
 == Architecture Constraints
 
 
-[role="arc42help"]
 
 === Restricciones técnicas
 
-[role="arc42help"]
 [options="header",cols="1,1,2"]
 |===
 |Tipo de restricción|Restricción|Descripción
@@ -23,7 +21,6 @@
 
 === Restricciones organizativas
 
-[role="arc42help"]
 [options="header",cols="1,1,2"]
 |===
 |Tipo de restricción|Restricción|Descripción
@@ -35,7 +32,6 @@ de entrega asignada.
 
 === Convenios
 
-[role="arc42help"]
 [options="header",cols="1,1,2"]
 |===
 |Tipo de restricción|Restricción|Descripción
