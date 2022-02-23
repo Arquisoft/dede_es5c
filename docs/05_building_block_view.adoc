@@ -3,8 +3,6 @@
 
 == Vista de bloque de creación
 
-[role="arc42help"]
-
 
 === Sistema general de caja blanca
 
