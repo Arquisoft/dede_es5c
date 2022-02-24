@@ -1,8 +1,8 @@
 [[section-technical-risks]]
-== Risks and Technical Debts
+== Riesgos y deuda técnica
 
 
-Lista de riesgos :
+Lista de riesgos:
 
 - Falta de experiencia con los framework React y React Native. Tendremos que documentarnos  antes de empezar
 a usarlo.
