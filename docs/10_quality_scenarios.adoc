@@ -1,16 +1,16 @@
 [[section-quality-scenarios]]
-== Quality Requirements
+== Requisitos de calidad
 
 
 
 
 
-=== Quality Tree
+=== Árbol de calidad
 
 image:10-Quality_Tree.png["Arbol de calidad"]
 
 
-=== Quality Scenarios
+=== Escenarios de calidad
 [options="header",cols="1,2,2"]
 |===
 |Escenario|Atributo calidad|Prioridad

@@ -1,5 +1,5 @@
 [[section-system-scope-and-context]]
-== System Scope and Context
+== Alcance y Contexto del Sistema
 
 
 
@@ -12,7 +12,7 @@ propio de cada usuario donde se guarda su información.
 
 
 
-=== Business Context
+=== Contexto empresarial
 
 
 
@@ -38,7 +38,7 @@ g-> Pod : Datos sobre él mismo
 ----
 
 
-=== Technical Context
+=== Contexto Técnico
 
 |===
 |Tecnología | Descripción
