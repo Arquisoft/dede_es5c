@@ -3,6 +3,8 @@ import {check} from 'express-validator';
 
 const api:Router = express.Router()
 
+
+
 interface User {
     name: string;
     email: string;
