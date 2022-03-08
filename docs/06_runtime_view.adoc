@@ -17,7 +17,6 @@ Aplicación -> Login: llama a
 Usuario -> Login: se logea
 Login -> Aplicación: le devuelve el POD del usuario
 Aplicación -> POD: pide acceso
-POD -> Aplicación: le devuelve la información del usuario
 Aplicación -> Usuario: le notifica el inicio de sesión
 ----
 === Comprar producto
@@ -32,11 +31,9 @@ database Mongo
 database POD
 Usuario -> Aplicación: selecciona los productos
 Aplicación-> Mongo: pide los datos de los productos
-Mongo -> Aplicación: retorna los productos
 Aplicación-> Usuario: muestra los datos de los productos
 Usuario -> Aplicación: hace click en comprar
 Aplicación-> POD: pide la dirección del usuario
-POD -> Aplicación: devuelve la dirección del usuario
 Aplicación-> Aplicación: calcula costes de envío
 Aplicación -> Usuario: muestra el precio y pide confirmación
 Usuario -> Aplicación: confirma la compra
