@@ -4,15 +4,6 @@ import {check} from 'express-validator';
 const api:Router = express.Router()
 
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = "mongodb+srv://dede_5c:cuentademongo@dede.irypt.mongodb.net/DeDe?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
-
 
 interface User {
     name: string;
