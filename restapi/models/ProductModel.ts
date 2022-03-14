@@ -1,6 +1,6 @@
 import { model, Schema} from 'mongoose'
 
-const productSchema = new Schema(
+const productModel = new Schema(
     {
         description: {
             type: String
@@ -16,15 +16,15 @@ const productSchema = new Schema(
         category: {
             type: String,
             required: true
-        }
+        },
         color: {
             type: String,
             required: true
-        }
+        },
         talla: {
              type: String,
              required: true
-        }
+        },
         stock: {
             type: Number,
             required: true
@@ -32,12 +32,13 @@ const productSchema = new Schema(
     }
 )
 
-productSchema.set('toJSON', {
+productModel.set('toJSON', {
     transform: (document, returnedObject) => {
         returnedObject.id = returnedObject._id
         delete returnedObject._id
+        //delete returnedObject._v
     }
 })
 
-const Product = model("Product", productSchema);
+const Product = model("Product", productModel);
 export default Product;
