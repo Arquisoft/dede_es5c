@@ -1,16 +1,16 @@
 [[section-introduction-and-goals]]
-== Introduction and Goals
+== Introducción y Objetivos
 
 
 DeDe (Decentralized Delivery) es un sistema de venta online a crear por una empresa de venta de productos. Esta estará basada en los principios SOLID, y estará diseñada de tal manera que cualquier persona podrá acceder a la tienda virtual con un sistema que asegurará la privacidad y la seguridad.
 
 
 
-=== Requirements Overview
+=== Descripción general de los requisitos
 
 
 * Requisitos funcionales:
-- El sistema emulará un sistema de compra online donde los usuarios finales podrán seleccionar y encargar productos a comprar-
+- El sistema emulará un sistema de compra online donde los usuarios finales podrán seleccionar y encargar productos a comprar.
 - Una vez que el usuario seleccione los productos a comprar, el sistema calculará los costes de envío consultando la dirección deseada del usuario en su pod y calculando los costes de acuerdo a la distancia del centro de distribución a dicha dirección.
 - El sistema mostrará los costes finales de los productos a comprar y una vez que el usuario decida comprarlos, registrará el evento que simulará que la venta ya ha sido realizada y se procederá al envío correspondiente.
 - El sistema permitirá a los usuarios visualizar los pedidos realizados.
@@ -20,7 +20,7 @@ DeDe (Decentralized Delivery) es un sistema de venta online a crear por una empr
 - La aplicación deberá ser accesible y estar desplegada utilizando un sistema de integración continua.
 - El sistema debe de ser compatible con el proyecto SOLID.
 
-=== Quality Goals
+=== Objetivos de calidad
 
 
 
@@ -31,8 +31,8 @@ DeDe (Decentralized Delivery) es un sistema de venta online a crear por una empr
 | 1 | Privacidad | El sistema deberá prestar especial atención a la seguridad y al respeto de la privacidad de los usuarios
 | 2 | Usabilidad | La aplicación debe ser fácil e intuitiva de usar para todos los usuarios, estos no deberían de tener dudas de cómo se usa.
 | 3 | Rendimiento | La aplicación deberá de tener una capacidad de respuesta lo suficientemente rápida.
-| 4 | Mantenibilidad | El sistema debe ser mantenible, debemos poder mantener y extender nuestro software fácilmente (nunca se sabe cuando vamos a tener que extender alguna funcionalidad).
-| 5 | Testeabilidad | El sistema debe de ser testable, reduciendo así al mínimo los problemas, teniendo así un sistema que funcione correctamente.
+| 4 | Mantenible | El sistema seguirá unos estándares los cuales permitirán que los cambios que se quieran realizar sean fáciles de integrar.
+| 5 | Calidad | Se creará un sistema con calidad, testeando este con diferentes pruebas unitarias y con personas reales antes de la solución final.
 |===
 
 

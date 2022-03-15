@@ -1,5 +1,5 @@
 [[section-runtime-view]]
-== Runtime View
+== Vista de Tiempo de Ejecución
 
 === Iniciar sesión
 

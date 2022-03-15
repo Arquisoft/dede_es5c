@@ -1,8 +1,17 @@
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
+import {findProductByName, findProducts} from "./models/controllers/ProductController";
+import {addPedido} from "./models/controllers/PedidoController";
+
+const bodyParser = require('body-parser')
 
 const api:Router = express.Router()
 
+api.use(bodyParser.urlencoded({extended:true}));
+
+
+
+/**
 interface User {
     name: string;
     email: string;
@@ -32,5 +41,13 @@ api.post(
     return res.sendStatus(200);
   }
 );
+
+ */
+
+api.get("/products/list", findProducts)
+
+api.get("/products/:name", findProductByName)
+
+api.post("/pedido/add", addPedido)
 
 export default api;

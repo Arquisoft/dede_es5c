@@ -1,19 +1,19 @@
 [[section-architecture-constraints]]
-== Architecture Constraints
+== Restricciones de la Arquitectura
 
 
 
 === Restricciones técnicas
 
-[options="header",cols="1,1,2"]
+[options="header"]
 |===
-|Tipo de restricción|Restricción|Descripción
-|Técnica | SOLID - PODs | La aplicación debe de ser compatible con la tecnología SOLID,
+|Restricción|Descripción
+| SOLID - PODs | La aplicación debe de ser compatible con la tecnología SOLID,
                                     almacenando los datos en los PODs de los usuarios.
-|Técnica | Pruebas | Se deben realizar pruebas a lo largo del desarrollo del sistema para comprobar
+| Pruebas | Se deben realizar pruebas a lo largo del desarrollo del sistema para comprobar
                                 ek buen funcionamiento de este.
-|Técnica | Docker | El sistema tiene que poder ser desplegable en contenedores Docker.
-|Técnica | Git (GitHub) | El sistema va a ser alojado en un repositorio público compartido por los compañeros
+| Docker | El sistema tiene que poder ser desplegable en contenedores Docker.
+| Git (GitHub) | El sistema va a ser alojado en un repositorio público compartido por los compañeros
                                     y por los profesores de la asignatura.
 
 |===
@@ -21,23 +21,24 @@
 
 === Restricciones organizativas
 
-[options="header",cols="1,1,2"]
+[options="header"]
 |===
-|Tipo de restricción|Restricción|Descripción
-|Organizativa | Tiempo (fecha de entrega) | La aplicación debe estar acabada y desplegada para la fecha
+|Restricción|Descripción
+|Tiempo (fecha de entrega) | La aplicación debe estar acabada y desplegada para la fecha
 de entrega asignada.
-|Organizativa | Equipo | Los equipos están formados por miembros de 5 o 6 personas.
+| Equipo | Los equipos están formados por miembros de 5 o 6 personas.
 |===
+
 
 
 === Convenios
 
-[options="header",cols="1,1,2"]
+[options="header"]
 |===
-|Tipo de restricción|Restricción|Descripción
-|Convenio | Presupuesto | Las herramientas usadas son gratuitas.
-|Convenio | arc42 | La documentación debe seguir arc42.
-|Convenio | Idioma | La aplicación en su totalidad será desarrollada en Español.
+|Restricción|Descripción
+|Presupuesto | Las herramientas usadas son gratuitas.
+|arc42 | La documentación debe seguir arc42.
+| Idioma | La aplicación en su totalidad será desarrollada en Español.
 |===
 
 

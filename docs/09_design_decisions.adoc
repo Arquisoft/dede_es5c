@@ -1,5 +1,5 @@
 [[section-design-decisions]]
-== Design Decisions
+== Decisiones de Diseño
 
 
 * ADR 1: Almacenar localizaciones en una base de datos centralizada.
