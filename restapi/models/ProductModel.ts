@@ -21,14 +21,9 @@ const productModel = new Schema(
             type: String,
             required: true
         },
-        talla: {
-             type: String,
-             required: true
-        },
-        stock: {
-            type: Number,
-            required: true
-        }
+        talla_stock: [{ talla: String }, {stock: Number}],
+
+
     }
 )
 

@@ -19,4 +19,4 @@ export const findProductByName = async (req: Request, res: Response): Promise<Re
     const p = await ProductModel.find({name: req.params.name})
     return res.json(p);
 
-}
+};
