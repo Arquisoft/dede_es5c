@@ -26,6 +26,10 @@ export async function getProduct(id: string): Promise<Product>{
     sizes: ['S', 'M', 'L', 'XL'],
     price: 23.56,
     description: 'Sudadera de color amarillo de la marca Gap',
-    img: 'https://www.gap.es/cdnassets/images/Shootings/211217/490386028_s.jpg'
+    colors: ['Rojo', 'Amarillo'],
+    img: {
+      'Rojo': 'https://m.media-amazon.com/images/I/71+5V4emsKL._AC_UL1500_.jpg',
+      'Amarillo': 'https://www.gap.es/cdnassets/images/Shootings/211217/490386028_s.jpg'
+    }
   };
 }

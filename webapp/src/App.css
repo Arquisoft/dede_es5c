@@ -9,6 +9,10 @@
   margin: 50px auto;
 }
 
+.ProductImage img {
+  width: 100%;
+}
+
 .ProductDetails {
   justify-content: space-around;
   flex-wrap: wrap;

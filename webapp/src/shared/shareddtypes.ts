@@ -6,7 +6,8 @@ export type User = {
 export type Product = {
   name: string;
   sizes: string[];
+  colors: string[];
   price: number;
   description: string,
-  img : string
+  img : {[color:string]: string}
 }

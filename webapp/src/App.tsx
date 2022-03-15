@@ -10,6 +10,8 @@ import {User} from './shared/shareddtypes';
 import './App.css';
 import NavBar from './components/NavBar';
 import ProductDetails from './components/ProductDetails';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import ProductsList from './components/ProductsList';
 
 /**function App(): JSX.Element {
 
@@ -55,7 +57,12 @@ function App(): JSX.Element {
     <>
       <NavBar/>
       <Container maxWidth="sm">
-       <ProductDetails></ProductDetails>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<ProductsList/>}/>
+            <Route path="/product-details" element={<ProductDetails/>}/>
+          </Routes>
+        </BrowserRouter>
       </Container>
     </>
   );

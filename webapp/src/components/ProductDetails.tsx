@@ -5,11 +5,13 @@ import { Product } from '../shared/shareddtypes';
 function ProductDetails() {
 
     const [product, setProduct] = useState(null as Product|null);
+    const [currentColor, setCurrentColor] = useState(null as string|null);
 
     useEffect(function () {
         async function callGetProduct() {
             const product = await getProduct('1');
             setProduct(product);
+            setCurrentColor(product.colors[0]);
         }
         callGetProduct();
     }, []);
@@ -17,7 +19,9 @@ function ProductDetails() {
     return (
         <div className="ProductDetails">
             <div className='ProductImage'>
-                <img src = {product?.img} alt={product?.name} />
+                {
+                   currentColor && <img src = {product?.img[currentColor!]} alt={product?.name} />
+                }
             </div>
 
             <div className="Box">
@@ -29,6 +33,11 @@ function ProductDetails() {
                 <select name="Sizes">
                     {product?.sizes?.map(s => (
                         <option key={s} value={s}>{s}</option>
+                    ))}
+                </select>
+                <select name="Colors" onChange={ev => setCurrentColor(ev.target.value)}>
+                    {product?.colors?.map(s => (
+                        <option key={s} value={s} selected={currentColor == s}>{s}</option>
                     ))}
                 </select>
                 
