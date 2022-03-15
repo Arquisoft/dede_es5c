@@ -3,6 +3,46 @@
 }
 
 
+.ProductImage {
+  max-width: 1200px;
+  width: 100%;
+  margin: 50px auto;
+}
+
+.ProductDetails {
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 30px 0;
+}
+
+.ProductDetails .Box {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.Box .Row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.Box .Row h2 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+#price {
+color: crimson;
+}
+
+.Options button {
+  margin-top: 10px;
+}
+
+
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -23,6 +63,7 @@
 .App-link {
   color: #61dafb;
 }
+
 
 @keyframes App-logo-spin {
   from {

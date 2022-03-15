@@ -9,8 +9,9 @@ import  {getUsers} from './api/api';
 import {User} from './shared/shareddtypes';
 import './App.css';
 import NavBar from './components/NavBar';
+import ProductDetails from './components/ProductDetails';
 
-function App(): JSX.Element {
+/**function App(): JSX.Element {
 
   const [users,setUsers] = useState<User[]>([]);
 
@@ -35,6 +36,30 @@ function App(): JSX.Element {
       </Container>
     </>
   );
+}**/
+
+function App(): JSX.Element {
+
+  const [users,setUsers] = useState<User[]>([]);
+
+  const refreshUserList = async () => {
+    setUsers(await getUsers());
+  }
+
+  useEffect(()=>{
+    refreshUserList();
+  },[]);
+
+
+  return (
+    <>
+      <NavBar/>
+      <Container maxWidth="sm">
+       <ProductDetails></ProductDetails>
+      </Container>
+    </>
+  );
 }
+
 
 export default App;
