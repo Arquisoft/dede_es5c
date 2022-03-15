@@ -1,25 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getProduct } from '../api/api';
+import { Product } from '../shared/shareddtypes';
     
 function ProductDetails() {
+
+    const [product, setProduct] = useState(null as Product|null);
+
+    useEffect(function () {
+        async function callGetProduct() {
+            const product = await getProduct('1');
+            setProduct(product);
+        }
+        callGetProduct();
+    }, []);
 
     return (
         <div className="ProductDetails">
             <div className='ProductImage'>
-                <img src = "https://www.gap.es/cdnassets/images/Shootings/211217/490386028_s.jpg" alt="sudadera gap" />
+                <img src = {product?.img} alt={product?.name} />
             </div>
 
             <div className="Box">
                 <div className="Row">
-                    <h2>Sudadera Gap amarilla</h2>
+                    <h2>{product?.name}</h2>
                 </div>
 
             <div className='Options'>
                 <select name="Sizes">
-                    <option value="S">S</option>
-                    <option value="M">M</option>
-                    <option value="L">L</option>
-                    <option value="XL">XL</option>
-                    <option value="XXL">XXL</option>
+                    {product?.sizes?.map(s => (
+                        <option key={s} value={s}>{s}</option>
+                    ))}
                 </select>
                 
                 <div className='BuyButton'>
@@ -27,8 +37,8 @@ function ProductDetails() {
                 </div>
             </div>
             </div>   
-            <span id="price">39,99€</span>
-            <p>Sudadera de color amarillo de la marca Gap</p> 
+            <span id="price">{product?.price} €</span>
+            <p>{product?.description}</p> 
         </div>
     );
 }

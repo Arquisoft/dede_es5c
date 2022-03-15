@@ -1,4 +1,4 @@
-import {User} from '../shared/shareddtypes';
+import {Product, User} from '../shared/shareddtypes';
 
 export async function addUser(user:User):Promise<boolean>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
@@ -18,4 +18,14 @@ export async function getUsers():Promise<User[]>{
     let response = await fetch(apiEndPoint+'/users/list');
     //The objects returned by the api are directly convertible to User objects
     return response.json()
+}
+
+export async function getProduct(id: string): Promise<Product>{
+  return {
+    name: 'Sudadera Gap amarilla',
+    sizes: ['S', 'M', 'L', 'XL'],
+    price: 23.56,
+    description: 'Sudadera de color amarillo de la marca Gap',
+    img: 'https://www.gap.es/cdnassets/images/Shootings/211217/490386028_s.jpg'
+  };
 }
