@@ -11,6 +11,7 @@ import './App.css';
 import NavBar from './components/NavBar';
 import Home from "./components/Home";
 import { Product } from './components/Product';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App(): JSX.Element {
 
@@ -40,10 +41,13 @@ function App(): JSX.Element {
 
   return (
     <>
-      <NavBar/>
-      <Container>
-        <Home products={Producto()}></Home>
-      </Container>
+      <Router>
+        <NavBar/>
+        <Routes>
+          <Route path='/' element={<Home products={Producto()}/>}/>
+          <Route path='/welcome' element={<Welcome message='klk'/>}/>
+        </Routes>
+      </Router>
     </>
   );
 }

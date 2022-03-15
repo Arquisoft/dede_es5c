@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import { CardActionArea } from "@mui/material";
 import Typography from '@mui/material/Typography';
 import {Product} from "../components/Product";
 import { Container, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 
 
@@ -19,7 +21,8 @@ function Home(props: HomeProps) {
         {props.products.map((product: Product) => {
             return(
             <Col xs md lg ="auto">
-            <Card sx={{ maxWidth: 250 }}>
+            <Card sx={{ maxWidth: 280 }}>
+                <CardActionArea to={'/producto/' + product.name } component={Link}>
                 <CardMedia
                     component="img"
                     height="450"
@@ -40,6 +43,8 @@ function Home(props: HomeProps) {
                         {product.price + "€"}
                     </Typography>
                 </CardContent>
+                </CardActionArea>
+                
             </Card>
             </Col>
             )
