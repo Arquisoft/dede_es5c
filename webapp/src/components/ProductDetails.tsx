@@ -6,7 +6,6 @@ import { Product } from '../../../restapi/models/ProductModel';
     
 function ProductDetails() {
 
-    console.log("hola");
 
     const [product,setProduct] = useState<Product>({name:"Nombre", description:"Description", category: "Category", color:"Color", price:55, talla_stock:[{talla:"talla"},{stock:50}]});
 
@@ -17,8 +16,7 @@ function ProductDetails() {
     const {name} = useParams<ProductoName>();
 
     const refreshProducts = async () => {
-        console.log("hola");
-        setProduct(await getProduct("name"));
+        setProduct(await getProduct(name!));
     }
 
     useEffect(()=>{
@@ -26,24 +24,25 @@ function ProductDetails() {
     },[]);
 
     return (
+       
         <React.Fragment>
+            {console.log(product.name)}
             <div className="ProductDetails">
             
 
             <div className="Box">
                 <div className="Row">
-                    <h2>{product?.name}</h2>
+                    <h2>{product.name}</h2>
                 </div>
 
             <div className='Options'>
-                
                 
                 <div className='BuyButton'>
                 <button id='buyButton'>Añadir a la cesta</button>
                 </div>
             </div>
             </div>   
-            <span id="price">{product?.price} €</span>
+            <span id="price">{product.price} €</span>
             <p>{product?.description}</p> 
         </div>
         </React.Fragment>

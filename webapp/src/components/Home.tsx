@@ -7,8 +7,6 @@ import Typography from '@mui/material/Typography';
 import { Product } from "../../../restapi/models/ProductModel";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import  ProductDetails  from "../components/ProductDetails";
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { getProducts } from "../api/api";
 
 
@@ -18,7 +16,6 @@ function Home() {
     const [products,setProducts] = useState<Product[]>([]);
 
     const refreshProducts = async () => {
-      console.log("hola");
       setProducts(await getProducts());
     }
   
@@ -31,15 +28,10 @@ function Home() {
         <Container fluid>
             <Row>
         {products.map((product: Product) => {
-            <Router>
-            <Routes>
-            
-            </Routes>
-            </Router>
             return(
             <Col xs md lg ="auto">
             <Card sx={{ maxWidth: 280 }}>
-                <CardActionArea to="/product-details" component={Link}>
+                <CardActionArea to={`/product/${product.name}`} component={Link}>
                 
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">

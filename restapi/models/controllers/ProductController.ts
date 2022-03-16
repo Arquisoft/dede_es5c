@@ -15,7 +15,7 @@ export const findProducts = async (req: Request, res: Response): Promise<Respons
 
 
 export const findProductByName = async (req: Request, res: Response): Promise<Response> => {
-
+    
     const p = await ProductModel.find({name: req.params.name})
     return res.json(p);
 
