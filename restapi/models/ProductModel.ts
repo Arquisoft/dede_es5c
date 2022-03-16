@@ -1,5 +1,14 @@
 import { model, Schema} from 'mongoose'
 
+export interface Product {
+    description: String
+    name: String,
+    price: Number,
+    category: String,
+    color: String,
+    talla_stock: [{ talla: String }, {stock: Number}],
+}
+
 const productModel = new Schema(
     {
         description: {
@@ -35,5 +44,5 @@ productModel.set('toJSON', {
     }
 })
 
-const Product = model("Product", productModel);
-export default Product;
+const ProductModel = model("Product", productModel);
+export default ProductModel;

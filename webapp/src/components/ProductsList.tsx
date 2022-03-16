@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getProduct } from '../api/api';
+import { getProducts } from '../api/api';
 import { Product } from '../shared/shareddtypes';
     
 function ProductsList() {

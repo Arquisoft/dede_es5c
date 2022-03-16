@@ -1,28 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { getProduct } from '../api/api';
-import { Product } from '../shared/shareddtypes';
+import { useParams } from "react-router-dom";
+import { Product } from '../../../restapi/models/ProductModel';
+
     
 function ProductDetails() {
 
-    const [product, setProduct] = useState(null as Product|null);
-    const [currentColor, setCurrentColor] = useState(null as string|null);
+    console.log("hola");
 
-    useEffect(function () {
-        async function callGetProduct() {
-            const product = await getProduct('1');
-            setProduct(product);
-            setCurrentColor(product.colors[0]);
-        }
-        callGetProduct();
-    }, []);
+    const [product,setProduct] = useState<Product>({name:"Nombre", description:"Description", category: "Category", color:"Color", price:55, talla_stock:[{talla:"talla"},{stock:50}]});
+
+    type ProductoName = {
+        name: string;
+    }
+
+    const {name} = useParams<ProductoName>();
+
+    const refreshProducts = async () => {
+        console.log("hola");
+        setProduct(await getProduct("name"));
+    }
+
+    useEffect(()=>{
+        refreshProducts();
+    },[]);
 
     return (
-        <div className="ProductDetails">
-            <div className='ProductImage'>
-                {
-                   currentColor && <img src = {product?.img[currentColor!]} alt={product?.name} />
-                }
-            </div>
+        <React.Fragment>
+            <div className="ProductDetails">
+            
 
             <div className="Box">
                 <div className="Row">
@@ -30,16 +36,7 @@ function ProductDetails() {
                 </div>
 
             <div className='Options'>
-                <select name="Sizes">
-                    {product?.sizes?.map(s => (
-                        <option key={s} value={s}>{s}</option>
-                    ))}
-                </select>
-                <select name="Colors" onChange={ev => setCurrentColor(ev.target.value)}>
-                    {product?.colors?.map(s => (
-                        <option key={s} value={s} selected={currentColor == s}>{s}</option>
-                    ))}
-                </select>
+                
                 
                 <div className='BuyButton'>
                 <button id='buyButton'>Añadir a la cesta</button>
@@ -49,8 +46,26 @@ function ProductDetails() {
             <span id="price">{product?.price} €</span>
             <p>{product?.description}</p> 
         </div>
+        </React.Fragment>
+        
     );
 }
 
+/*<div className='ProductImage'>
+                {
+                   currentColor && <img src = {product?.img[currentColor!]} alt={product?.name} />
+                }
+            </div>
+            <select name="Sizes">
+                    {product?.sizes?.map(s => (
+                        <option key={s} value={s}>{s}</option>
+                    ))}
+                </select>
+                <select name="Colors" onChange={ev => setCurrentColor(ev.target.value)}>
+                    {product?.colors?.map(s => (
+                        <option key={s} value={s} selected={currentColor == s}>{s}</option>
+                    ))}
+                </select>
+*/
 
 export default ProductDetails;

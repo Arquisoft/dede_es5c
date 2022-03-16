@@ -14,8 +14,9 @@ import ProductDetails from './components/ProductDetails';
 import ProductsList from './components/ProductsList';
 
 import Home from "./components/Home";
-import { Product } from './components/Product';
+import { Product } from '../../restapi/models/ProductModel';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+
 
 
 /**function App(): JSX.Element {
@@ -59,28 +60,37 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App(): JSX.Element {
 
-  const [users,setUsers] = useState<User[]>([]);
 
-  const refreshUserList = async () => {
-    setUsers(await getUsers());
-  }
+  
 
-  useEffect(()=>{
-    refreshUserList();
-  },[]);
+  /*const Producto = () => {
+    const[product1, setProduct1] = useState<Product>({  name:"Nombre1", category:"Catergory1", description:"Description1", talla_stock:[{"M": String;},{44}], price:25.65});
+    const[product2, setProduct2] = useState<Product>({ name:"Nombre2", category:"Catergory2", description:"Description2", talla_stock:45, price:26.65});
+    const[product3, setProduct3] = useState<Product>({ name:"Nombre2", category:"Catergory2", description:"Description2", talla_stock:45, price:26.65});
+    const[product4, setProduct4] = useState<Product>({ name:"Nombre2", category:"Catergory2", description:"Description2", talla_stock:45, price:26.65});
+    const[product5, setProduct5] = useState<Product>({ name:"Nombre2", category:"Catergory2", description:"Description2", talla_stock:45, price:26.65});
+    const[product6, setProduct6] = useState<Product>({ name:"Nombre2", category:"Catergory2", description:"Description2", talla_stock:45, price:26.65});
+    const[product7, setProduct7] = useState<Product>({ name:"Nombre2", category:"Catergory2", description:"Description2", talla_stock:45, price:26.65});
+    const[product8, setProduct8] = useState<Product>({ name:"Nombre2", category:"Catergory2", description:"Description2", talla_stock:45, price:26.65});
+    const products = [product1, product2, product3, product4, product5, product6, product7, product8];
+    return products;
+    
+  }*/
+
+ 
 
 
   return (
+    
     <>
-      <NavBar/>
-      <Container maxWidth="sm">
-        <BrowserRouter>
+      
+        <Router>
+        <NavBar/>
           <Routes>
-            <Route path="/" element={<ProductsList/>}/>
-            <Route path="/product-details" element={<ProductDetails/>}/>
+          <Route path='/' element={<Home/>}/>
+          <Route path="/product/:name" />
           </Routes>
-        </BrowserRouter>
-      </Container>
+        </Router>
     </>
   );
 }
