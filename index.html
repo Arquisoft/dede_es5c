@@ -484,6 +484,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#section-concepts">8. Conceptos Transversales</a>
 <ul class="sectlevel2">
 <li><a href="#_modelo_de_dominio">8.1. Modelo de Dominio</a></li>
+<li><a href="#_seguridad">8.2. <em>Seguridad</em></a></li>
+<li><a href="#_logging">8.3. <em>Logging</em></a></li>
+<li><a href="#_internacionalización">8.4. <em>Internacionalización</em></a></li>
 </ul>
 </li>
 <li><a href="#section-design-decisions">9. Design Decisions</a></li>
@@ -786,6 +789,9 @@ propio de cada usuario donde se guarda su información.</p>
 </div>
 <div class="sect2">
 <h3 id="_business_context">3.1. Business Context</h3>
+<div class="paragraph">
+<p><span class="image"><img src="./images/3_1-business_context.jpeg" alt="Business Context Diagram"></span></p>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 20%;">
@@ -1035,6 +1041,25 @@ propio de cada usuario donde se guarda su información.</p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_seguridad">8.2. <em>Seguridad</em></h3>
+<div class="paragraph">
+<p>La aplicación es segura debido a que el usuario tiene el control sobre los datos que usa la aplicación. Además se controlará el acceso a la aplicación mediante un sistema de roles.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_logging">8.3. <em>Logging</em></h3>
+<div class="paragraph">
+<p>El usuario se identificará en la aplicación con su usuario y contraseña. Si la identificación es correcta se le redirigirá a la vista correspondiente. En caso contrario
+se mostrará un mensaje de error y seguirá en la vista de identificación.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_internacionalización">8.4. <em>Internacionalización</em></h3>
+<div class="paragraph">
+<p>La aplicación estará en idioma español aunque el equipo está valorando internacionalizar la aplicación para que esté también disponible en idioma inglés</p>
+</div>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1200,7 +1225,7 @@ Created by Dr. Peter Hruschka &amp; Dr. Gernot Starke.</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2022-02-03 17:45:09 +0100
+Last updated 2022-03-16 23:32:13 +0100
 </div>
 </div>
 </body>
