@@ -16,7 +16,9 @@ function ProductDetails() {
     const {name} = useParams<ProductoName>();
 
     const refreshProducts = async () => {
-        setProduct(await getProduct(name!));
+        //await getProduct(name!).then(val => console.log(val.at(0)?.name))
+        await getProduct(name!).then(val => setProduct(val.at(0)!))
+        //setProduct(await getProduct(name!));
     }
 
     useEffect(()=>{
