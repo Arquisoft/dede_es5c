@@ -32,7 +32,12 @@ function Home() {
             <Col xs md lg ="auto">
             <Card sx={{ maxWidth: 280 }}>
                 <CardActionArea to={`/product/${product.name}`} component={Link}>
-                
+                <CardMedia
+                    component="img"
+                    height="450"
+                    image={product.url.toString()}
+                    alt="sudadera"
+                />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                         {product.name}
@@ -61,12 +66,7 @@ function Home() {
 }
 
 /*
-<CardMedia
-                    component="img"
-                    height="450"
-                    image={product.photo}
-                    alt="sudadera"
-                />
+
  */
 
 export default Home;

@@ -7,6 +7,7 @@ export interface Product {
     category: String,
     color: String,
     talla_stock: [{ talla: String }, {stock: Number}],
+    url: String
 }
 
 const productModel = new Schema(
@@ -31,6 +32,10 @@ const productModel = new Schema(
             required: true
         },
         talla_stock: [{ talla: String }, {stock: Number}],
+        url: {
+            type: String,
+            required: true
+        },
 
 
     }

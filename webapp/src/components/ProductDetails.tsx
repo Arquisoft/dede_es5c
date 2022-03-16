@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { getProduct } from '../api/api';
 import { useParams } from "react-router-dom";
 import { Product } from '../../../restapi/models/ProductModel';
+import { url } from 'inspector';
 
     
 function ProductDetails() {
 
 
-    const [product,setProduct] = useState<Product>({name:"Nombre", description:"Description", category: "Category", color:"Color", price:55, talla_stock:[{talla:"talla"},{stock:50}]});
+    const [product,setProduct] = useState<Product>({name:"Nombre", description:"Description", category: "Category", color:"Color", price:55, talla_stock:[{talla:"talla"},{stock:50}], url:""});
 
     type ProductoName = {
         name: string;
@@ -30,7 +31,11 @@ function ProductDetails() {
         <React.Fragment>
             {console.log(product.name)}
             <div className="ProductDetails">
-            
+            <div className='ProductImage'>
+                {
+                   <img src = {product?.url.toString()} alt={product?.name.toString()} />
+                }
+            </div>
 
             <div className="Box">
                 <div className="Row">
@@ -52,11 +57,7 @@ function ProductDetails() {
     );
 }
 
-/*<div className='ProductImage'>
-                {
-                   currentColor && <img src = {product?.img[currentColor!]} alt={product?.name} />
-                }
-            </div>
+/*
             <select name="Sizes">
                     {product?.sizes?.map(s => (
                         <option key={s} value={s}>{s}</option>
