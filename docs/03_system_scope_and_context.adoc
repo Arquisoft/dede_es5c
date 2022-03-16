@@ -13,7 +13,7 @@ propio de cada usuario donde se guarda su información.
 
 
 === Business Context
-
+image:3_1-business_context.jpeg["Business Context Diagram"]
 
 
 [options="header",cols="1,2,2"]
