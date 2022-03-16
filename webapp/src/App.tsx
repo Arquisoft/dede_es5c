@@ -9,11 +9,16 @@ import  {getUsers} from './api/api';
 import {User} from './shared/shareddtypes';
 import './App.css';
 import NavBar from './components/NavBar';
+
+import ProductDetails from './components/ProductDetails';
+import ProductsList from './components/ProductsList';
+
 import Home from "./components/Home";
 import { Product } from './components/Product';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
-function App(): JSX.Element {
+
+/**function App(): JSX.Element {
 
   const [users,setUsers] = useState<User[]>([]);
 
@@ -50,6 +55,35 @@ function App(): JSX.Element {
       </Router>
     </>
   );
+}**/
+
+function App(): JSX.Element {
+
+  const [users,setUsers] = useState<User[]>([]);
+
+  const refreshUserList = async () => {
+    setUsers(await getUsers());
+  }
+
+  useEffect(()=>{
+    refreshUserList();
+  },[]);
+
+
+  return (
+    <>
+      <NavBar/>
+      <Container maxWidth="sm">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<ProductsList/>}/>
+            <Route path="/product-details" element={<ProductDetails/>}/>
+          </Routes>
+        </BrowserRouter>
+      </Container>
+    </>
+  );
 }
+
 
 export default App;
