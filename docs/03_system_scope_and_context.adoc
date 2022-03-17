@@ -1,5 +1,5 @@
 [[section-system-scope-and-context]]
-== System Scope and Context
+== Alcance y Contexto del Sistema
 
 
 
@@ -8,8 +8,6 @@ El objetivo principal de este proyecto es crear un sistema para gestionar una em
 de venta de ropa, respetando la privacidad de los clientes siguiendo los principios SOLID
 y almacenando los datos de estos en pods. Un pod es un espacio de almacenamiento
 propio de cada usuario donde se guarda su información.
-
-
 
 
 === Business Context
@@ -38,7 +36,7 @@ g-> Pod : Datos sobre él mismo
 ----
 
 
-=== Technical Context
+=== Contexto Técnico
 
 |===
 |Tecnología | Descripción

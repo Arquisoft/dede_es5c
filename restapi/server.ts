@@ -7,6 +7,10 @@ import api from "./api";
 const app: Application = express();
 const port: number = 5000;
 
+
+
+const db= require('./database')
+
 const options: cors.CorsOptions = {
   origin: ['http://localhost:3000']
 };
