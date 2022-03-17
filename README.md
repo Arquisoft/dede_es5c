@@ -58,3 +58,5 @@ Encontrarás más información sobre el repositorio en los otros archivos README
 - Natalia Fernández Riego, UO277516
 - Lucas Martinez Rego, UO277440
 - Xurde Garcia Fernández, UO271033
+- Paula Puerta González, UO243554
+- Enol-Xesús González García, UO263611
