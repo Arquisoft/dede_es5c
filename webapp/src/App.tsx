@@ -5,7 +5,7 @@ import NavBar from './components/NavBar';
 
 import ProductDetails from './components/ProductDetails';
 import ProductsList from './components/ProductsList';
-
+import UserDetails from './components/UserDetails';
 import Home from "./components/Home";
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
@@ -24,6 +24,7 @@ function App(): JSX.Element {
           <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path="/product/:name" element={<ProductDetails/>} />
+          <Route path="/perfil" element={<UserDetails/>} />
           </Routes>
         </Router>
     </>
