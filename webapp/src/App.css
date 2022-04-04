@@ -77,6 +77,13 @@ color: crimson;
   height: 200px;
 }
 
+.ProductImage {
+  margin-left: 45px;
+  margin-right: 45px;
+  width: 500px;
+  height: 500px;
+}
+
 
 
 @media (prefers-reduced-motion: no-preference) {
