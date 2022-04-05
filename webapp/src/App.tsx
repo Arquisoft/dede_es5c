@@ -9,6 +9,7 @@ import ProductsList from './components/ProductsList';
 import Home from "./components/Home";
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import LoginForm from './components/login/Login';
+import { SessionProvider } from '@inrupt/solid-ui-react';
 
 
 
@@ -18,8 +19,7 @@ function App(): JSX.Element {
 
   return (
     
-    <>
-      
+    <SessionProvider sessionId="solid-login">
         <Router>
         <NavBar/>
           <Routes>
@@ -28,7 +28,7 @@ function App(): JSX.Element {
           <Route path='/login' element={<LoginForm/>}/>
           </Routes>
         </Router>
-    </>
+    </SessionProvider>
   );
 }
 
