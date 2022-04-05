@@ -8,6 +8,7 @@ import ProductsList from './components/ProductsList';
 
 import Home from "./components/Home";
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import LoginForm from './components/login/Login';
 
 
 
@@ -24,6 +25,7 @@ function App(): JSX.Element {
           <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path="/product/:name" element={<ProductDetails/>} />
+          <Route path='/login' element={<LoginForm/>}/>
           </Routes>
         </Router>
     </>
