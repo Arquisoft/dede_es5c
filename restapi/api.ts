@@ -3,6 +3,7 @@ import {check} from 'express-validator';
 import {findProductByName, findProducts, addProducto} from "./models/controllers/ProductController";
 import {addPedido, findPedidos} from "./models/controllers/PedidoController";
 import {createUser, findUsers, findUsersByEmail, deleteUser} from "./models/controllers/UserController";
+import {addOrderProduct, findAllOrderProducts} from "./models/controllers/PedidoProductoController";
 
 const bodyParser = require('body-parser')
 
@@ -61,6 +62,9 @@ api.post("/users/add", createUser);
 api.get("/users/findEmail/:email", findUsersByEmail)
 api.post("/users/delete/:email", deleteUser)
 
+//-------pedido-producto
+api.post("/pedidoProducto/add",addOrderProduct)
+api.get("/pedidoProducto/list",findAllOrderProducts)
 
 
 
