@@ -63,8 +63,8 @@ api.get("/users/findEmail/:email", findUsersByEmail)
 api.post("/users/delete/:email", deleteUser)
 
 //-------pedido-producto
-api.post("/orderProducts/add",addOrderProduct)
-api.get("/orderProducts/list",findAllOrderProducts)
+api.post("/pedidoProducto/add",addOrderProduct)
+api.get("/pedidoProducto/list",findAllOrderProducts)
 
 
 
