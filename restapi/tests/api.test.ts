@@ -54,15 +54,36 @@ describe('user ', () => {
 
     /**
      * Tests that a user can be created through the productService without throwing any errors.
-    */
+     */
     it('can be created correctly', async () => {
-        let name:string = 'Pablo'
+        let name:string = 'Marcos'
         let surname:string = 'Gonzalez'
-        let email:string = 'gonzalezgpablo4@uniovi.es'
+        let email:string = 'unusuario@uniovi.es'
         let password:string = "123"
         const response:Response = await request(app).post('/api/users/add').send({name: name, surname: surname,
             email: email, password:password}).
         set('Accept', 'application/json')
+        expect(response.statusCode).toBe(200);
+    });
+
+
+
+    /**
+     * Test that we can get a user from the database without error
+     */
+    it("can get a user by email", async () => {
+        const response: Response = await request(app).get('/api/users/findEmail/gonzalezgpablo2@uniovi.es');
+        expect(response.statusCode).toBe(200);
+        expect(response.body._id).toEqual("624c733d58cfeefe03f41a1a");
+
+    });
+
+
+    /**
+     * Test that we can delete a user from the database without error
+     */
+    it("delete a user by email", async () => {
+        const response: Response = await request(app).post('/api/users/delete/unusuario@uniovi.es');
         expect(response.statusCode).toBe(200);
     });
 
@@ -99,6 +120,46 @@ describe('product ', () => {
         expect(response.statusCode).toBe(200);
     });
 
+    /**
+     * Test that we can delete a user from the database without error
+     */
+    it("get a product by name", async () => {
+        const response: Response = await request(app).get('/api/products/Camiseta');
+        expect(response.statusCode).toBe(200);
+    });
+
+
+});
+
+
+
+describe('pedido ', () => {
+    /**
+     * Test that we can list pedidos without any error.
+     */
+    it('can be listed', async () => {
+        const response: Response = await request(app).get("/api/pedido/list");
+        expect(response.statusCode).toBe(200);
+    });
+
+
+    /**
+     * Tests that a pedido can be created through the productService without throwing any errors.
+     */
+    it('can be created correctly', async () => {
+        let id_metododepago: string = 'tarjeta'
+        let DNI_dest: string = '7'
+        let direccion: string = "Calle x"
+        let estado: string = 'enviado'
+        let nombre_dest: string = 'Nuria'
+        let numero_pedido: string = '1'
+        let url_pod: string = "xxx.xxx"
+        const response: Response = await request(app).post('/api/pedido/add').send({
+            id_metododepago: id_metododepago, DNI_dest: DNI_dest, direccion: direccion,
+            estado: estado, nombre_dest: nombre_dest, numero_pedido: numero_pedido, url_pod: url_pod
+        }).set('Accept', 'application/json')
+        expect(response.statusCode).toBe(200);
+    });
 
 
 });
