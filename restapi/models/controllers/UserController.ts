@@ -1,6 +1,5 @@
 import {Request, Response} from "express";
 import UserModel from "../UserModel";
-import ProductModel from "../ProductModel";
 
 require("../../database")
 
@@ -27,19 +26,22 @@ export const findUsersByEmail = async (req: Request, res: Response): Promise<Res
 };
 
 export const createUser = async (req: Request, res: Response): Promise<Response> => {
-    var bcrypt = require('bcrypt');
 
+        console.log("POST");
+        console.log(req.body);
 
-            const { password, ...body } = req.body
-            const user = new UserModel(body)
-            const passwordHashed = await bcrypt.hash(password, 10);
-            user.password = passwordHashed;
-            await user.save();
-            res.status(201).json({
-                user
-            })
+        const userReq = req.body
 
-    return res.status(200).json({ user});
+        const nUser =  new UserModel({
+            name: userReq.name,
+            surname: userReq.surname,
+            email: userReq.email,
+            password: userReq.password
+        })
+
+        nUser.save()
+
+        return res.status(200).json({ nUser });
 };
 
 
