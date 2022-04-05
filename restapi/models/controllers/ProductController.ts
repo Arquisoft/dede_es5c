@@ -18,8 +18,6 @@ export const findProducts = async (req: Request, res: Response): Promise<Respons
 
 export const addProducto = async (req: Request, res: Response): Promise<Response> => {
 
-    console.log("POST");
-    console.log(req.body);
 
     const productReq = req.body
 
@@ -42,7 +40,8 @@ export const addProducto = async (req: Request, res: Response): Promise<Response
 
 export const findProductByName = async (req: Request, res: Response): Promise<Response> => {
     
-    const p = await ProductModel.find({name: req.params.name})
+    const p = await ProductModel.findOne({name: req.params.name})
+    console.log("ooooooo" + p)
     return res.json(p);
 
 };
