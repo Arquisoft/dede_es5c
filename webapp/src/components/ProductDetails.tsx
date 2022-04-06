@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getProduct } from '../api/api';
 import { useParams } from "react-router-dom";
 import { Product } from '../../../restapi/models/ProductModel';
-import { url } from 'inspector';
+import { Button } from 'react-bootstrap';
 
     
 function ProductDetails() {
@@ -51,6 +51,7 @@ function ProductDetails() {
             <span id="price">{product.price} €</span>
             <p>{product?.description}</p> 
         </div>
+        <Button>Añadir al carrito</Button>
         </React.Fragment>
         
     );

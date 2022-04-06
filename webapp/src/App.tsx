@@ -9,6 +9,9 @@ import UserDetails from './components/UserDetails';
 import Home from "./components/Home";
 import PaymentForm from './components/PaymentForm';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import LoginForm from './components/login/Login';
+import Carrito from './components/carrito/Carrito';
+import { SessionProvider } from '@inrupt/solid-ui-react';
 
 
 
@@ -19,7 +22,7 @@ function App(): JSX.Element {
   return (
     
     <>
-      
+      <SessionProvider sessionId="solid-login">
         <Router>
         <NavBar/>
           <Routes>
@@ -27,8 +30,11 @@ function App(): JSX.Element {
           <Route path="/product/:name" element={<ProductDetails/>} />
           <Route path="/perfil" element={<UserDetails/>} />
           <Route path="/pay/:name" element={<PaymentForm/>} />
+          <Route path='/login' element={<LoginForm/>}/>
+          <Route path='/carrito' element={<Carrito/>}/>
           </Routes>
         </Router>
+        </SessionProvider>
     </>
   );
 }
