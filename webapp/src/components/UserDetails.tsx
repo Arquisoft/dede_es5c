@@ -8,7 +8,6 @@ import { User } from "../../../restapi/models/UserModel"
 function UserDetails() {
 
 
-    //var user = { name: "Enol", surname: "González", email: "Enolglez@email.com", profileUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQA3W3oppN7sdVCsUWwwnPIn9pX6E6G2UW70w&usqp=CAU" };
     const [user,setUser] = useState<User>({name:"Nombre", surname:"surname", email: "email",  password:""});
 
     type UserEmail = {
