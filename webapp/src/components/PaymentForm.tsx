@@ -8,9 +8,10 @@ import { url } from 'inspector';
 function PaymentForm() {
 
 
-    const [product, setProduct] = useState<Product>({ name: "Nombre", description: "Description", category: "Category", color: "Color", price: 55, talla_stock: [{ talla: "talla" }, { stock: 50 }], url: "" });
-    const address = { country: "España", province: "Asturias", city: "Oviedo", street: "Calle falsa 123" }
-    type ProductoName = {
+    //const [product, setProduct] = useState<Product>({ name: "Nombre", description: "Description", category: "Category", color: "Color", price: 55, talla_stock: [{ talla: "talla" }, { stock: 50 }], url: "" });
+    const address = { country: "España", province: "Asturias", city: "Oviedo", street: "Calle" }
+    
+    /*type ProductoName = {
         name: string;
     }
 
@@ -24,7 +25,7 @@ function PaymentForm() {
 
     useEffect(() => {
         refreshProducts();
-    }, []);
+    }, []);*/
 
     return (
 
@@ -35,11 +36,6 @@ function PaymentForm() {
                         <div>
                             <div className='Card'>
                                 <div className='Image'>
-                                    <img className='ProductImage' src={product.url.toString()} alt="Product to buy image"></img>
-                                    <div className='CardBody'>
-                                        <h4 className="CardProductName">{product.name}</h4>
-                                        <p>{product.price} €</p>
-                                        <hr />
                                         <div>
                                             <h6>Dirección</h6> {/*Esto vendría de los pods*/}
                                             <div>
@@ -86,7 +82,6 @@ function PaymentForm() {
                         </div>
                     </div>
                 </div>
-            </div>
 
         </React.Fragment>
 
