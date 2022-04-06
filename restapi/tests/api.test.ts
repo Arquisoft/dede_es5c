@@ -38,6 +38,7 @@ describe('user ', () => {
         expect(response.statusCode).toBe(200);
     });
 
+
     /**
      * Tests that a user can be created through the productService without throwing any errors.
      */
@@ -45,6 +46,13 @@ describe('user ', () => {
         let username:string = 'Pablo'
         let email:string = 'gonzalezgpablo@uniovi.es'
         const response:Response = await request(app).post('/api/users/add').send({name: username,email: email}).set('Accept', 'application/json')
+        expect(response.statusCode).toBe(200);
+    });
+    /**
+     * Test that we can list products without any error.
+     */
+    it('can be listed',async () => {
+        const response:Response = await request(app).get("/api/products/list");
         expect(response.statusCode).toBe(200);
     });
 });
