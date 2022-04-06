@@ -4,11 +4,11 @@ volumes:
     grafana_data: {}
 services:
   restapi:
-    image: ghcr.io/Arquisoft/dede_es5c/restapi:latest
+    build: ./restapi
     ports:
       - "5000:5000"
   webapp:
-    image: ghcr.io/Arquisoft/dede_es5c/webapp:latest
+    build: ./webapp
     ports:
       - "3000:3000"
     depends_on: 

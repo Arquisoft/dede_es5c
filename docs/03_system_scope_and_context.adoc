@@ -22,6 +22,18 @@ image:3_1-business_context.jpeg["Business Context Diagram"]
 | Usuario | Interfaz para realizar compra o gestionar su cuenta | Datos sobre él mismo (siempre que de los permisos necesarios)
 |===
 
+[plantuml,"Sequence diagram punto 3",png]
+----
+actor User as g
+package Pod {
+}
+package DeDe {
+}
+Pod->DeDe : Datos del usuario
+DeDe->g : Interfaz para la compra
+g-> Pod : Datos sobre él mismo
+
+----
 
 
 === Contexto Técnico
