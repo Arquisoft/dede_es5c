@@ -12,7 +12,7 @@ Este es un esquema de cómo es la aplicación en el nivel más general
 
 image:05_building_blocks_level1.png["Diagrama general"]
 
-El usuario interacciona con la aplicación, y esta, con el POD del usuario y la base de datos de Mongo.
+El usuario interacciona con la aplicación, y esta, con el POD del usuario, la base de datos de Mongo y la API Distance Matrix de Google.
 
 
 === Nivel 2
@@ -25,5 +25,5 @@ El usuario interacciona con la aplicación, y esta, con el POD del usuario y la 
 
 image:05_building_blocks_level2.png["Diagrama nivel 2"]
 
-La aplicación consta de dos partes, el front, hecho en React con el cual el usuario va a interactuar, y el back, hecho en Node.js que se encargará de hacer cualquier consulta con la base de datos o el POD del usuario.
+La aplicación consta de dos partes, el front, hecho en React con el cual el usuario va a interactuar, y el back, hecho en Node.js que se encargará de hacer cualquier consulta con la base de datos, el POD del usuario o la API.
 
