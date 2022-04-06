@@ -163,3 +163,30 @@ describe('pedido ', () => {
 
 
 });
+
+describe('producto en pedido ', () => {
+    /**
+     * Test that we can list pedidos without any error.
+     */
+    it('can be listed', async () => {
+        const response: Response = await request(app).get("/api/pedidoProducto/list");
+        expect(response.statusCode).toBe(200);
+    });
+
+
+    /**
+     * Tests that an existing product can be added to an existing order.
+     */
+    it('can be added correctly to an existing order', async () => {
+
+        let quantity: Number = 2
+        let id_product: string = "624c73ef97fdb9f2b1fe1692"
+        let id_order: string ="624c84e388ca5c266f4d4f25"
+        const response: Response = await request(app).post('/api/pedidoProducto/add').send({
+            quantity: quantity, id_product: id_product, id_order: id_order
+        }).set('Accept', 'application/json')
+        expect(response.statusCode).toBe(200);
+    });
+
+
+});
