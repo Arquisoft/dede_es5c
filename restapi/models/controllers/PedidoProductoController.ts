@@ -1,4 +1,4 @@
-require("../db/db")
+require("../../database")
 import { Request, Response } from 'express';
 import ProductoPedido from '../PedidoProductoModel';
 
