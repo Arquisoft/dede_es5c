@@ -2,12 +2,28 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 import { url } from 'inspector';
 import { profile } from 'console';
-
-
+import { User } from '../../../restapi/models/UserModel';
 function UserDetails() {
 
 
-    var user = { name: "Enol", userName:"Eno_Glez", joinDate: "3-4-2022", surname: "González", birthdate: "20-03-1999", phoneNumber: "1234", email: "Enolglez@email.com", money: 20, profileUrl: "https://files.proyectoclubes.com/sporting/202202/1024x800_ac5505462f01102232310122-chusmonteserin-033.jpg" };
+    //var user = { name: "Enol", surname: "González", email: "Enolglez@email.com", profileUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQA3W3oppN7sdVCsUWwwnPIn9pX6E6G2UW70w&usqp=CAU" };
+    const [user,setUser] = useState<User>({name:"Nombre", description:"Description", category: "Category", color:"Color", price:55, talla_stock:[{talla:"talla"},{stock:50}], url:""});
+
+    type ProductoName = {
+        name: string;
+    }
+
+    const {name} = useParams<ProductoName>();
+
+    const refreshProducts = async () => {
+        //await getProduct(name!).then(val => console.log(val.at(0)?.name))
+        //await getProduct(name!).then(val => setProduct(val.at(0)!))
+        //setProduct(await getProduct(name!));
+    }
+
+    useEffect(()=>{
+        refreshProducts();
+    },[]);
 
     return (
 
@@ -20,11 +36,6 @@ function UserDetails() {
                                 <div className='ProfileImage'>
                                     <img className='Avatar' src={user.profileUrl} alt="Users profile picture"></img>
                                     <div className='CardBody'>
-                                        <h4 className="CardUserName">{user.name} {user.surname}</h4>
-                                        <p>@{user.userName}</p>
-                                        <p>Usuario desde {user.joinDate}</p> 
-                                        <hr />
-                                        
                                         <div>
                                             <h6>Nombre</h6>
                                             <div>
@@ -40,43 +51,11 @@ function UserDetails() {
                                             </div>
                                         </div>
                                         <hr />
-
-                                        <div>
-                                            <h6>Nombre de usuario</h6>
-                                            <div>
-                                                <p className='CardUserUserName'> {user.userName}</p>
-                                            </div>
-                                        </div>
-                                        <hr />
-
-                                        <div>
-                                            <h6>Fecha nacimiento</h6>
-                                            <div>
-                                                <p className='CardUserBirthDate'> {user.birthdate}</p>
-                                            </div>
-                                        </div>
-                                        <hr />
-                                        <div>
                                             <h6>Email</h6>
                                             <div>
                                                 <p className='CardUserEmail'> {user.email} </p>
                                             </div>
                                         </div>
-                                        <hr />
-                                        <div>
-                                            <h6>Teléfono</h6>
-                                            <div>
-                                                <p className='CardUserPhone'> {user.phoneNumber} </p>
-                                            </div>
-                                        </div>
-                                        <hr />
-                                        <div>
-                                            <h6>Dinero</h6>
-                                            <div>
-                                                <p className='CardUserMoney'> {user.money} </p>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div>
                                         <div>
                                         <button className="Boton">Editar perfil</button>
