@@ -3,7 +3,7 @@
 
 == Vista de Despliegue
 
-
+La aplicación se desplegará utilizando la plataforma Heroku
 
 image:07_deployment_view.png["Diagrama de despligue"]
 

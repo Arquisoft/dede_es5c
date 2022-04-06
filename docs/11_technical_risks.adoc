@@ -12,6 +12,8 @@ técnicos de un integrante puedan ser rápidamente suplidos gracias a la ayuda d
 - Poca experiencia  con JavaScript y experiencia nula con Node.js. Tendremos que informarnos de su funcionamiento antes
 de comenzar a utilizarlos.
 
+- Poca experiencia y poca información sobre como utilizar los PODs de SOLID.
+
 - Deuda técnica:
 Tendremos que estar atentos constantemente para reducir al máximo la deuda técnica, ya que el no prestarle atención
 podría conllevar un crecimiento exponencial de la misma que podría dar lugar a bloqueos que podemos evitar prestándole

@@ -17,7 +17,7 @@ Principales elementos de DeDe:
 La aplicación es segura debido a que el usuario tiene el control sobre los datos que usa la aplicación. Además se controlará el acceso a la aplicación mediante un sistema de roles.
 
 === _Logging_
-El usuario se identificará en la aplicación con su usuario y contraseña. Si la identificación es correcta se le redirigirá a la vista correspondiente. En caso contrario
+El usuario se identificará en la aplicación con su usuario y contraseña utilizando el logger de SOLID. Si la identificación es correcta se le redirigirá a la vista correspondiente. En caso contrario
 se mostrará un mensaje de error y seguirá en la vista de identificación.
 
 === _Internacionalización_
