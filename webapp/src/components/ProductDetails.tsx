@@ -43,9 +43,8 @@ function ProductDetails() {
                 </div>
 
             <div className='Options'>
-                
                 <div className='BuyButton'>
-                <button id='buyButton'>Añadir a la cesta</button>
+                <form action= {`/pay/${product.name}`}><button id='buyButton'>Añadir a la cesta</button></form>
                 </div>
             </div>
             </div>   
