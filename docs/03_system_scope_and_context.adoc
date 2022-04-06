@@ -32,6 +32,7 @@ image:3_1-business_context.jpeg["Business Context Diagram"]
 |MongoDB | Sistema de base de datos NoSQL usado para almacenar los datos de los usuarios
 |TypeScript | Lenguaje de programación usado para desarrollar la aplicación. Superconjunto de Javascript
 |React | Biblioteca Javascript de código abierto diseñada para crear interfaces de usuario con el objetivo de facilitar el desarrollo de aplicaciones en una sola página
+|Heroku | Plataforma como servicio de computación en la Nube que soporta distintos lenguajes de programación.
 |===
 
 

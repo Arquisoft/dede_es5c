@@ -18,9 +18,9 @@ function ProductDetails() {
     const {name} = useParams<ProductoName>();
 
     const refreshProducts = async () => {
-        //await getProduct(name!).then(val => console.log(val.at(0)?.name))
-        await getProduct(name!).then(val => setProduct(val.at(0)!))
-        //setProduct(await getProduct(name!));
+       //await getProduct(name!).then(val => console.log(val.at(0)?.name))
+       //await getProduct(name!).then(val => setProduct(val.at(0)!))
+        setProduct(await getProduct(name!));
     }
 
     useEffect(()=>{
@@ -32,7 +32,7 @@ function ProductDetails() {
         <React.Fragment>
             {console.log(product.name)}
             <div className="ProductDetails">
-            <div className='ProductImage'>
+            <div className="ProductImage">
                 {
                    <img src = {product?.url.toString()} alt={product?.name.toString()} />
                 }

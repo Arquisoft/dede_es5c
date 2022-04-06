@@ -17,7 +17,6 @@ export const addOrderProduct = async (req: Request, res: Response): Promise<Resp
         id_product: orderProductReq.id_product,
         id_order: orderProductReq.id_order
     })
-
     nOrderProduct.save()
 
     return res.status(200).json({ nOrderProduct });
