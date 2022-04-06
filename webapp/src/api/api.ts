@@ -36,3 +36,9 @@ export async function getProduct(name: String): Promise<Product[]>{
     //The objects returned by the api are directly convertible to User objects
     return response.json()
   }
+export async function filterProducts(type:string): Promise<Product[]> {
+    const apiEndPoint = process.env.REACT_APP_API_URI|| 'http://localhost:5000/api'
+    var str: string = apiEndPoint + '/products/filter/' + type;
+    let response = await fetch(str);
+    return response.json();
+}

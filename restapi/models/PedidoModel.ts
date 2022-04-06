@@ -25,6 +25,10 @@ const pedidoModel = new Schema(
         numero_pedido: {
             type: String,
             required: true
+        },
+        url_pod: {
+            type: String,
+            required: true
         }
     }
 )
