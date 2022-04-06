@@ -32,7 +32,7 @@ function ProductDetails() {
         <React.Fragment>
             {console.log(product.name)}
             <div className="ProductDetails">
-            <div className='ProductImage'>
+            <div className="ProductImage">
                 {
                    <img src = {product?.url.toString()} alt={product?.name.toString()} />
                 }

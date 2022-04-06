@@ -1,7 +1,7 @@
 import "./Carrito.css";
 import React, { useState, useEffect } from "react";
 import { Product } from "../../../../restapi/models/ProductModel";
-import { getCarrito } from "../../api/api";
+import { getCarrito, getProducts } from "../../api/api";
 import { Container, Row, Col, Button } from "react-bootstrap";
 
 
@@ -9,7 +9,7 @@ function Carrito() {
     const [products, setProducts] = useState<Product[]>([]);
 
     const refreshProducts = async () => {
-        setProducts(await getCarrito());
+        setProducts(await getProducts());
       }
     
       useEffect(()=>{
@@ -53,8 +53,10 @@ function Carrito() {
                 
             })}
             </table>
-       
-            <Button>Comprar</Button>
+            <div className='BuyButton'>
+                <form action= {`/pay`}><button id='buyButton'>Comprar</button></form>
+            </div>
+            
             </Container>
         )
     }
@@ -73,7 +75,7 @@ function Carrito() {
                 </tr>
             </table>
        
-            <form action= {"/pay"}><Button>Comprar</Button></form>
+            <Button>Comprar</Button>
             </Container>
         )
     }
