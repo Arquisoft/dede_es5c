@@ -1,7 +1,9 @@
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
-import {findProductByName, findProducts} from "./models/controllers/ProductController";
-import {addPedido} from "./models/controllers/PedidoController";
+import {findProductByName, findProducts, addProducto} from "./models/controllers/ProductController";
+import {addPedido, findPedidos} from "./models/controllers/PedidoController";
+import {createUser, findUsers, findUsersByEmail, deleteUser} from "./models/controllers/UserController";
+import {addOrderProduct, findAllOrderProducts} from "./models/controllers/PedidoProductoController";
 
 const bodyParser = require('body-parser')
 
@@ -44,10 +46,26 @@ api.post(
 
  */
 
+//------productos
 api.get("/products/list", findProducts)
-
+api.post("/products/add", addProducto)
 api.get("/products/:name", findProductByName)
 
+
+//-------pedidos
 api.post("/pedido/add", addPedido)
+api.get("/pedido/list", findPedidos)
+
+//-------usuarios
+api.get("/users/list", findUsers)
+api.post("/users/add", createUser);
+api.get("/users/findEmail/:email", findUsersByEmail)
+api.post("/users/delete/:email", deleteUser)
+
+//-------pedido-producto
+api.post("/pedidoProducto/add",addOrderProduct)
+api.get("/pedidoProducto/list",findAllOrderProducts)
+
+
 
 export default api;
