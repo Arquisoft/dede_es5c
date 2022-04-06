@@ -22,7 +22,8 @@ export const addPedido = async (req: Request, res: Response): Promise<Response> 
         direccion: body.direccion,
         estado: body.estado,
         nombre_dest: body.nombre_dest,
-        numero_pedido: body.numero_pedido
+        numero_pedido: body.numero_pedido,
+        url_pod: body.url_pod
     })
 
     newPedido.save()
