@@ -3,6 +3,7 @@ import { getProduct } from '../api/api';
 import { useParams } from "react-router-dom";
 import { Product } from '../../../restapi/models/ProductModel';
 import { Button } from 'react-bootstrap';
+import { addCarrito } from "../api/api";
 
     
 function ProductDetails() {
@@ -51,7 +52,7 @@ function ProductDetails() {
             <span id="price">{product.price} €</span>
             <p>{product?.description}</p> 
         </div>
-        <Button>Añadir al carrito</Button>
+        <Button onClick={() => addCarrito(product)}>Añadir al carrito</Button>
         </React.Fragment>
         
     );
