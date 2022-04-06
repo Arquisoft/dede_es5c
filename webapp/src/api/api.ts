@@ -28,7 +28,7 @@ export async function getUserByEmail(email: String): Promise<User[]> {
   return response.json();
 }
 
-export async function getProduct(name: String): Promise<Product[]>{
+export async function getProduct(name: String): Promise<Product>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api/products'
     let response = await fetch(`${apiEndPoint}/${name}`);
     let json = response.json();
@@ -68,6 +68,7 @@ export async function getProduct(name: String): Promise<Product[]>{
       })
       
     })
+    console.log("respuesta: " + response.status)
     
     if (response.status===200)
       return true;
