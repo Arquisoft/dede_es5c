@@ -73,7 +73,7 @@ function Carrito() {
                 </tr>
             </table>
        
-            <Button>Comprar</Button>
+            <form action= {"/pay"}><Button>Comprar</Button></form>
             </Container>
         )
     }

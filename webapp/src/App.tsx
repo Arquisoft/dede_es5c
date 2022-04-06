@@ -29,7 +29,7 @@ function App(): JSX.Element {
           <Route path='/' element={<Home/>}/>
           <Route path="/product/:name" element={<ProductDetails/>} />
           <Route path="/perfil" element={<UserDetails/>} />
-          <Route path="/pay/:name" element={<PaymentForm/>} />
+          <Route path="/pay" element={<PaymentForm/>} />
           <Route path='/login' element={<LoginForm/>}/>
           <Route path='/carrito' element={<Carrito/>}/>
           </Routes>
