@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { getProduct } from '../api/api';
 import { useParams } from "react-router-dom";
 import { Product } from '../../../restapi/models/ProductModel';
-import { url } from 'inspector';
+import { Button } from 'react-bootstrap';
+import { addCarrito } from "../api/api";
 
     
 function ProductDetails() {
@@ -17,9 +18,9 @@ function ProductDetails() {
     const {name} = useParams<ProductoName>();
 
     const refreshProducts = async () => {
-        //await getProduct(name!).then(val => console.log(val.at(0)?.name))
-        await getProduct(name!).then(val => setProduct(val.at(0)!))
-        //setProduct(await getProduct(name!));
+       //await getProduct(name!).then(val => console.log(val.at(0)?.name))
+       //await getProduct(name!).then(val => setProduct(val.at(0)!))
+        setProduct(await getProduct(name!));
     }
 
     useEffect(()=>{
@@ -31,7 +32,7 @@ function ProductDetails() {
         <React.Fragment>
             {console.log(product.name)}
             <div className="ProductDetails">
-            <div className='ProductImage'>
+            <div className="ProductImage">
                 {
                    <img src = {product?.url.toString()} alt={product?.name.toString()} />
                 }
@@ -43,15 +44,15 @@ function ProductDetails() {
                 </div>
 
             <div className='Options'>
-                
                 <div className='BuyButton'>
-                <button id='buyButton'>Añadir a la cesta</button>
+                <form action= {`/pay/${product.name}`}><button id='buyButton'>Añadir a la cesta</button></form>
                 </div>
             </div>
             </div>   
             <span id="price">{product.price} €</span>
             <p>{product?.description}</p> 
         </div>
+        <Button onClick={() => addCarrito(product)}>Añadir al carrito</Button>
         </React.Fragment>
         
     );
