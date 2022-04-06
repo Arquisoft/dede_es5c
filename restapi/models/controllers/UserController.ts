@@ -12,11 +12,6 @@ export const findUsers = async (req: Request, res: Response): Promise<Response> 
 
 };
 
-export const findUsersById = async (req: Request, res: Response): Promise<Response> =>  {
-    const p = await UserModel.find({_id: req.params.id})
-    return res.json(p);
-
-};
 
 export const findUsersByEmail = async (req: Request, res: Response): Promise<Response> => {
     const email = req.params.email;
@@ -26,10 +21,6 @@ export const findUsersByEmail = async (req: Request, res: Response): Promise<Res
 };
 
 export const createUser = async (req: Request, res: Response): Promise<Response> => {
-
-        console.log("POST");
-        console.log(req.body);
-
         const userReq = req.body
 
         const nUser =  new UserModel({
@@ -68,9 +59,9 @@ export const loginUser = async (req: Request, res: Response) => {
 
 export const deleteUser = async (req: Request, res: Response): Promise<Response> => {
     try {
-        const { id } = req.params;
-        await UserModel.findByIdAndDelete(id);
-        return res.send("Usuario borrado con éxito")
+        const email = req.params.email;
+        const userFound = await UserModel.deleteOne({email: email});
+        return res.json(userFound)
     } catch (error) {
         return res.status(404).json({message: 'Error en borrado'});
     }
