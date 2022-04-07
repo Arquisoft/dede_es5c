@@ -147,16 +147,11 @@ describe('pedido ', () => {
      * Tests that a pedido can be created through the productService without throwing any errors.
      */
     it('can be created correctly', async () => {
-        let id_metododepago: string = 'tarjeta'
-        let DNI_dest: string = '7'
-        let direccion: string = "Calle x"
         let estado: string = 'enviado'
-        let nombre_dest: string = 'Nuria'
-        let numero_pedido: string = '1'
         let url_pod: string = "xxx.xxx"
+        let precio_final = 50
         const response: Response = await request(app).post('/api/pedido/add').send({
-            id_metododepago: id_metododepago, DNI_dest: DNI_dest, direccion: direccion,
-            estado: estado, nombre_dest: nombre_dest, numero_pedido: numero_pedido, url_pod: url_pod
+            estado: estado, url_pod: url_pod, precio_final: precio_final
         }).set('Accept', 'application/json')
         expect(response.statusCode).toBe(200);
     });
