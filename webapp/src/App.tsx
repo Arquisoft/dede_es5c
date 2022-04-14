@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import LoginForm from './components/login/Login';
 import Carrito from './components/carrito/Carrito';
 import { SessionProvider } from '@inrupt/solid-ui-react';
+import PedidosList from './components/pedidos/PedidosList';
 
 
 
@@ -32,6 +33,7 @@ function App(): JSX.Element {
           <Route path="/pay" element={<PaymentForm/>} />
           <Route path='/login' element={<LoginForm/>}/>
           <Route path='/carrito' element={<Carrito/>}/>
+          <Route path='/pedidos' element={<PedidosList/>}/>
           </Routes>
         </Router>
         </SessionProvider>
