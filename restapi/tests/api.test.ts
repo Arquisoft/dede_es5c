@@ -37,10 +37,15 @@ beforeAll(async () => {
         }).catch((err:any) => {
         console.log(err)
     })
+
 });
 
 afterAll(async () => {
-    server.close() //close the server
+    mongoose.disconnect();
+    mongoose.connection.close();
+    server.close(); //close the server
+
+
 })
 
 describe('user ', () => {
