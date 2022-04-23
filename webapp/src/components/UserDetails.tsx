@@ -1,56 +1,74 @@
 import React, { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
+import { url } from 'inspector';
+import { profile } from 'console';
+import { getUserByEmail } from "../api/api";
+import { User } from "../shared/shareddtypes"
 
-import { useSession, CombinedDataProvider, Image, LogoutButton, Text } from "@inrupt/solid-ui-react";
-import { Button, Card, CardActionArea, CardContent, Container, Typography } from "@material-ui/core";
-import { FOAF, VCARD } from "@inrupt/lit-generated-vocab-common";
-  
+function UserDetails() {
 
 
-const UserDetails = () => {
+    const [user,setUser] = useState<User>({name:"Nombre", surname:"surname", email: "email",  password:""});
 
-    const { session } = useSession();
-    const { webId } = session.info;
+    type UserEmail = {
+        email: string;
+    }
+
+    const {email} = useParams<UserEmail>();
+
+    const refreshProducts = async () => {
+        //await getProduct(name!).then(val => console.log(val.at(0)?.name))
+        //await getUserByEmail(email!).then(val => setUser(val.at(0)!))
+        //setProduct(await getProduct(name!));
+    }
+
+    useEffect(()=>{
+        refreshProducts();
+    },[]);
 
     return (
 
-        <Container fixed>
-      <CombinedDataProvider datasetUrl={webId!} thingUrl={webId!}>
-        <Card style={{ maxWidth: 480 }}>
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              <Text property={FOAF.name.iri.value} />
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p" style={{ display: "flex", alignItems: "center" }}>
-              <Text property={VCARD.organization_name.iri.value} />
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p" style={{ display: "flex", alignItems: "center" }}>
-              <Text property={VCARD.street_address.iri.value} />
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p" style={{ display: "flex", alignItems: "center" }}>
-              <Text property={VCARD.locality.iri.value} />
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p" style={{ display: "flex", alignItems: "center" }}>
-              <Text property={VCARD.postal_code.iri.value} />
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p" style={{ display: "flex", alignItems: "center" }}>
-              <Text property={VCARD.region.iri.value} />
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p" style={{ display: "flex", alignItems: "center" }}>
-              <Text property={VCARD.country_name.iri.value} />
-            </Typography>
-          </CardContent>
+        <React.Fragment>
+            <div className='Container'>
+                <div className='MainBody'>
+                    <div>
+                        <div>
+                            <div className='Card'>
+                                <div className='ProfileImage'>
+                                    <div className='CardBody'>
+                                        <div>
+                                            <h6>Nombre</h6>
+                                            <div>
+                                                <p className='CardUserName'> {user.name}</p>
+                                            </div>
+                                        </div>
+                                        <hr />
 
-          <CardActionArea style={{ justifyContent: "center", display: "flex" }}>
-            <Image property={VCARD.hasPhoto.iri.value} width={480} />
-          </CardActionArea>
-        </Card>
-      </CombinedDataProvider>
-      <LogoutButton >
-        <Button style={{ marginTop: 20 }} variant="contained" color="primary">
-          Logout
-        </Button>
-      </LogoutButton>
-    </Container>
+                                        <div>
+                                            <h6>Apellidos</h6>
+                                            <div>
+                                                <p className='CardUserSurname'> {user.surname}</p>
+                                            </div>
+                                        </div>
+                                        <hr />
+                                            <h6>Email</h6>
+                                            <div>
+                                                <p className='CardUserEmail'> {user.email} </p>
+                                            </div>
+                                        </div>
+                                    <div>
+                                        <div>
+                                        <button className="Boton">Editar perfil</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </React.Fragment>
 
     );
 }
