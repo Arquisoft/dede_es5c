@@ -1,6 +1,8 @@
 export type User = {
-    name:string;
-    email:string;
+    name: String,
+    surname: String,
+    email: String,
+    password: String
   }
 
 export interface Product {

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { url } from 'inspector';
 import { profile } from 'console';
 import { getUserByEmail } from "../api/api";
-import { User } from "../../../restapi/models/UserModel"
+import { User } from "../shared/shareddtypes"
 
 function UserDetails() {
 
