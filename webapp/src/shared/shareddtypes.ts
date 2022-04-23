@@ -4,10 +4,11 @@ export type User = {
   }
 
 export type Product = {
-  name: string;
-  sizes: string[];
-  colors: string[];
-  price: number;
-  description: string,
-  img : {[color:string]: string}
+  description: String
+    name: String,
+    price: Number,
+    category: String,
+    color: String,
+    talla_stock: [{ talla: String }, {stock: Number}],
+    url: String
 }
