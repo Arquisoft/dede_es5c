@@ -3,7 +3,7 @@ export type User = {
     email:string;
   }
 
-export type Product = {
+export interface Product {
   description: String
     name: String,
     price: Number,
