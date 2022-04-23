@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import { useSession, CombinedDataProvider, Image, LogoutButton, Text } from "@inrupt/solid-ui-react";
 import { Button, Card, CardActionArea, CardContent, Container, Typography } from "@material-ui/core";
 import { FOAF, VCARD } from "@inrupt/lit-generated-vocab-common";
@@ -20,6 +21,7 @@ async function retrievePODAddress(webID: string): Promise<string> {
     getStringNoLocale(addressProfile as Thing, VCARD.street_address) as string;
     return ret
   }
+
 
 
 const UserDetails = () => {

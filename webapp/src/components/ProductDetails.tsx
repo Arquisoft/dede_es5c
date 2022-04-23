@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getProduct } from '../api/api';
 import { useParams } from "react-router-dom";
-import { Product } from '../../../restapi/models/ProductModel';
+import { Product } from '../shared/shareddtypes';
 import { Button } from 'react-bootstrap';
 import { addCarrito } from "../api/api";
 

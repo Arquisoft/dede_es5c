@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from "@mui/material";
 import Typography from '@mui/material/Typography';
-import { Product } from "../../../restapi/models/ProductModel";
+import { Product } from "../shared/shareddtypes";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { getProducts } from "../api/api";
