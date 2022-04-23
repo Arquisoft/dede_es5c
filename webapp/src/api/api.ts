@@ -1,5 +1,5 @@
 
-import {User, Product} from '../shared/shareddtypes';
+import {User, Product, Pedido} from '../shared/shareddtypes';
 
 
 export async function addUser(user:User):Promise<boolean>{
