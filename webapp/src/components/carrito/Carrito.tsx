@@ -1,6 +1,6 @@
 import "./Carrito.css";
 import React, { useState, useEffect } from "react";
-import { Product } from "../../../../restapi/models/ProductModel";
+import { Product } from "../../shared/shareddtypes";
 import { getCarrito, getProducts } from "../../api/api";
 import { Container, Row, Col, Button } from "react-bootstrap";
 

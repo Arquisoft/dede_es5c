@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
+
 import { useSession, CombinedDataProvider, Image, LogoutButton, Text } from "@inrupt/solid-ui-react";
 import { Button, Card, CardActionArea, CardContent, Container, Typography } from "@material-ui/core";
 import { FOAF, VCARD } from "@inrupt/lit-generated-vocab-common";
   
+
 
 const UserDetails = () => {
 
