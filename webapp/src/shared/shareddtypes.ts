@@ -14,3 +14,11 @@ export interface Product {
     talla_stock: [{ talla: String }, {stock: Number}],
     url: String
 }
+
+export interface Pedido {
+  DNI_dest: String,
+  direccion: String,
+  estado: String,
+  nombre_dest: String,
+  url_pod: String
+}
