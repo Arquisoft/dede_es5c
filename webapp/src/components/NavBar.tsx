@@ -24,6 +24,7 @@ function NavBar() {
                 <Link className="nav-link" to="/">Home</Link>
                 <Link className="nav-link" to="/welcome">Welcome</Link>
                 <Link className="nav-link" to="/perfil">Perfil</Link>
+                <Link className="nav-link" to="/pedidos">Pedidos</Link>
                 <Link className="nav-link" to="/carrito">
                     <img src={LogoCarrito} className="logo" alt="carrito" />
                 </Link>
