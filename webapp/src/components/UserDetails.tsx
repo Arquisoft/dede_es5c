@@ -3,13 +3,42 @@ import React, { useEffect, useState } from 'react';
 import { useSession, CombinedDataProvider, Image, LogoutButton, Text } from "@inrupt/solid-ui-react";
 import { Button, Card, CardActionArea, CardContent, Container, Typography } from "@material-ui/core";
 import { FOAF, VCARD } from "@inrupt/lit-generated-vocab-common";
-  
+import {
+    getSolidDataset, getStringNoLocale, getThing, Thing, getUrl
+} from "@inrupt/solid-client";
+
+
+async function retrievePODAddress(webID: string): Promise<string> {
+    console.log(webID);
+    let myDataSet = await getSolidDataset(webID)
+    let profile = getThing(myDataSet, webID)
+    let urlAddress = getUrl(profile as Thing, VCARD.hasAddress) as string
+    let addressProfile = await getThing(myDataSet, urlAddress)
+    let ret= getStringNoLocale(addressProfile as Thing, VCARD.country_name) as string+" "+
+    getStringNoLocale(addressProfile as Thing, VCARD.region) as string+" "+
+    getStringNoLocale(addressProfile as Thing, VCARD.locality) as string+" "+
+    getStringNoLocale(addressProfile as Thing, VCARD.postal_code) as string+" "+
+    getStringNoLocale(addressProfile as Thing, VCARD.street_address) as string;
+    return ret
+  }
+
 
 
 const UserDetails = () => {
 
     const { session } = useSession();
     const { webId } = session.info;
+
+    const [address, setAddress] = React.useState("");
+
+    const getPODAddress = async () => {setAddress(await retrievePODAddress(webId!))
+    }
+    ;
+
+    useEffect(() => {
+        getPODAddress();
+        console.log(address);
+    })
 
     return (
 
@@ -24,19 +53,7 @@ const UserDetails = () => {
               <Text property={VCARD.organization_name.iri.value} />
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p" style={{ display: "flex", alignItems: "center" }}>
-              <Text property={VCARD.street_address.iri.value} />
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p" style={{ display: "flex", alignItems: "center" }}>
-              <Text property={VCARD.locality.iri.value} />
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p" style={{ display: "flex", alignItems: "center" }}>
-              <Text property={VCARD.postal_code.iri.value} />
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p" style={{ display: "flex", alignItems: "center" }}>
-              <Text property={VCARD.region.iri.value} />
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p" style={{ display: "flex", alignItems: "center" }}>
-              <Text property={VCARD.country_name.iri.value} />
+              {address.toString()}
             </Typography>
           </CardContent>
 
