@@ -17,13 +17,9 @@ export const addPedido = async (req: Request, res: Response): Promise<Response> 
 
     const body = req.body
     const newPedido =  new PedidoModel({
-        id_metododepago: body.id_metododepago,
-        DNI_dest: body.DNI_dest,
-        direccion: body.direccion,
         estado: body.estado,
-        nombre_dest: body.nombre_dest,
-        numero_pedido: body.numero_pedido,
-        url_pod: body.url_pod
+        url_pod: body.url_pod,
+        precio_final: body.precio_final
     })
 
     newPedido.save()

@@ -3,11 +3,13 @@
 
 == Vista de Despliegue
 
-
+La aplicación se desplegará utilizando la plataforma Heroku
 
 image:07_deployment_view.png["Diagrama de despligue"]
 
 Para que la aplicación funcione correctamente primero hay que desplegar el docker del back, es decir, la API REST de la aplicación, y luego el docker del front, la aplicación web.
+
+Se realizarán consultas a la API de Google.
 
 La base de datos estará alojada en la nube de MongoDB.
 

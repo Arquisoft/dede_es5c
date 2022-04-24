@@ -1,13 +1,24 @@
 export type User = {
-    name:string;
-    email:string;
+    name: String,
+    surname: String,
+    email: String,
+    password: String
   }
 
-export type Product = {
-  name: string;
-  sizes: string[];
-  colors: string[];
-  price: number;
-  description: string,
-  img : {[color:string]: string}
+export interface Product {
+  description: String
+    name: String,
+    price: Number,
+    category: String,
+    color: String,
+    talla_stock: [{ talla: String }, {stock: Number}],
+    url: String
+}
+
+export interface Pedido {
+  DNI_dest: String,
+  direccion: String,
+  estado: String,
+  nombre_dest: String,
+  url_pod: String
 }

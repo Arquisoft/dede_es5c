@@ -9,10 +9,12 @@ Se usarán las siguientes tecnologías a lo largo del desarollo del prollecto.
 
 |===
 |Tecnología | Razón
-|JavaScript | Usado como lenguaje principal para el desarollo del sistema
+|TypeScript | Usado como lenguaje principal para el desarollo del sistema
 |React | Usado para el desarrollo de la aplicación web
-|Node.js | Entorno de ejecución para JavaScrip
+|Node.js | Entorno de ejecución para JavaScript
 |MongoDB |  Usado para almacenar los datos de los usuarios
+|Heroku | Usado para desplegar la aplicación web
+|Distance Matrix | Calcula la distancia del envío
 |===
 
 
