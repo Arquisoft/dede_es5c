@@ -55,6 +55,8 @@ api.get("/products/:name", findProductByName)
 //-------pedidos
 api.post("/pedido/add", addPedido)
 api.get("/pedido/list", findPedidos)
+api.get("/pedido/:webid", findPedidoByWebid)
+
 
 //-------usuarios
 api.get("/users/list", findUsers)
