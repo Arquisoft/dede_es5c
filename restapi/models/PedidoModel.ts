@@ -1,13 +1,5 @@
 import { model, Schema} from 'mongoose'
 
-export interface Pedido {
-    DNI_dest: String,
-    direccion: String,
-    estado: String,
-    nombre_dest: String,
-    url_pod: String
-}
-
 const pedidoModel = new Schema(
     {
         estado: {
