@@ -1,7 +1,7 @@
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
 import {findProductByName, findProducts, addProducto} from "./models/controllers/ProductController";
-import {addPedido, findPedidos} from "./models/controllers/PedidoController";
+import {addPedido, findPedidoByWebid, findPedidos} from "./models/controllers/PedidoController";
 import {createUser, findUsers, findUsersByEmail, deleteUser} from "./models/controllers/UserController";
 import {addOrderProduct, findAllOrderProducts} from "./models/controllers/PedidoProductoController";
 
