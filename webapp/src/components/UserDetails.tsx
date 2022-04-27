@@ -3,72 +3,72 @@ import { useParams } from "react-router-dom";
 import { url } from 'inspector';
 import { profile } from 'console';
 import { getUserByEmail } from "../api/api";
-import { User } from "../shared/shareddtypes"
+import { useSession, CombinedDataProvider, Image, LogoutButton, Text } from "@inrupt/solid-ui-react";
+import { Button, Card, CardActionArea, CardContent, Container, Typography } from "@material-ui/core";
+import { FOAF, VCARD } from "@inrupt/lit-generated-vocab-common";
+import {
+    getSolidDataset, getStringNoLocale, getThing, Thing, getUrl
+} from "@inrupt/solid-client";
 
-function UserDetails() {
+
+async function retrievePODAddress(webID: string): Promise<string> {
+    console.log(webID);
+    let myDataSet = await getSolidDataset(webID)
+    let profile = getThing(myDataSet, webID)
+    let urlAddress = getUrl(profile as Thing, VCARD.hasAddress) as string
+    let addressProfile = await getThing(myDataSet, urlAddress)
+    let ret= getStringNoLocale(addressProfile as Thing, VCARD.country_name) as string+" "+
+    getStringNoLocale(addressProfile as Thing, VCARD.region) as string+" "+
+    getStringNoLocale(addressProfile as Thing, VCARD.locality) as string+" "+
+    getStringNoLocale(addressProfile as Thing, VCARD.postal_code) as string+" "+
+    getStringNoLocale(addressProfile as Thing, VCARD.street_address) as string;
+    return ret
+  }
 
 
-    const [user,setUser] = useState<User>({name:"Nombre", surname:"surname", email: "email",  password:""});
 
-    type UserEmail = {
-        email: string;
+
+   
+
+    const [address, setAddress] = React.useState("");
+
+    const getPODAddress = async () => {setAddress(await retrievePODAddress(webId!))
     }
+    ;
 
-    const {email} = useParams<UserEmail>();
-
-    const refreshProducts = async () => {
-        //await getProduct(name!).then(val => console.log(val.at(0)?.name))
-        //await getUserByEmail(email!).then(val => setUser(val.at(0)!))
-        //setProduct(await getProduct(name!));
-    }
-
-    useEffect(()=>{
-        refreshProducts();
-    },[]);
+    useEffect(() => {
+        getPODAddress();
+        console.log(address);
+    })
 
     return (
+        <Container fixed>
+      <CombinedDataProvider datasetUrl={webId!} thingUrl={webId!}>
+        <Card style={{ maxWidth: 480 }}>
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2">
+              <Text property={FOAF.name.iri.value} />
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p" style={{ display: "flex", alignItems: "center" }}>
+              <Text property={VCARD.organization_name.iri.value} />
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p" style={{ display: "flex", alignItems: "center" }}>
+              {address.toString()}
+            </Typography>
+          </CardContent>
 
-        <React.Fragment>
-            <div className='Container'>
-                <div className='MainBody'>
-                    <div>
-                        <div>
-                            <div className='Card'>
-                                <div className='ProfileImage'>
-                                    <div className='CardBody'>
-                                        <div>
-                                            <h6>Nombre</h6>
-                                            <div>
-                                                <p className='CardUserName'> {user.name}</p>
-                                            </div>
-                                        </div>
-                                        <hr />
+          <CardActionArea style={{ justifyContent: "center", display: "flex" }}>
+            <Image property={VCARD.hasPhoto.iri.value} width={480} />
+          </CardActionArea>
+        </Card>
+      </CombinedDataProvider>
+      <LogoutButton >
+        <Button style={{ marginTop: 20 }} variant="contained" color="primary">
+          Logout
+        </Button>
+      </LogoutButton>
+    </Container>
 
-                                        <div>
-                                            <h6>Apellidos</h6>
-                                            <div>
-                                                <p className='CardUserSurname'> {user.surname}</p>
-                                            </div>
-                                        </div>
-                                        <hr />
-                                            <h6>Email</h6>
-                                            <div>
-                                                <p className='CardUserEmail'> {user.email} </p>
-                                            </div>
-                                        </div>
-                                    <div>
-                                        <div>
-                                        <button className="Boton">Editar perfil</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </React.Fragment>
 
     );
 }
