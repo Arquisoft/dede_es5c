@@ -1,4 +1,5 @@
 
+
 import {User, Product, Pedido} from '../shared/shareddtypes';
 
 
@@ -82,11 +83,4 @@ export async function filterProducts(type:string): Promise<Product[]> {
     var str: string = apiEndPoint + '/products/filter/' + type;
     let response = await fetch(str);
     return response.json();
-}
-
-export async function getPedidos(): Promise<Pedido[]> {
-  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-  let response = await fetch(apiEndPoint+'/pedido/list');
-  //The objects returned by the api are directly convertible to User objects
-  return response.json()
 }

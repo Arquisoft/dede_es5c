@@ -1,7 +1,7 @@
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
 import {findProductByName, findProducts, addProducto} from "./models/controllers/ProductController";
-import {addPedido, findPedidos} from "./models/controllers/PedidoController";
+import {addPedido, findPedidoByWebid, findPedidos} from "./models/controllers/PedidoController";
 import {createUser, findUsers, findUsersByEmail, deleteUser} from "./models/controllers/UserController";
 import {addOrderProduct, findAllOrderProducts} from "./models/controllers/PedidoProductoController";
 
@@ -55,6 +55,8 @@ api.get("/products/:name", findProductByName)
 //-------pedidos
 api.post("/pedido/add", addPedido)
 api.get("/pedido/list", findPedidos)
+api.get("/pedido/:webid", findPedidoByWebid)
+
 
 //-------usuarios
 api.get("/users/list", findUsers)
