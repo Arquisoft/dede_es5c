@@ -1,13 +1,13 @@
 //consultas
 
-import ProductModel from "../ProductModel";
+import ProductModel from "../models/ProductModel";
 
-require("../../database")
+require("../database")
 
 
 import {Request, Response} from "express";
-import api from "../../api";
-import PedidoModel from "../PedidoModel";
+import api from "../api";
+import PedidoModel from "../models/PedidoModel";
 
 export const findPedidos = async (req: Request, res: Response): Promise<Response> => {
     const p = await PedidoModel.find({})

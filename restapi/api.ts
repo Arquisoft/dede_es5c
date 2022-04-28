@@ -1,9 +1,9 @@
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
-import {findProductByName, findProducts, addProducto} from "./models/controllers/ProductController";
-import {addPedido, findPedidoByWebid, findPedidos} from "./models/controllers/PedidoController";
-import {createUser, findUsers, findUsersByEmail, deleteUser} from "./models/controllers/UserController";
-import {addOrderProduct, findAllOrderProducts} from "./models/controllers/PedidoProductoController";
+import {findProductByName, findProducts, addProducto} from "./controllers/ProductController";
+import {addPedido, findPedidoByWebid, findPedidos} from "./controllers/PedidoController";
+import {createUser, findUsers, findUsersByEmail, deleteUser} from "./controllers/UserController";
+import {addOrderProduct, findAllOrderProducts} from "./controllers/PedidoProductoController";
 
 const bodyParser = require('body-parser')
 

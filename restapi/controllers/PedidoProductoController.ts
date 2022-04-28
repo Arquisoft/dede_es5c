@@ -1,6 +1,6 @@
-require("../../database")
+require("../database")
 import { Request, Response } from 'express';
-import ProductoPedido from '../PedidoProductoModel';
+import ProductoPedido from '../models/PedidoProductoModel';
 
 export const findAllOrderProducts = async (req: Request, res: Response): Promise<Response> => {
     const orderProducts = await ProductoPedido.find({});
