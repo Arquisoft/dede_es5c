@@ -1,19 +1,12 @@
 //consultas
-
+require("../database")
 import ProductModel from "../models/ProductModel";
 import DistributionCenterModel from "../models/DistributionCenterModel";
-
-
-require("../database")
 import { Request, Response } from "express";
 import fetch from "node-fetch";
 import dotenv from "dotenv";
-
-
-
 import api from "../api";
 import PedidoModel from "../models/PedidoModel";
-import * as url from "url";
 const TOKEN:string = "pk.eyJ1IjoidW8yNzc0NDAiLCJhIjoiY2wyaXBhaGZkMDc4YjNqcW5qenY5MjFvOCJ9.0oTGSdJTHf7bwxxiK9jCKg";
 const PRECIO_KILOMETRO:number = 0.030;
 dotenv.config();
@@ -63,15 +56,14 @@ async function calcularCoordenadas(direccion: { zipcode: any; country: any; numb
 
 async function calcularDistancia(coordenadasCliente: { long: any; lat: any }) {
     const centro = await DistributionCenterModel.find({})
-    var distributionCentreLong : number = centro[0].longitude
-    var distributionCentreLat : number = centro[0].latitude
-
-    return await fetch('https://api.mapbox.com/directions/v5/mapbox/driving/'+distributionCentreLong+'%2C'+distributionCentreLat+'%3B'+ coordenadasCliente.long +'%2C'+ coordenadasCliente.lat +'?alternatives=false&geometries=geojson&language=en&overview=simplified&steps=false&access_token=' + TOKEN)
+    var long : number = centro[0].longitude
+    var lat : number = centro[0].latitude
+    return await fetch('https://api.mapbox.com/directions/v5/mapbox/driving/'+long+'%2C'+lat+'%3B'+ coordenadasCliente.long +'%2C'+ coordenadasCliente.lat +'?alternatives=false&geometries=geojson&language=en&overview=simplified&steps=false&access_token=' + TOKEN)
         .then(function(response) {
             return response.json();
         })
         .then(function(distanceInfo) {
-            return (distanceInfo.routes[0].distance)/1000; //Distancia obtenida en km
+            return (distanceInfo.routes[0].distance)/1000;
         });
 
 }
