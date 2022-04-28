@@ -15,6 +15,7 @@ import api from "../api";
 import PedidoModel from "../models/PedidoModel";
 import * as url from "url";
 const TOKEN:string = "pk.eyJ1IjoidW8yNzc0NDAiLCJhIjoiY2wyaXBhaGZkMDc4YjNqcW5qenY5MjFvOCJ9.0oTGSdJTHf7bwxxiK9jCKg";
+const PRECIO_KILOMETRO:number = 0.030;
 dotenv.config();
 
 export const findPedidos = async (req: Request, res: Response): Promise<Response> => {
@@ -86,5 +87,7 @@ export const calculatePrice = async (req: Request, res: Response): Promise<Respo
 
     var coordenadasCliente = await calcularCoordenadas (direccion);
     var distancia = await calcularDistancia(coordenadasCliente);
+    var coste = PRECIO_KILOMETRO * distancia;
+    return res.json(coste);
 
 }
