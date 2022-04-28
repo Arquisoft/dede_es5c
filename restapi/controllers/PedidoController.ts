@@ -1,20 +1,21 @@
 //consultas
 
 import ProductModel from "../models/ProductModel";
-import { Request, Response } from "express";
+import DistributionCenterModel from "../models/DistributionCenterModel";
+
+
 require("../database")
 import { Request, Response } from "express";
 import fetch from "node-fetch";
 import dotenv from "dotenv";
 
-dotenv.config();
 
 
-import {Request, Response} from "express";
 import api from "../api";
 import PedidoModel from "../models/PedidoModel";
 import * as url from "url";
 const TOKEN:string = "pk.eyJ1IjoidW8yNzc0NDAiLCJhIjoiY2wyaXBhaGZkMDc4YjNqcW5qenY5MjFvOCJ9.0oTGSdJTHf7bwxxiK9jCKg";
+dotenv.config();
 
 export const findPedidos = async (req: Request, res: Response): Promise<Response> => {
     const p = await PedidoModel.find({})
@@ -50,12 +51,28 @@ async function calcularCoordenadas(direccion: { zipcode: any; country: any; numb
         .then(function (response) {
             return response.json();
         })
-        .then(function (coordenadas) {
+        .then(function (result) {
+
             return {
-                "long": coordenadas.features[0].center[0],
-                "lat": coordenadas.features[0].center[1],
+                "long": result.features[0].center[0],
+                "lat": result.features[0].center[1],
             }
         });
+}
+
+async function calcularDistancia(coordenadasCliente: { long: any; lat: any }) {
+    const centro = await DistributionCenterModel.find({})
+    var distributionCentreLong : number = centro[0].longitude
+    var distributionCentreLat : number = centro[0].latitude
+
+    return await fetch('https://api.mapbox.com/directions/v5/mapbox/driving/'+distributionCentreLong+'%2C'+distributionCentreLat+'%3B'+ coordenadasCliente.long +'%2C'+ coordenadasCliente.lat +'?alternatives=false&geometries=geojson&language=en&overview=simplified&steps=false&access_token=' + TOKEN)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(distanceInfo) {
+            return (distanceInfo.routes[0].distance)/1000; //Distancia obtenida en km
+        });
+
 }
 
 export const calculatePrice = async (req: Request, res: Response): Promise<Response> => {
