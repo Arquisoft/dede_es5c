@@ -66,6 +66,8 @@ export const calculatePrice = async (req: Request, res: Response): Promise<Respo
         "country": req.body.country,
         "number": req.body.number
     }
-    var coordenadasCliente = calcularCoordenadas (direccion);
+
+    var coordenadasCliente = await calcularCoordenadas (direccion);
+    var distancia = await calcularDistancia(coordenadasCliente);
 
 }
