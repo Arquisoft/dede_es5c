@@ -7,6 +7,11 @@ export const findAllOrderProducts = async (req: Request, res: Response): Promise
 
     return res.json(orderProducts);
 };
+export const findAllProductsForOrder = async (req: Request, res: Response): Promise<Response> => {
+    const orderProducts = await ProductoPedido.find({id_pedido: req.params.id_pedido});
+
+    return res.json(orderProducts);
+};
 
 export const addOrderProduct = async (req: Request, res: Response): Promise<Response> => {
 
