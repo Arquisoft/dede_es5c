@@ -8,8 +8,7 @@ import { Product } from "../shared/shareddtypes";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { getProducts } from "../api/api";
-
-
+import { ProductoCarrito } from "../shared/shareddtypes"
 
 
 function Home() {
