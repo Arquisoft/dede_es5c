@@ -1,13 +1,13 @@
 import React from 'react'
 import { render } from "@testing-library/react";
-import Home from "./Home";
+import ProductDetails from "./ProductDetails";
 import * as api from '../api/api';
 import { Product } from "../shared/shareddtypes";
 
 test('check that everything is rendering propertly', async () => {
 
-  function miGetProducts() {
-    return Promise.resolve([{
+  function miGetProduct() {
+    return Promise.resolve({
       description:'Sudadera amarilla',
       name: "Sudadera gap", 
       price:10.0, 
@@ -17,12 +17,12 @@ test('check that everything is rendering propertly', async () => {
       url: "PruebaURL"
     } as Product
 
-    ]);
+    );
   }
 
-  jest.spyOn(api, 'getProducts').mockImplementation(miGetProducts);
+  jest.spyOn(api, 'getProduct').mockImplementation(miGetProduct);
 
-  const { getByText } = render(<Home/>);
+  const { getByText } = render(<ProductDetails/>);
   expect(getByText('Sudadera amarilla')).toBeInTheDocument();
   expect(getByText('Sudadera gap')).toBeInTheDocument();
   expect(getByText(10.0)).toBeInTheDocument();
