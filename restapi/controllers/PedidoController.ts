@@ -38,9 +38,9 @@ export const findPedidoByWebid = async (req: Request, res: Response): Promise<Re
     return res.json(p);
 
 };
-export const findPedidoByClientDni = async (req: Request, res: Response): Promise<Response> => {
+export const findPedidoByClientEmail = async (req: Request, res: Response): Promise<Response> => {
 
-    const p = await PedidoModel.find({DNI_dest: req.params.DNI_dest})
+    const p = await PedidoModel.find({email_dest: req.params.email_dest})
     return res.json(p);
 
 };
