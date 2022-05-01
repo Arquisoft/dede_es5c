@@ -1,7 +1,13 @@
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
 import {findProductByName, findProducts, addProducto} from "./controllers/ProductController";
-import {addPedido, calculatePrice, findPedidoByWebid, findPedidos} from "./controllers/PedidoController";
+import {
+    addPedido,
+    calculatePrice,
+    findPedidoByClientDni,
+    findPedidoByWebid,
+    findPedidos
+} from "./controllers/PedidoController";
 import {createUser, findUsers, findUsersByEmail, deleteUser} from "./controllers/UserController";
 import {addOrderProduct, findAllOrderProducts} from "./controllers/PedidoProductoController";
 
@@ -56,6 +62,7 @@ api.get("/products/:name", findProductByName)
 api.post("/pedido/add", addPedido)
 api.get("/pedido/list", findPedidos)
 api.get("/pedido/:webid", findPedidoByWebid)
+api.get("/pedido/:dni", findPedidoByClientDni)
 api.get("/pedido/price", calculatePrice)
 
 
