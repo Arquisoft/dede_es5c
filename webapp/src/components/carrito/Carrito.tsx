@@ -3,10 +3,24 @@ import React, { useState, useEffect } from "react";
 import { Product, ProductoCarrito } from "../../shared/shareddtypes";
 import { getCarrito, getProducts } from "../../api/api";
 import { Container, Row, Col, Button } from "react-bootstrap";
-
+import { useSession, SessionProvider, LogoutButton } from "@inrupt/solid-ui-react";
 
 
 function Carrito(): JSX.Element {
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const { session } = useSession();
+
+    //We have logged in
+  session.onLogin(()=>{
+    setIsLoggedIn(true)
+  })
+
+  //We have logged out
+  session.onLogout(()=>{
+    setIsLoggedIn(false)
+  })
 
     const [products,setProducts] = useState<Product[]>([]);
 
@@ -53,9 +67,13 @@ function Carrito(): JSX.Element {
                 
             })}
             </table>
-            <div className='BuyButton'>
+            {(isLoggedIn) ? 
+                <div className='BuyButton'>
                 <form action= {`/pay`}><button id='buyButton'>Comprar</button></form>
-            </div>
+                </div>
+            : <div></div>
+            }
+            
             
             </Container>
         )
@@ -75,7 +93,7 @@ function Carrito(): JSX.Element {
                 </tr>
             </table>
        
-            <Button>Comprar</Button>
+            
             </Container>
         )
     }
