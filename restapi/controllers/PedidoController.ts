@@ -38,6 +38,12 @@ export const findPedidoByWebid = async (req: Request, res: Response): Promise<Re
     return res.json(p);
 
 };
+export const findPedidoByClientDni = async (req: Request, res: Response): Promise<Response> => {
+
+    const p = await PedidoModel.find({DNI_dest: req.params.DNI_dest})
+    return res.json(p);
+
+};
 
 async function calcularCoordenadas(direccion: { zipcode: any; country: any; number: any; city: any; street: any }) {
     var uri = new URL('https://api.mapbox.com/geocoding/v5/mapbox.places/' + direccion.number + '%20' + direccion.street + '%20' + direccion.city + '%20' + direccion.country + '%20' + direccion.zipcode + '.json?access_token=' + TOKEN);
