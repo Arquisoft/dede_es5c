@@ -4,12 +4,12 @@ import {findProductByName, findProducts, addProducto} from "./controllers/Produc
 import {
     addPedido,
     calculatePrice,
-    findPedidoByClientDni, findPedidoByClientEmail,
+    findPedidoByClientEmail,
     findPedidoByWebid,
     findPedidos
 } from "./controllers/PedidoController";
 import {createUser, findUsers, findUsersByEmail, deleteUser} from "./controllers/UserController";
-import {addOrderProduct, findAllOrderProducts} from "./controllers/PedidoProductoController";
+import {addOrderProduct, findAllOrderProducts, findAllProductsForOrder} from "./controllers/PedidoProductoController";
 
 const bodyParser = require('body-parser')
 
@@ -75,6 +75,8 @@ api.post("/users/delete/:email", deleteUser)
 //-------pedido-producto
 api.post("/pedidoProducto/add",addOrderProduct)
 api.get("/pedidoProducto/list",findAllOrderProducts)
+api.get("/pedidoProducto/list/:id_pedido",findAllProductsForOrder)
+
 
 
 
