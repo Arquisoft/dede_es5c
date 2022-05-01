@@ -4,7 +4,7 @@ import {findProductByName, findProducts, addProducto} from "./controllers/Produc
 import {
     addPedido,
     calculatePrice,
-    findPedidoByClientDni,
+    findPedidoByClientDni, findPedidoByClientEmail,
     findPedidoByWebid,
     findPedidos
 } from "./controllers/PedidoController";
@@ -62,7 +62,7 @@ api.get("/products/:name", findProductByName)
 api.post("/pedido/add", addPedido)
 api.get("/pedido/list", findPedidos)
 api.get("/pedido/:webid", findPedidoByWebid)
-api.get("/pedido/:dni", findPedidoByClientDni)
+api.get("/pedido/:email", findPedidoByClientEmail)
 api.get("/pedido/price", calculatePrice)
 
 
