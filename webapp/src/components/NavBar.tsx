@@ -37,12 +37,14 @@ function NavBar() {
             <Navbar.Brand>DeDe</Navbar.Brand>
             <Nav className="me-auto">
                 <Link className="nav-link" to="/">Home</Link>
+
                 {(isLoggedIn) ?
                 <Nav>
                     <Link className="nav-link" to="/perfil">Perfil</Link>
                     <Link className="nav-link" to="/pedidos">Pedidos</Link>
                 </Nav>
                 : <Nav/>}
+
                 <Link className="nav-link" to="/carrito">
                     <img src={LogoCarrito} className="logo" alt="carrito" />
                 </Link>

@@ -1,5 +1,7 @@
 //consultas
 
+import ProductModel from "../ProductModel";
+
 require("../../database")
 
 
@@ -27,3 +29,10 @@ export const addPedido = async (req: Request, res: Response): Promise<Response> 
     return res.status(200).json({ newPedido });
 
 }
+
+export const findPedidoByWebid = async (req: Request, res: Response): Promise<Response> => {
+
+    const p = await PedidoModel.find({url_pod: req.params.url_pod})
+    return res.json(p);
+
+};

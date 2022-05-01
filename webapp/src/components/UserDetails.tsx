@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
-
+import { useParams } from "react-router-dom";
+import { url } from 'inspector';
+import { profile } from 'console';
+import { getUserByEmail } from "../api/api";
 import { useSession, CombinedDataProvider, Image, LogoutButton, Text } from "@inrupt/solid-ui-react";
 import { Button, Card, CardActionArea, CardContent, Container, Typography } from "@material-ui/core";
 import { FOAF, VCARD } from "@inrupt/lit-generated-vocab-common";
@@ -24,10 +27,8 @@ async function retrievePODAddress(webID: string): Promise<string> {
 
 
 
-const UserDetails = () => {
 
-    const { session } = useSession();
-    const { webId } = session.info;
+   
 
     const [address, setAddress] = React.useState("");
 
@@ -41,7 +42,6 @@ const UserDetails = () => {
     })
 
     return (
-
         <Container fixed>
       <CombinedDataProvider datasetUrl={webId!} thingUrl={webId!}>
         <Card style={{ maxWidth: 480 }}>
@@ -68,6 +68,7 @@ const UserDetails = () => {
         </Button>
       </LogoutButton>
     </Container>
+
 
     );
 }
