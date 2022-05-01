@@ -1,8 +1,9 @@
 import React from 'react'
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import ProductDetails from "./ProductDetails";
 import * as api from '../api/api';
 import { Product } from "../shared/shareddtypes";
+import { act } from 'react-dom/test-utils';
 
 test('check that everything is rendering propertly', async () => {
 
@@ -22,8 +23,9 @@ test('check that everything is rendering propertly', async () => {
 
   jest.spyOn(api, 'getProduct').mockImplementation(miGetProduct);
 
-  const { getByText } = render(<ProductDetails/>);
-  expect(getByText('Sudadera amarilla')).toBeInTheDocument();
-  expect(getByText('Sudadera gap')).toBeInTheDocument();
-  expect(getByText(10.0)).toBeInTheDocument();
+  await act(async () => {
+    render(<ProductDetails/>)});
+  expect(screen.getByText('Sudadera amarilla')).toBeInTheDocument();
+  expect(screen.getByText('Sudadera gap')).toBeInTheDocument();
+  expect(screen.getByText("10 €")).toBeInTheDocument();
 });

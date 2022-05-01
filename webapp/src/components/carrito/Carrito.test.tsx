@@ -1,8 +1,11 @@
 import React from 'react'
-import { render } from "@testing-library/react";
+import { render,screen } from "@testing-library/react";
 import Carrito from "./Carrito";
 import * as api from '../../api/api';
 import { Product } from "../../shared/shareddtypes";
+import { act } from 'react-dom/test-utils';
+import ReactDOM from 'react-dom';
+
 
 test('check that everything is rendering propertly', async () => {
 
@@ -12,7 +15,9 @@ test('check that everything is rendering propertly', async () => {
 
   jest.spyOn(api, 'getProducts').mockImplementation(miGetProducts);
 
-  const { container } = render(<Carrito/>);
+  const container =document.createElement('div'); ;
+  await act (async () => {
+  ReactDOM.render(<Carrito/>, container);});
   expect(container.querySelectorAll('tr').length).toBe(1);
 });
 
@@ -34,6 +39,8 @@ test('check that everything is rendering propertly', async () => {
 
   jest.spyOn(api, 'getProducts').mockImplementation(miGetProducts);
 
-  const { container } = render(<Carrito/>);
+  const container =document.createElement('div'); ;
+  await act (async () => {
+  ReactDOM.render(<Carrito/>, container);});
   expect(container.querySelectorAll('tr').length).toBe(2);
 });
