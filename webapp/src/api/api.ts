@@ -1,6 +1,5 @@
 
-import {User, Product, Pedido} from '../shared/shareddtypes';
-
+import {User, Product, Pedido, ProductoCarrito} from '../shared/shareddtypes';
 
 export async function addUser(user:User):Promise<boolean>{
     const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
@@ -45,36 +44,22 @@ export async function getProduct(name: String): Promise<Product>{
     return response.json()
   }
 
-  export async function getCarrito(): Promise<Product[]> {
-    const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-    let response = await fetch(apiEndPoint+'/pedidoProducto/list');
-    //The objects returned by the api are directly convertible to User objects
-    return response.json()
+  export function getCarrito(): Product[] {
+    var carrito = localStorage.getItem('carrito');
+    if (carrito != null)
+      return JSON.parse(carrito);
+    else {
+      localStorage.setItem('carrito', JSON.stringify([]));
+    return [];
+    }
   }
 
-  export async function addCarrito(product:Product): Promise<boolean>  {
-    console.log("/pedidoProducto/add/" + product.name);
-    const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
-    let response = await fetch(apiEndPoint+'/pedidoProducto/add', {
-      method: "POST",
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        'name': product.name,
-        'description': product.description,
-        'price': product.price,
-        'category': product.category,
-        'color': product.color,
-        'talla_stock': product.talla_stock,
-        'url': product.url
-      })
-      
-    })
-    console.log("respuesta: " + response.status)
-    
-    if (response.status===200)
-      return true;
-    else
-      return false
+  export function addCarrito(product:Product): void  {
+    var carrito = getCarrito();
+    console.log(carrito);
+    const index = carrito.findIndex((i: Product) => i.name === product.name);
+    carrito.push(product);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
   }
 
 export async function filterProducts(type:string): Promise<Product[]> {

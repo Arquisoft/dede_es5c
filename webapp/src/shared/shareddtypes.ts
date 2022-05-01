@@ -6,12 +6,23 @@ export type User = {
   }
 
 export interface Product {
-  description: String
+    description: String
     name: String,
-    price: Number,
+    price: number,
     category: String,
     color: String,
-    talla_stock: [{ talla: String }, {stock: Number}],
+    talla_stock: [{ talla: String }, {stock: number}],
+    url: String
+}
+
+export interface ProductoCarrito {
+    description: String
+    name: String,
+    price: number,
+    category: String,
+    color: String,
+    amount: number,
+    talla: String,
     url: String
 }
 

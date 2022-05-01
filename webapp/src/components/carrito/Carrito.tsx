@@ -1,22 +1,22 @@
 import "./Carrito.css";
 import React, { useState, useEffect } from "react";
-import { Product } from "../../shared/shareddtypes";
+import { Product, ProductoCarrito } from "../../shared/shareddtypes";
 import { getCarrito, getProducts } from "../../api/api";
 import { Container, Row, Col, Button } from "react-bootstrap";
 
 
-function Carrito() {
-    const [products, setProducts] = useState<Product[]>([]);
+
+function Carrito(): JSX.Element {
+
+    const [products,setProducts] = useState<Product[]>([]);
 
     const refreshProducts = async () => {
-        setProducts(await getProducts());
-      }
-    
-      useEffect(()=>{
-        refreshProducts();
-      },[]);
-
-      console.log("Productos: " + products.length);
+      setProducts(await getCarrito());
+    }
+  
+    useEffect(()=>{
+      refreshProducts();
+    },[]);
 
     if (products.length > 0) {
         return (
