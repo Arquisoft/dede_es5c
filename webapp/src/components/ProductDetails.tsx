@@ -49,7 +49,7 @@ function ProductDetails() {
             <span id="price">{product.price} €</span>
             <p>{product?.description}</p> 
         </div>
-        <Button onClick={() => addCarrito(product)}>Añadir al carrito</Button>
+        <Button onClick={() => addCarrito(product)} name="AddCarrito">Añadir al carrito</Button>
         </React.Fragment>
         
     );
