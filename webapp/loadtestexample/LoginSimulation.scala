@@ -10,7 +10,7 @@ import static io.gatling.javaapi.core.CoreDsl.*;
 import static io.gatling.javaapi.http.HttpDsl.*;
 import static io.gatling.javaapi.jdbc.JdbcDsl.*;
 
-public class RecordedSimulation extends Simulation {
+public class LoginSimulation extends Simulation {
 
   {
     HttpProtocolBuilder httpProtocol = http
@@ -86,7 +86,7 @@ public class RecordedSimulation extends Simulation {
     
     String uri1 = "localhost";
 
-    ScenarioBuilder scn = scenario("RecordedSimulation")
+    ScenarioBuilder scn = scenario("LoginSimulation")
       .exec(
         http("request_0")
           .get("/login")
@@ -127,7 +127,7 @@ public class RecordedSimulation extends Simulation {
       );
 
 	  setUp(
-      scn.inject(constantUsersPerSec(2).during(60).randomized())
-      ).protocols(httpProtocol)
+      scn.injectOpen(constantUsersPerSec(2).during(60).randomized())
+      ).protocols(httpProtocol);
   }
 }
