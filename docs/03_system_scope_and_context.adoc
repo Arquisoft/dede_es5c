@@ -25,7 +25,10 @@ image:3_1-business_context.jpeg["Business Context Diagram"]
 
 
 === Contexto Técnico
+image:3_1-tecnical_context.jpeg.PNG["Tecnical Context Diagram"]
 
+
+[options="header",cols="1,2,2"]
 |===
 |Tecnología | Descripción
 |SOLID | Usados para respetar la privacidad de los clientes
