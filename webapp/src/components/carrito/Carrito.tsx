@@ -1,22 +1,36 @@
 import "./Carrito.css";
 import React, { useState, useEffect } from "react";
-import { Product } from "../../shared/shareddtypes";
+import { Product, ProductoCarrito } from "../../shared/shareddtypes";
 import { getCarrito, getProducts } from "../../api/api";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { useSession, SessionProvider, LogoutButton } from "@inrupt/solid-ui-react";
 
 
-function Carrito() {
-    const [products, setProducts] = useState<Product[]>([]);
+function Carrito(): JSX.Element {
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    const { session } = useSession();
+
+    //We have logged in
+  session.onLogin(()=>{
+    setIsLoggedIn(true)
+  })
+
+  //We have logged out
+  session.onLogout(()=>{
+    setIsLoggedIn(false)
+  })
+
+    const [products,setProducts] = useState<Product[]>([]);
 
     const refreshProducts = async () => {
-        setProducts(await getProducts());
-      }
-    
-      useEffect(()=>{
-        refreshProducts();
-      },[]);
-
-      console.log("Productos: " + products.length);
+      setProducts(await getCarrito());
+    }
+  
+    useEffect(()=>{
+      refreshProducts();
+    },[]);
 
     if (products.length > 0) {
         return (
@@ -53,9 +67,13 @@ function Carrito() {
                 
             })}
             </table>
-            <div className='BuyButton'>
+            {(isLoggedIn) ? 
+                <div className='BuyButton'>
                 <form action= {`/pay`}><button id='buyButton'>Comprar</button></form>
-            </div>
+                </div>
+            : <div></div>
+            }
+            
             
             </Container>
         )
@@ -75,7 +93,7 @@ function Carrito() {
                 </tr>
             </table>
        
-            <Button>Comprar</Button>
+            
             </Container>
         )
     }

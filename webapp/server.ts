@@ -2,8 +2,10 @@ import express,{Application} from 'express';
 //for using an import here we need to configure the tsconfig.json
 //setting the option module to commonjs
 
+//process.env.PORT
+
 var app: Application = express()
-const port: number = 3000;
+const port: number = process.env.PORT;
 
 app.use(express.static('build'))
 
