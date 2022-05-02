@@ -6,7 +6,7 @@ import { Request, Response } from "express";
 import fetch from "node-fetch";
 import dotenv from "dotenv";
 import api from "../api";
-import PedidoModel from "   ../models/PedidoModel";
+import PedidoModel from "../models/PedidoModel";
 const TOKEN:string = "pk.eyJ1IjoidW8yNzc0NDAiLCJhIjoiY2wyaXBhaGZkMDc4YjNqcW5qenY5MjFvOCJ9.0oTGSdJTHf7bwxxiK9jCKg";
 const PRECIO_KILOMETRO:number = 0.030;
 dotenv.config();
