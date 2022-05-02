@@ -126,5 +126,7 @@ class LoginSimulation extends Simulation {
         )
     )
 
-	setUp(scn.inject(atOnceUsers(1))).protocols(httpProtocol)
+	setUp(
+          scn.inject(constantUsersPerSec(2).during(60).randomized)
+          ).protocols(httpProtocol)
 }
