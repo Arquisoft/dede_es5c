@@ -51,7 +51,7 @@ async function calcularCoordenadas(direccion: { zipcode: any; country: any; numb
         .then(function (response) {
             return response.json();
         })
-        .then(function (result) {
+        .then(function (result: any) {
 
             return {
                 "long": result.features[0].center[0],
@@ -68,7 +68,7 @@ async function calcularDistancia(coordenadasCliente: { long: any; lat: any }) {
         .then(function(response) {
             return response.json();
         })
-        .then(function(distanceInfo) {
+        .then(function(distanceInfo: any) {
             return (distanceInfo.routes[0].distance)/1000;
         });
 
