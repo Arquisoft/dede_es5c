@@ -1,7 +1,7 @@
 import "./Carrito.css";
 import React, { useState, useEffect } from "react";
 import { Product, ProductoCarrito } from "../../shared/shareddtypes";
-import { getCarrito, getProducts } from "../../api/api";
+import { getCarrito, removeCarrito } from "../../api/api";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useSession, SessionProvider, LogoutButton } from "@inrupt/solid-ui-react";
 
@@ -22,16 +22,17 @@ function Carrito(): JSX.Element {
     setIsLoggedIn(false)
   })
 
-    const [products,setProducts] = useState<Product[]>([]);
+    const [products,setProducts] = useState<ProductoCarrito[]>([]);
 
-    const refreshProducts = async () => {
-      setProducts(await getCarrito());
+    const refreshProducts = () => {
+      setProducts(getCarrito());
     }
   
     useEffect(()=>{
       refreshProducts();
     },[]);
 
+    console.log(products)
     if (products.length > 0) {
         return (
             <Container fluid>
@@ -43,11 +44,14 @@ function Carrito(): JSX.Element {
                     <th>Descripcion</th>
                     <th>Categoría</th>
                     <th>Color</th>
+                    <th>Talla</th>
+                    <th>Cantidad</th>
                     <th>Precio</th>
                 </tr>
     
             
-            {products.map((product: Product) => {
+            {products.map((product: ProductoCarrito) => {
+                console.log(product.name)
                 return(
     
                 <tr>
@@ -59,7 +63,10 @@ function Carrito(): JSX.Element {
                     <td>{product.description}</td>
                     <td>{product.category}</td>
                     <td>{product.color}</td>
-                    <td>{product.price} €</td>
+                    <td>{product.talla}</td>
+                    <td>{product.amount}</td>
+                    <td>{product.price * product.amount} €</td>
+                    <Button onClick={() => removeCarrito(product)}>Eliminar</Button>
                 </tr>
                 
                     

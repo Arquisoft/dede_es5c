@@ -21,7 +21,7 @@ import {getCarrito} from "./api/api";
 
 function App(): JSX.Element {
 
-  const [carrito, setCarrito] = useState<Product[]>([]);
+  const [carrito, setCarrito] = useState<ProductoCarrito[]>([]);
 
 
 

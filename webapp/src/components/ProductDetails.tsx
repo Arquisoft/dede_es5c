@@ -26,7 +26,21 @@ function ProductDetails() {
         refreshProducts();
     },[]);
 
+    const [amountp, setAmountp] = useState<number>(1);
+
+    const refreshAmountp = (event: any) => {
+        setAmountp(event.target.value);
+    }
+
+    const [tallap, setTallap] = useState<string>();
+
+    const refreshTallap = (event: any) => {
+        setTallap(event.target.value);
+    }
     
+    const checkCampos = () => {
+        return false;
+    }
 
     return (
        
@@ -43,13 +57,24 @@ function ProductDetails() {
                 <div className="Row">
                     <h2>{product.name}</h2>
                 </div>
-
+                
             
-            </div>   
+            </div>  
+            <div>
+                <label>
+                    Cantidad:
+                    <input type="number" name='cantidad' onChange={refreshAmountp}/>
+                </label>
+                <br/>
+                <label>
+                    Talla:
+                    <input type="text" name='talla' onChange={refreshTallap}/>
+                </label>
+            </div> 
             <span id="price">{product.price} €</span>
             <p>{product?.description}</p> 
         </div>
-        <Button onClick={() => addCarrito(product)}>Añadir al carrito</Button>
+        <Button disabled={checkCampos()} onClick={() => addCarrito(product, amountp, tallap!)}>Añadir al carrito</Button>
         </React.Fragment>
         
     );

@@ -46,21 +46,36 @@ export async function getProduct(name: String): Promise<Product>{
     return response.json()
   }
 
-  export function getCarrito(): Product[] {
+  export function getCarrito(): ProductoCarrito[] {
     var carrito = localStorage.getItem('carrito');
-    if (carrito != null)
-      return JSON.parse(carrito);
+    if (carrito != null) {
+      return JSON.parse(carrito!);
+    }
+      
     else {
       localStorage.setItem('carrito', JSON.stringify([]));
     return [];
     }
   }
 
-  export function addCarrito(product:Product): void  {
+  export function addCarrito(product:Product, amountp:number, tallap: string): void  {
     var carrito = getCarrito();
     console.log(carrito);
-    const index = carrito.findIndex((i: Product) => i.name === product.name);
-    carrito.push(product);
+    var productoCar: ProductoCarrito = {name: product.name, amount: amountp, category: product.category, color: product.color, description: product.description, price: product.price, talla: tallap, url: product.url};
+    console.log(product);
+    carrito.push(productoCar);
+    carrito = carrito.filter(Boolean);
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+  }
+
+  export function removeCarrito(product: ProductoCarrito): void {
+    var carrito = getCarrito();
+    console.log(carrito);
+    const index = carrito.findIndex((i: ProductoCarrito) => i.name === product.name);
+    if (index >= 0) {
+      delete carrito[index];
+      carrito = carrito.filter(Boolean);
+    }
     localStorage.setItem('carrito', JSON.stringify(carrito));
   }
 
