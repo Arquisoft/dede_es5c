@@ -26,8 +26,10 @@ async function retrievePODAddress(webID: string): Promise<string> {
   }
 
 
+    const UserDetails = () => {
 
-
+    const { session } = useSession();
+    const { webId } = session.info;
    
 
     const [address, setAddress] = React.useState("");
