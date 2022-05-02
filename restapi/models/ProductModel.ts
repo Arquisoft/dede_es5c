@@ -45,13 +45,13 @@ const productModel = new Schema(
     }
 )
 
-productModel.set('toJSON', {
+/**productModel.set('toJSON', {
     transform: (document, returnedObject) => {
         returnedObject.id = returnedObject._id
         delete returnedObject._id
         delete returnedObject._v
     }
-})
+})*/
 
 const ProductModel = model("Product", productModel);
 export default ProductModel;
