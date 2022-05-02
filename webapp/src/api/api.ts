@@ -46,6 +46,13 @@ export async function getProduct(name: String): Promise<Product>{
     return response.json()
   }
 
+  export async function getPedidos(): Promise<Pedido[]> {
+    const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+    let response = await fetch(apiEndPoint+'/pedido/list');
+    //The objects returned by the api are directly convertible to User objects
+    return response.json()
+  } 
+
   export function getCarrito(): ProductoCarrito[] {
     var carrito = localStorage.getItem('carrito');
     if (carrito != null) {
@@ -84,4 +91,30 @@ export async function filterProducts(type:string): Promise<Product[]> {
     var str: string = apiEndPoint + '/products/filter/' + type;
     let response = await fetch(str);
     return response.json();
+}
+
+export async function addPedido(webid:string, precio:number): Promise<boolean> {
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+    let response = await fetch(apiEndPoint+'/pedido/add', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({'estado': 'En proceso','url_pod':webid, 'precio_final':precio})
+      });
+    if (response.status===200)
+      return true;
+    else
+      return false;
+}
+
+export async function addProductoPedido(webid:string, precio:number): Promise<boolean> {
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+    let response = await fetch(apiEndPoint+'/pedidoProducto/add', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({'quantity': 'En proceso','id_product':webid, 'id_order':precio})
+      });
+    if (response.status===200)
+      return true;
+    else
+      return false;
 }

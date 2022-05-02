@@ -27,7 +27,6 @@ export interface ProductoCarrito {
 }
 
 export interface Pedido {
-  DNI_dest: String,
   direccion: String,
   estado: String,
   nombre_dest: String,

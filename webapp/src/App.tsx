@@ -15,6 +15,7 @@ import { SessionProvider } from '@inrupt/solid-ui-react';
 //import PedidosList from './components/pedidos/PedidosList';
 import { Product, ProductoCarrito } from './shared/shareddtypes';
 import {getCarrito} from "./api/api";
+import PedidosList from './components/pedidos/PedidosList';
 
 
 
@@ -50,7 +51,7 @@ function App(): JSX.Element {
           <Route path='/login' element={<LoginForm/>}/>
 
           <Route path='/carrito' element={<Carrito />}/>
-          <Route path='/pedidos' /*element={<PedidosList/>}*//>
+          <Route path='/pedidos' element={<PedidosList/>}/>
 
           </Routes>
         </Router>
