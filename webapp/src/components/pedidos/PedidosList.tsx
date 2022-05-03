@@ -44,7 +44,7 @@ function PedidosList() {
     console.log(email);
 
     return (
-            <Container fluid>
+            <Container  className="m-5">
             <h2>Pedidos del usuario</h2>
             <table>
                 <tr>
@@ -68,7 +68,7 @@ function PedidosList() {
 
             })}
             </table>
-            <Button onClick={() => refreshProducts()}>Actualizar</Button>
+            <Button className="mt-3" onClick={() => refreshProducts()}>Actualizar</Button>
             </Container>
         )
 

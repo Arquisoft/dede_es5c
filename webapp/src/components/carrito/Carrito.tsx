@@ -42,7 +42,7 @@ function Carrito(): JSX.Element {
     if (products.length > 0) {
         return (
             <SessionProvider sessionId="solid-login">
-            <Container fluid>
+            <Container className="m-5">
             <h2>Carrito de la compra</h2>
             <table>
                 <tr>
@@ -54,6 +54,7 @@ function Carrito(): JSX.Element {
                     <th>Talla</th>
                     <th>Cantidad</th>
                     <th>Precio</th>
+                    <th>Opciones</th>
                 </tr>
     
             
@@ -73,7 +74,7 @@ function Carrito(): JSX.Element {
                     <td>{product.talla}</td>
                     <td>{product.amount}</td>
                     <td>{product.price * product.amount} €</td>
-                    <Button onClick={() => eliminarProducto(product)}>Eliminar</Button>
+                    <td><Button className="eliminar" onClick={() => eliminarProducto(product)}>Eliminar</Button></td>
                 </tr>
                 
                     
@@ -82,7 +83,7 @@ function Carrito(): JSX.Element {
             })}
             </table>
             {(isLoggedIn) ? 
-                <div className='BuyButton'>
+                <div className="BuyButton">
                 <br/>
                 <Link className="nav-link" to="/pay">
                     <Button>Comprar</Button>
@@ -98,7 +99,7 @@ function Carrito(): JSX.Element {
     }
     else {
         return (
-            <Container fluid>
+            <Container  className="m-5">
             <h2>Carrito de la compra</h2>
             <table>
                 <tr>
