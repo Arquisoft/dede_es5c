@@ -55,7 +55,7 @@ function NavBar() {
                 {(!isLoggedIn) ?
                     <Button href="/login" style={{float: "right"}}>Login</Button> :
                     <LogoutButton >
-                        <Button style={{ marginTop: 20 }} variant="contained" color="primary">
+                        <Button color="primary">
                             Logout
                         </Button>
                     </LogoutButton>}

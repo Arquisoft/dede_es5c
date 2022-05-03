@@ -9,11 +9,13 @@
 .navbar-login {
   background-color: white/*darkslateblue*/;
   margin-left: 20px;
+  border-radius: 5px;
 }
 
 .navbar-login:hover {
   background-color: lightblue/*darkslateblue*/;
   margin-left: 20px;
+  border-radius: 5px;
 }
 
 .ProductImage {
