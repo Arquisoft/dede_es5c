@@ -28,7 +28,7 @@ export const addProducto = async (req: Request, res: Response): Promise<Response
         category: productReq.category,
         color: productReq.color,
         talla_stock: productReq.talla_stock,
-        url: productReq.url
+        url: productReq.url,
     })
 
     nProduct.save()

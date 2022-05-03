@@ -12,7 +12,8 @@ export interface Product {
     category: String,
     color: String,
     talla_stock: [{ talla: String }, {stock: number}],
-    url: String
+    url: String,
+    id: String
 }
 
 export interface ProductoCarrito {
@@ -23,12 +24,14 @@ export interface ProductoCarrito {
     color: String,
     amount: number,
     talla: String,
-    url: String
+    url: String,
+    id: String
 }
 
 export interface Pedido {
-  direccion: String,
+  id: String,
   estado: String,
   nombre_dest: String,
-  url_pod: String
+  email: String,
+  precio_final: Number
 }

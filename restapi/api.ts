@@ -5,7 +5,6 @@ import {
     addPedido,
     calculatePrice,
     findPedidoByClientEmail,
-    findPedidoByWebid,
     findPedidos
 } from "./controllers/PedidoController";
 import {createUser, findUsers, findUsersByEmail, deleteUser} from "./controllers/UserController";
@@ -61,7 +60,6 @@ api.get("/products/:name", findProductByName)
 //-------pedidos
 api.post("/pedido/add", addPedido)
 api.get("/pedido/list", findPedidos)
-api.get("/pedido/:webid", findPedidoByWebid)
 api.get("/pedido/:email", findPedidoByClientEmail)
 api.get("/pedido/price", calculatePrice)
 

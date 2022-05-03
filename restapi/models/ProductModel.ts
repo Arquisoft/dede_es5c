@@ -7,11 +7,16 @@ export interface Product {
     category: String,
     color: String,
     talla_stock: [{ talla: String }, {stock: Number}],
-    url: String
+    url: String,
+    id: String
 }
 
 const productModel = new Schema(
     {
+        id:{
+            type: String,
+            required: false
+        },
         description: {
             type: String
         },
@@ -35,9 +40,7 @@ const productModel = new Schema(
         url: {
             type: String,
             required: true
-        },
-
-
+        }
     }
 )
 
@@ -45,7 +48,7 @@ productModel.set('toJSON', {
     transform: (document, returnedObject) => {
         returnedObject.id = returnedObject._id
         delete returnedObject._id
-        //delete returnedObject._v
+        delete returnedObject._v
     }
 })
 

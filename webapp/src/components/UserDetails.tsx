@@ -25,6 +25,14 @@ async function retrievePODAddress(webID: string): Promise<string> {
     return ret
   }
 
+  async function retirevePODEmail(webID: string): Promise<string> {
+    let profileDocumentURI = webID.split("#")[0]
+    let myDataSet = await getSolidDataset(profileDocumentURI)
+    let profile = getThing(myDataSet, webID)
+    let email = getStringNoLocale(profile as Thing, VCARD.note.iri.value) as string;
+    return email;
+  }
+
 
     const UserDetails = () => {
 
@@ -38,8 +46,16 @@ async function retrievePODAddress(webID: string): Promise<string> {
     }
     ;
 
+    const [email, setEmail] = React.useState("");
+
+    const getPODEmail = async () => {setEmail(await retirevePODEmail(webId!))
+    }
+    ;
+
     useEffect(() => {
         getPODAddress();
+        getPODEmail();
+        console.log(email);
         console.log(address);
     })
 
@@ -50,6 +66,9 @@ async function retrievePODAddress(webID: string): Promise<string> {
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               <Text property={FOAF.name.iri.value} />
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p" style={{ display: "flex", alignItems: "center" }}>
+              {email.toString()}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p" style={{ display: "flex", alignItems: "center" }}>
               <Text property={VCARD.organization_name.iri.value} />

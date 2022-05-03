@@ -22,22 +22,18 @@ export const addPedido = async (req: Request, res: Response): Promise<Response> 
     const body = req.body
     const newPedido =  new PedidoModel({
         estado: body.estado,
-        url_pod: body.url_pod,
+        email: body.email,
         precio_final: body.precio_final
+    
     })
 
     newPedido.save()
+    console.log(newPedido)
 
     return res.status(200).json({ newPedido });
 
 }
 
-export const findPedidoByWebid = async (req: Request, res: Response): Promise<Response> => {
-
-    const p = await PedidoModel.find({url_pod: req.params.url_pod})
-    return res.json(p);
-
-};
 export const findPedidoByClientEmail = async (req: Request, res: Response): Promise<Response> => {
 
     const p = await PedidoModel.find({email_dest: req.params.email_dest})

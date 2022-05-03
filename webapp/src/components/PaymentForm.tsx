@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Product, ProductoCarrito } from "../shared/shareddtypes";
-import { getCarrito, removeCarrito } from "../api/api";
+import { ProductoCarrito } from "../shared/shareddtypes";
+import { useNavigate } from "react-router-dom";
+import { addPedido, addProductoPedido, getCarrito, getPedidosByEmail } from "../api/api";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { VCARD } from "@inrupt/lit-generated-vocab-common";
 import { useSession } from "@inrupt/solid-ui-react";
@@ -22,6 +23,22 @@ async function retrievePODAddress(webID: string): Promise<string> {
     return ret
   }
 
+  async function retirevePODEmail(webID: string): Promise<string> {
+    let profileDocumentURI = webID.split("#")[0]
+    let myDataSet = await getSolidDataset(profileDocumentURI)
+    let profile = getThing(myDataSet, webID)
+    let email = getStringNoLocale(profile as Thing, VCARD.note.iri.value) as string;
+    return email;
+  }
+
+  async function retirevePODName(webID: string): Promise<string> {
+    let profileDocumentURI = webID.split("#")[0]
+    let myDataSet = await getSolidDataset(profileDocumentURI)
+    let profile = getThing(myDataSet, webID)
+    let name = getStringNoLocale(profile as Thing, VCARD.fn.iri.value) as string;
+    return name;
+  }
+
 function PaymentForm() {
 
     const [products,setProducts] = useState<ProductoCarrito[]>([]);
@@ -37,6 +54,7 @@ function PaymentForm() {
     const { session } = useSession();
     const { webId } = session.info;
    
+    const navigate = useNavigate();
 
     const [address, setAddress] = React.useState("");
 
@@ -44,13 +62,39 @@ function PaymentForm() {
     }
     ;
 
+    const [email, setEmail] = React.useState("");
+
+    const getPODEmail = async () => {setEmail(await retirevePODEmail(webId!))
+    }
+    ;
+
+    const [name, setName] = React.useState("");
+
+    const getPODName = async () => {setName(await retirevePODName(webId!))
+    }
+    ;
+
     useEffect(() => {
         getPODAddress();
+        getPODEmail();
+        getPODName();
+        console.log(email);
         console.log(address);
     })
 
-    const pagar = async () => {
-
+    const pagar = async (emailu: string) => {
+        var precio = 0;
+        products.map((product: ProductoCarrito) =>{
+            precio += product.amount * product.price;
+        })
+        addPedido(emailu, precio);
+        console.log("ey:" + emailu)
+        var pedidos = getPedidosByEmail(emailu);
+        var pedido = (await pedidos).pop();
+        products.map((product: ProductoCarrito) => {
+            addProductoPedido(product.amount, product, pedido!);
+        });
+        navigate("/pedidos")
     }
 
     console.log(webId);
@@ -105,8 +149,16 @@ function PaymentForm() {
                             <div className='Card'>
                                 <div className='Image'>
                                         <div>
+                                            <h6>Nombre</h6> {/*Esto vendría de los pods*/}
+                                            <p>{name.toString()}</p>
+                                        </div>
+                                        <div>
                                             <h6>Dirección</h6> {/*Esto vendría de los pods*/}
                                             <p>{address.toString()}</p>
+                                        </div>
+                                        <div>
+                                            <h6>Email</h6> {/*Esto vendría de los pods*/}
+                                            <p>{email.toString()}</p>
                                         </div>
                                         <hr />
 
@@ -138,7 +190,7 @@ function PaymentForm() {
                                     
                                 </div>
                                 <br/>
-                                <Button onClick={() => pagar()}>Pagar</Button>
+                                <Button onClick={() => pagar(email)}>Pagar</Button>
                             </div>
                         </div>
                     </div>

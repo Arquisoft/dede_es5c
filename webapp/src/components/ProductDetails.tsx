@@ -8,7 +8,7 @@ import { Button } from 'react-bootstrap';
 function ProductDetails() {
 
 
-    const [product,setProduct] = useState<Product>({name:"Nombre", description:"Description", category: "Category", color:"Color", price:55, talla_stock:[{talla:"talla"},{stock:50}], url:""});
+    const [product,setProduct] = useState<Product>({name:"Nombre", description:"Description", category: "Category", color:"Color", price:55, talla_stock:[{talla:"talla"},{stock:50}], url:"", id: ""});
 
     type ProductoName = {
         name: string;
@@ -16,9 +16,12 @@ function ProductDetails() {
 
     const {name} = useParams<ProductoName>();
 
+    console.log(name);
+
     const refreshProducts = async () => {
        //await getProduct(name!).then(val => console.log(val.at(0)?.name))
        //await getProduct(name!).then(val => setProduct(val.at(0)!))
+       console.log("hola");
         setProduct(await getProduct(name!));
     }
 
@@ -38,14 +41,10 @@ function ProductDetails() {
         setTallap(event.target.value);
     }
     
-    const checkCampos = () => {
-        return false;
-    }
-
     return (
        
         <React.Fragment>
-            {console.log(product.name)}
+            {console.log(product)}
             <div className="ProductDetails">
             <div className="ProductImage">
                 {
@@ -55,7 +54,7 @@ function ProductDetails() {
 
             <div className="Box">
                 <div className="Row">
-                    <h2>{product.name}</h2>
+                    <h2>{product!.name}</h2>
                 </div>
                 
             
@@ -71,10 +70,10 @@ function ProductDetails() {
                     <input type="text" name='talla' onChange={refreshTallap}/>
                 </label>
             </div> 
-            <span id="price">{product.price} €</span>
+            <span id="price">{product!.price} €</span>
             <p>{product?.description}</p> 
         </div>
-        <Button disabled={checkCampos()} onClick={() => addCarrito(product, amountp, tallap!)}>Añadir al carrito</Button>
+        <Button onClick={() => addCarrito(product!, amountp, tallap!)}>Añadir al carrito</Button>
         </React.Fragment>
         
     );

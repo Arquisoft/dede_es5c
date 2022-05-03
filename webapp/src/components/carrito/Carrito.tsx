@@ -33,6 +33,11 @@ function Carrito(): JSX.Element {
       refreshProducts();
     },[]);
 
+    const eliminarProducto = (product: ProductoCarrito) => {
+        removeCarrito(product);
+        window.location.reload();
+    }
+
     console.log(isLoggedIn)
     if (products.length > 0) {
         return (
@@ -68,7 +73,7 @@ function Carrito(): JSX.Element {
                     <td>{product.talla}</td>
                     <td>{product.amount}</td>
                     <td>{product.price * product.amount} €</td>
-                    <Button onClick={() => removeCarrito(product)}>Eliminar</Button>
+                    <Button onClick={() => eliminarProducto(product)}>Eliminar</Button>
                 </tr>
                 
                     

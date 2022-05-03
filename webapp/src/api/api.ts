@@ -35,6 +35,7 @@ export async function getProduct(name: String): Promise<Product>{
     let response = await fetch(`${apiEndPoint}/${name}`);
     let json = response.json();
     console.log(json);
+    console.log(json);
     //The objects returned by the api are directly convertible to User objects
     return json;
   }
@@ -68,7 +69,7 @@ export async function getProduct(name: String): Promise<Product>{
   export function addCarrito(product:Product, amountp:number, tallap: string): void  {
     var carrito = getCarrito();
     console.log(carrito);
-    var productoCar: ProductoCarrito = {name: product.name, amount: amountp, category: product.category, color: product.color, description: product.description, price: product.price, talla: tallap, url: product.url};
+    var productoCar: ProductoCarrito = {name: product.name, amount: amountp, category: product.category, color: product.color, description: product.description, price: product.price, talla: tallap, url: product.url, id: product.id};
     console.log(product);
     carrito.push(productoCar);
     carrito = carrito.filter(Boolean);
@@ -93,28 +94,38 @@ export async function filterProducts(type:string): Promise<Product[]> {
     return response.json();
 }
 
-export async function addPedido(webid:string, precio:number): Promise<boolean> {
+export async function addPedido(email:string, precio:number): Promise<boolean> {
   const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
     let response = await fetch(apiEndPoint+'/pedido/add', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({'estado': 'En proceso','url_pod':webid, 'precio_final':precio})
+        body: JSON.stringify({'estado': 'En proceso','email':email, 'precio_final':precio})
       });
+    console.log(response.status)
     if (response.status===200)
       return true;
     else
       return false;
 }
 
-export async function addProductoPedido(webid:string, precio:number): Promise<boolean> {
+export async function addProductoPedido(cantidad: number, producto:ProductoCarrito, pedido:Pedido): Promise<boolean> {
   const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
     let response = await fetch(apiEndPoint+'/pedidoProducto/add', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
-        body: JSON.stringify({'quantity': 'En proceso','id_product':webid, 'id_order':precio})
+        body: JSON.stringify({'quantity': cantidad,'id_product':producto.id, 'id_order':pedido.id})
       });
+    
     if (response.status===200)
       return true;
     else
       return false;
+}
+
+export async function getPedidosByEmail(email: string): Promise<Pedido[]> {
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  console.log("getPedidos:" + email);
+  let response = await fetch(apiEndPoint+'/pedido/'+email);
+  //The objects returned by the api are directly convertible to User objects
+  return response.json()
 }
