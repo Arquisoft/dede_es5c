@@ -5,26 +5,36 @@ import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from "@mui/material";
 import Typography from '@mui/material/Typography';
 import { Product } from "../shared/shareddtypes";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { getProducts } from "../api/api";
+import { filterProducts, getProducts } from "../api/api";
 import { ProductoCarrito } from "../shared/shareddtypes"
 
 
 function Home() {
     const [products,setProducts] = useState<Product[]>([]);
+    const [filtro, setFiltro] = useState<string>('todos');
 
-    const refreshProducts = async () => {
-      setProducts(await getProducts());
+    const refreshProducts = async (filtro: string) => {
+      if (filtro == 'todos') {
+        setProducts(await getProducts());
+
+      }
+      else {
+        setProducts(await filterProducts(filtro));
+    }
     }
   
     useEffect(()=>{
-      refreshProducts();
-    },[]);
+      refreshProducts(filtro);
+    },[filtro]);
 
     return(
         
         <Container fluid>
+             <Button name="Sneakers" onClick={() => setFiltro('sneakers')}>Filtrar por zapatillas</Button>
+            <Button name="Jeans">Filtrar por vaqueros</Button>
+            <Button name="Falda">Filtrar por faldas</Button>
             <Row>
         {products.map((product: Product) => {
             return(
