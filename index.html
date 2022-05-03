@@ -811,39 +811,37 @@ propio de cada usuario donde se guarda su información.</p>
 </div>
 <div class="sect2">
 <h3 id="_contexto_técnico">3.2. Contexto Técnico</h3>
+<div class="paragraph">
+<p><span class="image"><img src="./images/3_1-tecnical_context.jpeg.PNG" alt="Tecnical Context Diagram"></span></p>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
 </colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Tecnología</th>
+<th class="tableblock halign-left valign-top">Descripción</th>
+<th class="tableblock halign-left valign-top">SOLID</th>
+</tr>
+</thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Tecnología</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Descripción</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">SOLID</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Usados para respetar la privacidad de los clientes</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MongoDB</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sistema de base de datos NoSQL usado para almacenar los datos de los usuarios</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TypeScript</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Lenguaje de programación usado para desarrollar la aplicación. Superconjunto de Javascript</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">React</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Biblioteca Javascript de código abierto diseñada para crear interfaces de usuario con el objetivo de facilitar el desarrollo de aplicaciones en una sola página</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Biblioteca Javascript de código abierto diseñada para crear interfaces de usuario con el objetivo de facilitar el desarrollo de aplicaciones en una sola página</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Heroku</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Plataforma como servicio de computación en la Nube que soporta distintos lenguajes de programación</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Distance Matrix API</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">API que nos devuelve información básica del recorrido que conecta dos direcciones</p></td>
 </tr>
 </tbody>
 </table>
@@ -890,8 +888,8 @@ propio de cada usuario donde se guarda su información.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Usado para desplegar la aplicación web</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Distance Matrix</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Calcula la distancia del envío</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MapBox Api</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Calcula la distancia desde el centro de distribución hasta el cliente</p></td>
 </tr>
 </tbody>
 </table>
@@ -1022,29 +1020,7 @@ propio de cada usuario donde se guarda su información.</p>
 <div class="sect2">
 <h3 id="_modelo_de_dominio">8.1. Modelo de Dominio</h3>
 <div class="paragraph">
-<p>Principales elementos de DeDe:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Usuario: persona que utiliza la aplicación web.</p>
-</li>
-<li>
-<p>Administrador: persona que se encarga de realizar modificaciones en la aplicación.</p>
-</li>
-<li>
-<p>POD: sistema que almacena la información del usuario. Permite descentralizar los datos del usuario y es éste el que debe proporcionar el acceso a estos datos.</p>
-</li>
-<li>
-<p>Servidor web: contiene la aplicación web(front) y la API REST(back).</p>
-</li>
-<li>
-<p>Base de Datos: alojada en MongoDB y contendrá todos los productos de la tienda.</p>
-</li>
-<li>
-<p>Distance Matrix: nos da información de la distancia que separa las direcciones de origen y de entrega del pedido.</p>
-</li>
-</ul>
+<p><span class="image"><img src="./images/08_modelo_dominio.png" alt="Modelo de dominio"></span></p>
 </div>
 </div>
 <div class="sect2">
@@ -1063,7 +1039,7 @@ se mostrará un mensaje de error y seguirá en la vista de identificación.</p>
 <div class="sect2">
 <h3 id="_internacionalización">8.4. <em>Internacionalización</em></h3>
 <div class="paragraph">
-<p>La aplicación estará en idioma español aunque el equipo está valorando internacionalizar la aplicación para que esté también disponible en idioma inglés</p>
+<p>La aplicación estará en idioma español, no se realizará en otro idioma.</p>
 </div>
 <div style="page-break-after: always;"></div>
 </div>
@@ -1072,26 +1048,36 @@ se mostrará un mensaje de error y seguirá en la vista de identificación.</p>
 <div class="sect1">
 <h2 id="section-design-decisions">9. Decisiones de Diseño</h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>ADR 1: Almacenar localizaciones en una base de datos centralizada.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Contexto
-Debemos almacenar los datos de la cuenta del usuario para validar cuando estos se logean
-que es una cuenta existente y para almacenar las nuevas cuentas que los usuarios creen.</p>
-</li>
-<li>
-<p>Decisión:
-Hemos decidido almacear dichos datos en una base de datos centralizada.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Contexto</th>
+<th class="tableblock halign-left valign-top">Decision</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Debemos almacenar los datos de la cuenta del usuario para validar cuando estos se logean
+que es una cuenta existente y para almacenar las nuevas cuentas que los usuarios creen.
+Así almacenaremos también información relativa a los productos que ofrecerá nuestra web o
+los pedidos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hemos decidido almacear dichos datos en una base de datos centralizada. Finalmente utilizaremos
+MongoDB como base de datos.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Necesitamos una API la cual nos calcule la distancia entre el centro de distribución y la localización del cliente.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Utilizaremos la API de Mapbox para calcular el coste de envío del pedido</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Necesitamos obtener los datos de la dirección del usuario que realiza el pedido sin almacenarlos en la base de datos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Utilizaremos un sistema basado en PODS para obtener estos datos del cliente.</p></td>
+</tr>
+</tbody>
+</table>
 <div style="page-break-after: always;"></div>
 </div>
 </div>
@@ -1205,6 +1191,26 @@ atención a que la deuda no se dispare.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Pod</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Almacenamiento personal de datos alojado en un servidor elegido por el usuario.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Descentralizado</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Los usuarios pueden elegir donde almacenar sus datos</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MongoDB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sistema de base de datos NoSQL, orientado a documentos y de código abierto.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NoSql</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Base de datos no relacional</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">API</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Protocolo que se utiliza para diseñar  el software de las aplicaciones.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">React</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Biblioteca Javascrypt que nos ayuda a crear interfaces de usuario de forma sencilla.</p></td>
 </tr>
 </tbody>
 </table>
