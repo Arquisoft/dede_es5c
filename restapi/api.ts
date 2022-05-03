@@ -1,6 +1,6 @@
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
-import {findProductByName, findProducts, addProducto} from "./controllers/ProductController";
+import {findProductByName, findProducts, addProducto, findProductByCategory} from "./controllers/ProductController";
 import {
     addPedido,
     calculatePrice,
@@ -56,6 +56,7 @@ api.post(
 api.get("/products/list", findProducts)
 api.post("/products/add", addProducto)
 api.get("/products/:name", findProductByName)
+api.get("/products/:category", findProductByCategory)
 
 
 //-------pedidos
