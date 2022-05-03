@@ -1,15 +1,18 @@
 import { model, Schema} from 'mongoose'
 
 const pedidoModel = new Schema(
-    {id:{
+
+    {
+        id:{
             type: String,
-            required: true
+            required: false
+
         },
         estado: {
             type: String,
             required: true
         },
-        url_pod: {
+        email: {
             type: String,
             required: true
         },
