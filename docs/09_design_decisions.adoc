@@ -1,11 +1,17 @@
 [[section-design-decisions]]
 == Decisiones de Diseño
+[options="header",cols="1,2"]
+|===
+|Contexto|Decision
 
-
-* ADR 1: Almacenar localizaciones en una base de datos centralizada.
-- Contexto
-Debemos almacenar los datos de la cuenta del usuario para validar cuando estos se logean
+|Debemos almacenar los datos de la cuenta del usuario para validar cuando estos se logean
 que es una cuenta existente y para almacenar las nuevas cuentas que los usuarios creen.
-- Decisión:
-Hemos decidido almacear dichos datos en una base de datos centralizada.
+Así almacenaremos también información relativa a los productos que ofrecerá nuestra web o
+los pedidos|Hemos decidido almacear dichos datos en una base de datos centralizada. Finalmente utilizaremos
+MongoDB como base de datos.
+|Necesitamos una API la cual nos calcule la distancia entre el centro de distribución y la localización del cliente.|
+Utilizaremos la API de Mapbox para calcular el coste de envío del pedido
+|Necesitamos obtener los datos de la dirección del usuario que realiza el pedido sin almacenarlos en la base de datos |
+Utilizaremos un sistema basado en PODS para obtener estos datos del cliente.
+|===
 
