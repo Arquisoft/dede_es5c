@@ -17,6 +17,18 @@ Se usarán las siguientes tecnologías a lo largo del desarollo del prollecto.
 |MapBox Api | Calcula la distancia desde el centro de distribución hasta el cliente
 |===
 
+=== Decisiones organizativas
+
+Se tendrán en cuenta los siguientes aspectos desde el punto de vista organizativo
+
+|===
+|Reuniones| Realizaremos una reunión semanal en la que cada componente del grupo indcará lo que ha hecho respecto a la anterior
+reunión, lo que hará antes de la siguiente reunión y si algún factor le esta bloqueando en su tranajo.
+|GitHub | Cada componente del grupo trabajará en su propia rama . Así mismo tendremos una rama develop para juntar las ramas individuales
+del proyecto en desarrollo, y una rama master en la cual se encontrará el producto final.
+
+|===
+
 
 
 === Objetivos de calidad
