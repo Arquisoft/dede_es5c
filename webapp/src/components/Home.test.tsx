@@ -10,6 +10,7 @@ test('check that everything is rendering propertly', async () => {
 
   function miGetProducts() {
     return Promise.resolve([{
+      id: '1',
       description:'Sudadera amarilla',
       name: "Sudadera gap", 
       price:10.0, 
