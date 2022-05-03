@@ -12,6 +12,10 @@ export interface Product {
 
 const productModel = new Schema(
     {
+        id:{
+            type: String,
+            required: true
+        },
         description: {
             type: String
         },
@@ -45,7 +49,7 @@ productModel.set('toJSON', {
     transform: (document, returnedObject) => {
         returnedObject.id = returnedObject._id
         delete returnedObject._id
-        //delete returnedObject._v
+        delete returnedObject._v
     }
 })
 
