@@ -13,9 +13,13 @@ import { useSession, SessionProvider, LogoutButton } from "@inrupt/solid-ui-reac
 
 
 function NavBar() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const { session } = useSession();
+
+    
+    const [isLoggedIn, setIsLoggedIn] = useState(session.info != null);
+
+    
 
     //We have logged in
   session.onLogin(()=>{

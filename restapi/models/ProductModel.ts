@@ -7,14 +7,17 @@ export interface Product {
     category: String,
     color: String,
     talla_stock: [{ talla: String }, {stock: Number}],
-    url: String
+    url: String,
+    id: String
 }
 
 const productModel = new Schema(
     {
         id:{
             type: String,
-            required: true
+
+            required: false
+
         },
         description: {
             type: String
@@ -39,9 +42,7 @@ const productModel = new Schema(
         url: {
             type: String,
             required: true
-        },
-
-
+        }
     }
 )
 

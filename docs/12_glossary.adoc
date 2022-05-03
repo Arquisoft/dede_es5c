@@ -15,4 +15,6 @@
 | NoSql | Base de datos no relacional
 | API | Protocolo que se utiliza para diseñar  el software de las aplicaciones.
 | React | Biblioteca Javascrypt que nos ayuda a crear interfaces de usuario de forma sencilla.
+| Heroku | Plataforma que nos permite desplegar nuestra aplicación
+|Whitebox| Componente que muestra  componentes que tiene dentro de el
 |===
