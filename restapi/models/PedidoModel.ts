@@ -1,10 +1,12 @@
 import { model, Schema} from 'mongoose'
 
 const pedidoModel = new Schema(
+
     {
         id:{
             type: String,
             required: false
+
         },
         estado: {
             type: String,
@@ -17,9 +19,14 @@ const pedidoModel = new Schema(
         precio_final: {
             type: Number,
             required: true
+        },
+        email_dest: {
+            type: String,
+            required: true
         }
     }
 )
+
 
 pedidoModel.set('toJSON', {
     transform: (document, returnedObject) => {

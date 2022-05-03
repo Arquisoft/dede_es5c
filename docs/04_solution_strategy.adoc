@@ -14,7 +14,7 @@ Se usarán las siguientes tecnologías a lo largo del desarollo del prollecto.
 |Node.js | Entorno de ejecución para JavaScript
 |MongoDB |  Usado para almacenar los datos de los usuarios
 |Heroku | Usado para desplegar la aplicación web
-|Distance Matrix | Calcula la distancia del envío
+|MapBox Api | Calcula la distancia desde el centro de distribución hasta el cliente
 |===
 
 

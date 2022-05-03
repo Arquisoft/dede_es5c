@@ -22,9 +22,11 @@ export const addPedido = async (req: Request, res: Response): Promise<Response> 
     const body = req.body
     const newPedido =  new PedidoModel({
         estado: body.estado,
+
         email: body.email,
         precio_final: body.precio_final
     
+
     })
 
     newPedido.save()
