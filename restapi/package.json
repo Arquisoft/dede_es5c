@@ -18,7 +18,6 @@
     "express-validator": "^6.14.0",
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.6",
-    "node-fetch": "^3.2.4",
     "prom-client": "^14.0.1"
   },
   "devDependencies": {

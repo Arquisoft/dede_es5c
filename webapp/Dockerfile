@@ -9,6 +9,7 @@ ARG API_URI="http://localhost:5000/api"
 ENV REACT_APP_API_URI=$API_URI
 
 #Create an optimized version of the webapp
-RUN npm run start --port $PORT
+RUN npm run build
 
 #Ver como podemos llamar npm run prod aquí
+CMD [ "npm", "run", "prod" ]

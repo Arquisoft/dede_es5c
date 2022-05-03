@@ -1,7 +1,7 @@
 import {Request, Response} from "express";
-import UserModel from "../models/UserModel";
+import UserModel from "../UserModel";
 
-require("../database")
+require("../../database")
 
 
 
