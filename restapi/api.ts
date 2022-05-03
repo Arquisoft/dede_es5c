@@ -61,7 +61,7 @@ api.get("/products/:name", findProductByName)
 api.post("/pedido/add", addPedido)
 api.get("/pedido/list", findPedidos)
 api.get("/pedido/:email", findPedidoByClientEmail)
-api.get("/pedido/price", calculatePrice)
+api.get("/pedido/price/:direccion", calculatePrice)
 
 
 //-------usuarios

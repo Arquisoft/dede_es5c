@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ProductoCarrito } from "../shared/shareddtypes";
 import { useNavigate } from "react-router-dom";
-import { addPedido, addProductoPedido, getCarrito, getPedidosByEmail } from "../api/api";
+import { addPedido, addProductoPedido, getCarrito, getPedidosByEmail, getShipping } from "../api/api";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { VCARD } from "@inrupt/lit-generated-vocab-common";
 import { useSession } from "@inrupt/solid-ui-react";
@@ -74,20 +74,34 @@ function PaymentForm() {
     }
     ;
 
+    const [gastoEnvio, setGastoEnvio] = React.useState<number>();
+
+    const getGastoEnvio = async () => {
+        console.log('ey');
+        setGastoEnvio(await getShipping(address));
+    }
+    ;
+    
+
     useEffect(() => {
         getPODAddress();
         getPODEmail();
         getPODName();
         console.log(email);
         console.log(address);
+        getGastoEnvio();
+        console.log("gastos "+gastoEnvio);
+        
     })
 
-    const pagar = async (emailu: string) => {
+   
+
+    const pagar = async (emailu: string, gasto: number) => {
         var precio = 0;
         products.map((product: ProductoCarrito) =>{
             precio += product.amount * product.price;
         })
-        addPedido(emailu, precio);
+        addPedido(emailu, precio + gasto);
         console.log("ey:" + emailu)
         var pedidos = getPedidosByEmail(emailu);
         var pedido = (await pedidos).pop();
@@ -160,6 +174,10 @@ function PaymentForm() {
                                             <h6>Email</h6> {/*Esto vendría de los pods*/}
                                             <p>{email.toString()}</p>
                                         </div>
+                                        <div>
+                                            <h6>Gastos de envío</h6> {/*Esto vendría de los pods*/}
+                                            <p>{gastoEnvio?.toString()}</p>
+                                        </div>
                                         <hr />
 
                                         <div>
@@ -190,7 +208,7 @@ function PaymentForm() {
                                     
                                 </div>
                                 <br/>
-                                <Button onClick={() => pagar(email)}>Pagar</Button>
+                                <Button onClick={() => pagar(email, gastoEnvio!)}>Pagar</Button>
                             </div>
                         </div>
                     </div>

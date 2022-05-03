@@ -129,3 +129,12 @@ export async function getPedidosByEmail(email: string): Promise<Pedido[]> {
   //The objects returned by the api are directly convertible to User objects
   return response.json()
 }
+
+export async function getShipping(direccion: string): Promise<number> {
+  console.log("ey x2:" + direccion)
+  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+  console.log(apiEndPoint+'/pedido/price/' + direccion.toString())
+  let response = await fetch(apiEndPoint+'/pedido/price/' + direccion);
+  //The objects returned by the api are directly convertible to User objects
+  return response.json()
+}
