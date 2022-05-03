@@ -32,9 +32,12 @@ function Home() {
     return(
         
         <Container fluid>
-             <Button name="Sneakers" onClick={() => setFiltro('sneakers')}>Filtrar por zapatillas</Button>
-            <Button name="Jeans">Filtrar por vaqueros</Button>
-            <Button name="Falda">Filtrar por faldas</Button>
+            <Button name="Sneakers" onClick={() => setFiltro('Sneakers')}>Filtrar por zapatillas</Button>
+            <Button name="Jeans" onClick={() => setFiltro('Jeans')}>Filtrar por vaqueros</Button>
+            <Button name="Falda" onClick={() => setFiltro('Falda')}>Filtrar por faldas</Button>
+            <Button name="Chaqueta" onClick={() => setFiltro('Chaqueta')}>Filtrar por chaquetas</Button>
+            <Button name="Sudadera" onClick={() => setFiltro('Sudadera')}>Filtrar por sudaderas</Button>
+            <Button name="Todos" onClick={() => setFiltro('todos')}>Deshacer filtro</Button>
             <Row>
         {products.map((product: Product) => {
             return(
