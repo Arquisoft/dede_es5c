@@ -5,7 +5,7 @@ import { Product } from '../shared/shareddtypes';
 import { Button } from 'react-bootstrap';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
-    
+
 function ProductDetails() {
 
 
@@ -20,9 +20,9 @@ function ProductDetails() {
     console.log(name);
 
     const refreshProducts = async () => {
-       //await getProduct(name!).then(val => console.log(val.at(0)?.name))
-       //await getProduct(name!).then(val => setProduct(val.at(0)!))
-       console.log("hola");
+        //await getProduct(name!).then(val => console.log(val.at(0)?.name))
+        //await getProduct(name!).then(val => setProduct(val.at(0)!))
+        console.log("hola");
         setProduct(await getProduct(name!));
     }
 
@@ -42,48 +42,54 @@ function ProductDetails() {
         console.log(ta)
         setTallap(ta);
     }
-    
+
     const tallas = ['34', '36', '38', '40', '42']
 
     return (
-       
+
         <React.Fragment>
             {console.log(product)}
-            <div className="ProductDetails">
-            <div className="ProductImage">
-                {
-                   <img src = {product?.url.toString()} alt={product?.name.toString()} />
-                }
+            <div className="m-5">
+                <div className="ProductDetails ms-5">
+                    <div className="ProductImage">
+                        {
+                            <img src = {product?.url.toString()} alt={product?.name.toString()} />
+                        }
+                    </div>
+
+                    <div className="info">
+                        <div className="Box">
+                            <div className="Row">
+                                <p className="display-2">{product.name}</p>
+                            </div>
+                        </div>
+                        <p className="h5">{product?.description}</p>
+
+                        <div className="my-5">
+                            <label className="mb-2">
+                                Cantidad:
+                                <input type="number" name='cantidad' placeholder='1' onChange={refreshAmountp}/>
+                            </label>
+                            <br/>
+                            <label>
+                                Talla:
+                                {tallas.map((t) => {
+                                    return(
+                                        <Button className="m-1" onClick={() => refreshTallap(t)}>{t}</Button>
+                                    )
+                                })}
+                            </label>
+                        </div>
+
+                        <span id="price" className="h4">{product!.price} €</span>
+                        <Button className="mx-5" onClick={() => addCarrito(product!, amountp, tallap!)}>Añadir al carrito</Button>
+                    </div>
+                </div>
+
             </div>
 
-            <div className="Box">
-                <div className="Row">
-                    <h2>{product!.name}</h2>
-                </div>
-                
-            
-            </div>  
-            <div>
-                <label>
-                    Cantidad:
-                    <input type="number" name='cantidad' placeholder='1' onChange={refreshAmountp}/>
-                </label>
-                <br/>
-                <label>
-                    Talla:
-                    {tallas.map((t) => {
-                        return(
-                            <Button onClick={() => refreshTallap(t)}>{t}</Button>
-                        )
-                    })}
-                </label>
-            </div> 
-            <span id="price">{product!.price} €</span>
-            <p>{product?.description}</p> 
-        </div>
-        <Button onClick={() => addCarrito(product!, amountp, tallap!)}>Añadir al carrito</Button>
         </React.Fragment>
-        
+
     );
 }
 
