@@ -153,14 +153,14 @@ describe('pedido ', () => {
      */
     it('can be created correctly', async () => {
         let estado: string = 'enviado'
-        let url_pod: string = "xxx.xxx"
-        let precio_final = 50
+        let email: string = "xxx.xxx"
+        let precio_final = 89
+        let email_dest = "xxx"
         const response: Response = await request(app).post('/api/pedido/add').send({
-            estado: estado, url_pod: url_pod, precio_final: precio_final
+            estado: estado, email: email, precio_final: precio_final, email_dest: email_dest
         }).set('Accept', 'application/json')
         expect(response.statusCode).toBe(200);
     });
-
 
 
 });
