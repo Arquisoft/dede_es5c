@@ -19,10 +19,6 @@ const pedidoModel = new Schema(
         precio_final: {
             type: Number,
             required: true
-        },
-        email_dest: {
-            type: String,
-            required: true
         }
     }
 )

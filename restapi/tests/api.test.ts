@@ -152,15 +152,18 @@ describe('pedido ', () => {
      * Tests that a pedido can be created through the productService without throwing any errors.
      */
     it('can be created correctly', async () => {
+        let id = "1"
         let estado: string = 'enviado'
         let email: string = "xxx.xxx"
-        let precio_final = 89
-        let email_dest = "xxx"
-        const response: Response = await request(app).post('/api/pedido/add').send({
+        let precio_final : number = 89
+        let email_dest : string= "xxx"
+        const response: Response = await request(app).post('/api/pedido/add').send({ id: id,
             estado: estado, email: email, precio_final: precio_final, email_dest: email_dest
         }).set('Accept', 'application/json')
+        console.log("-->" +response);
         expect(response.statusCode).toBe(200);
     });
+
 
 
 });
