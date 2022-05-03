@@ -49,7 +49,6 @@ function PedidosList() {
             <table>
                 <tr>
                     <th>Estado</th>
-                    <th>Nombre Destinatario</th>
                     <th>Email</th>
                     <th>Coste total</th>
                 </tr>
@@ -60,7 +59,6 @@ function PedidosList() {
                     
                 <tr>
                     <td>{pedido.estado}</td>
-                    <td>{pedido.nombre_dest}</td>
                     <td>{pedido.email}</td>
                     <td>{pedido.precio_final}</td>
                 </tr>

@@ -3,7 +3,8 @@ import { getProduct, addCarrito } from '../api/api';
 import { useParams } from "react-router-dom";
 import { Product } from '../shared/shareddtypes';
 import { Button } from 'react-bootstrap';
-
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
     
 function ProductDetails() {
 
@@ -37,10 +38,13 @@ function ProductDetails() {
 
     const [tallap, setTallap] = useState<string>();
 
-    const refreshTallap = (event: any) => {
-        setTallap(event.target.value);
+    const refreshTallap = (ta: string) => {
+        console.log(ta)
+        setTallap(ta);
     }
     
+    const tallas = ['34', '36', '38', '40', '42']
+
     return (
        
         <React.Fragment>
@@ -62,12 +66,16 @@ function ProductDetails() {
             <div>
                 <label>
                     Cantidad:
-                    <input type="number" name='cantidad' onChange={refreshAmountp}/>
+                    <input type="number" name='cantidad' placeholder='1' onChange={refreshAmountp}/>
                 </label>
                 <br/>
                 <label>
                     Talla:
-                    <input type="text" name='talla' onChange={refreshTallap}/>
+                    {tallas.map((t) => {
+                        return(
+                            <Button onClick={() => refreshTallap(t)}>{t}</Button>
+                        )
+                    })}
                 </label>
             </div> 
             <span id="price">{product!.price} €</span>
