@@ -63,8 +63,10 @@ function ProductDetails() {
                                 <p className="display-2">{product.name}</p>
                             </div>
                         </div>
-                        <div>
-                            <label>
+                        <p className="h5">{product?.description}</p>
+
+                        <div className="my-5">
+                            <label className="mb-2">
                                 Cantidad:
                                 <input type="number" name='cantidad' placeholder='1' onChange={refreshAmountp}/>
                             </label>
@@ -73,12 +75,12 @@ function ProductDetails() {
                                 Talla:
                                 {tallas.map((t) => {
                                     return(
-                                        <Button onClick={() => refreshTallap(t)}>{t}</Button>
+                                        <Button className="m-1" onClick={() => refreshTallap(t)}>{t}</Button>
                                     )
                                 })}
                             </label>
                         </div>
-                        <p className="h5">{product?.description}</p>
+
                         <span id="price" className="h4">{product!.price} €</span>
                         <Button className="mx-5" onClick={() => addCarrito(product!, amountp, tallap!)}>Añadir al carrito</Button>
                     </div>
