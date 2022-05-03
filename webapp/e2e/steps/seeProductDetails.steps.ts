@@ -35,9 +35,8 @@ defineFeature(feature, test => {
       await page
       .goto("http://localhost:3000/product/Nike%20Blazer", {
         waitUntil: "networkidle0",
-      })
-    })
-    .catch(() => {});
+      }).catch(() => {});
+    });
 
     then('I can see the details of that product', async () => {
       await page.waitForTimeout(1500);

@@ -5,8 +5,8 @@ import express,{Application} from 'express';
 //process.env.PORT
 
 var app: Application = express()
-const port: number = process.env.PORT;
-
+//const port: number = process.env.PORT;
+const port: number = 3000;
 app.use(express.static('build'))
 
 app.listen(port, ():void => {
