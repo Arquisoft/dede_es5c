@@ -29,12 +29,12 @@ function NavBar() {
 
     return (
         <SessionProvider sessionId="solid-login">
-            <Navbar bg="dark" variant="dark">
+            <Navbar className="navbar-custom" variant="dark">
             <Container>
-            <Grid item xs={1}>
-                <img src={logo} className="App-logo" alt="logo" />
-            </Grid>
-            <Navbar.Brand>DeDe</Navbar.Brand>
+            <Navbar.Brand>
+                <img src={logo} className="pe-4" alt="logo" />
+                DeDe
+            </Navbar.Brand>
             <Nav className="me-auto">
                 <Link className="nav-link" to="/">Home</Link>
 
@@ -45,17 +45,23 @@ function NavBar() {
                 </Nav>
                 : <Nav/>}
 
-                <Link className="nav-link" to="/carrito">
+
+            </Nav>
+            <Nav className="justify-content-end">
+                <Link className="nav-link " to="/carrito">
                     <img src={LogoCarrito} className="logo" alt="carrito" />
                 </Link>
-            </Nav>
+                <div className="navbar-login">
                 {(!isLoggedIn) ?
-                    <Button href="/login" style={{float: "right"}}>Login</Button> : 
+                    <Button href="/login" style={{float: "right"}}>Login</Button> :
                     <LogoutButton >
                         <Button style={{ marginTop: 20 }} variant="contained" color="primary">
                             Logout
                         </Button>
                     </LogoutButton>}
+            </div>
+            </Nav>
+
             
             </Container>
             </Navbar>

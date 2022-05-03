@@ -32,24 +32,28 @@ function ProductDetails() {
        
         <React.Fragment>
             {console.log(product.name)}
-            <div className="ProductDetails">
-            <div className="ProductImage">
-                {
-                   <img src = {product?.url.toString()} alt={product?.name.toString()} />
-                }
-            </div>
+            <div className="m-5">
+                <div className="ProductDetails ms-5">
+                    <div className="ProductImage">
+                        {
+                           <img src = {product?.url.toString()} alt={product?.name.toString()} />
+                        }
+                    </div>
 
-            <div className="Box">
-                <div className="Row">
-                    <h2>{product.name}</h2>
+                    <div className="info">
+                        <div className="Box">
+                            <div className="Row">
+                                <p className="display-2">{product.name}</p>
+                            </div>
+                        </div>
+                        <p className="h5">{product?.description}</p>
+                        <span id="price" className="h4">{product.price} €</span>
+                        <Button className="mx-5" onClick={() => addCarrito(product)}>Añadir al carrito</Button>
+                    </div>
                 </div>
 
-            
-            </div>   
-            <span id="price">{product.price} €</span>
-            <p>{product?.description}</p> 
-        </div>
-        <Button onClick={() => addCarrito(product)}>Añadir al carrito</Button>
+            </div>
+
         </React.Fragment>
         
     );

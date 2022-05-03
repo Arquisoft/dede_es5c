@@ -2,11 +2,26 @@
   text-align: center;
 }
 
+.navbar-custom{
+  background-color: midnightblue;
+}
+
+.navbar-login {
+  background-color: white/*darkslateblue*/;
+  margin-left: 20px;
+}
+
+.navbar-login:hover {
+  background-color: lightblue/*darkslateblue*/;
+  margin-left: 20px;
+}
 
 .ProductImage {
+  float: left;
   max-width: 1200px;
-  width: 100%;
-  margin: 50px auto;
+  width: 500px;
+  height: 500px;
+  margin: 0px 45px;
 }
 
 .ProductImage img {
@@ -16,28 +31,38 @@
 .ProductDetails {
   justify-content: space-around;
   flex-wrap: wrap;
-  padding: 30px 0;
+}
+
+.ProductDetails .info{
+  padding: 20px 0px;
 }
 
 .ProductDetails .Box {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .Box .Row {
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
+  margin-right: 50px;
 }
 
-.Box .Row h2 {
+.Box .Row p {
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
+.info .h4, .info .h5{
+  font-weight: normal;
+}
+
 #price {
-color: crimson;
+  color: white;
+  background-color: crimson;
+  padding: 1px 10px;
 }
 
 .Options button {
@@ -76,15 +101,6 @@ color: crimson;
   width: 200px;
   height: 200px;
 }
-
-.ProductImage {
-  margin-left: 45px;
-  margin-right: 45px;
-  width: 500px;
-  height: 500px;
-}
-
-
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
