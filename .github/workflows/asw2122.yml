@@ -79,13 +79,12 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.8.9 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "dede5cbwebapp" #Must be unique in Heroku
+          heroku_app_name: "dede5cwebapp" #Must be unique in Heroku
           heroku_email: "mongomasterdede5c@gmail.com"
           usedocker: true
           dontuseforce: true
           appdir: "webapp"
-          docker_build_args: |
-            API_URI
+          branch: "master"
         env:
           API_URI: "https://dede5crestapi.herokuapp.com/api"
   deploy-restapi:
@@ -100,7 +99,4 @@ jobs:
           heroku_email: "mongomasterdede5c@gmail.com"
           usedocker: true
           appdir: "restapi"
-          docker_build_args: |
-            MONGO_URI
-        env:
-          MONGO_URI: "mongodb+srv://dede_5c:cuentademongo@dede.irypt.mongodb.net/DeDe_ASW?retryWrites=true&w=majority"
+          branch: "master"
