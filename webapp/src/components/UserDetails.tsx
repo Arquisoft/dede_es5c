@@ -83,11 +83,11 @@ async function retrievePODAddress(webID: string): Promise<string> {
           </CardActionArea>
         </Card>
       </CombinedDataProvider>
-      <LogoutButton >
+      {/*}<LogoutButton >
         <Button style={{ marginTop: 20 }} variant="contained" color="primary">
           Logout
         </Button>
-      </LogoutButton>
+    </LogoutButton> {*/}
     </Container>
 
 
