@@ -218,7 +218,6 @@ function PaymentForm() {
                                     <div>
                                         <h6>Número de tarjeta</h6>
                                         <div>
-                                            <h6>Número de tarjeta</h6>
                                             <div>
                                                 <div> <label ><input type="text" name="cardNumber" className="form-control" placeholder=" " onChange={(e) => setCardNumber(e.target.value)} /></label> </div>
                                             </div>
