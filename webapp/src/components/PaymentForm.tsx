@@ -129,6 +129,7 @@ function PaymentForm() {
             products.map((product: ProductoCarrito) => {
                 addProductoPedido(product.amount, product, pedido!);
             });
+            vaciarCarrito();
             navigate("/pedidos")
         }
 
