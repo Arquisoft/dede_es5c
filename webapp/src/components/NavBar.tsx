@@ -17,7 +17,7 @@ function NavBar() {
     const { session } = useSession();
 
     
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(session.info.isLoggedIn);
 
     
 
