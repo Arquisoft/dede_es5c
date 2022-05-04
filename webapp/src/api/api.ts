@@ -87,6 +87,13 @@ export async function getProduct(name: String): Promise<Product>{
     localStorage.setItem('carrito', JSON.stringify(carrito));
   }
 
+    export function vaciarCarrito(): void {
+        var carrito = getCarrito();
+        carrito=[];
+        console.log(carrito);
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+    }
+
 export async function filterProducts(type:string): Promise<Product[]> {
     var str: string = apiEndPoint + '/products/category/' + type;
     let response = await fetch(str);

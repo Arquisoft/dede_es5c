@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ProductoCarrito } from "../shared/shareddtypes";
 import { useNavigate } from "react-router-dom";
-import { addPedido, addProductoPedido, getCarrito, getPedidosByEmail, getShipping } from "../api/api";
+import { addPedido, addProductoPedido, getCarrito, getPedidosByEmail, getShipping, vaciarCarrito } from "../api/api";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { VCARD } from "@inrupt/lit-generated-vocab-common";
 import { useSession } from "@inrupt/solid-ui-react";
@@ -108,6 +108,7 @@ function PaymentForm() {
         products.map((product: ProductoCarrito) => {
             addProductoPedido(product.amount, product, pedido!);
         });
+        vaciarCarrito();
         navigate("/pedidos")
     }
 
@@ -176,7 +177,7 @@ function PaymentForm() {
                                     </div>
                                     <div>
                                         <h6>Gastos de envío</h6> {/*Esto vendría de los pods*/}
-                                        <p>{gastoEnvio?.toString()}</p>
+                                        <p>{gastoEnvio?.toFixed(2).toString()}</p>
                                     </div>
                                     <hr />
 
