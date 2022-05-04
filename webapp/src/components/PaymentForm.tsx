@@ -183,7 +183,7 @@ function PaymentForm() {
                                         <div>
                                             <h6>Número de tarjeta</h6>
                                             <div>
-                                                <div> <label ><input type="text" className="form-control" placeholder=" " /></label> </div>
+                                                <div> <label ><input type="text" name="cardNumber" className="form-control" placeholder=" " /></label> </div>
                                             </div>
                                         </div>
 
@@ -192,7 +192,7 @@ function PaymentForm() {
                                         <div>
                                             <h6>Fecha en formato MM/YY</h6>
                                             <div>
-                                                <div> <label ><input type="text" className="form-control" placeholder=" " /></label> </div>
+                                                <div> <label ><input type="text" name="expDate" className="form-control" placeholder=" " /></label> </div>
                                             </div>
                                         </div>
 
@@ -201,7 +201,7 @@ function PaymentForm() {
                                         <div>
                                             <h6>Código de seguridad</h6>
                                             <div>
-                                                <div> <label ><input type="text" className="form-control" placeholder=" " /></label> </div>
+                                                <div> <label ><input type="text" name="cvc" className="form-control" placeholder=" " /></label> </div>
                                             </div>
                                         </div>
                                     </div>

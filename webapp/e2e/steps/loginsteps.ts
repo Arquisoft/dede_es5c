@@ -50,7 +50,7 @@ defineFeature(feature, test => {
 
     then('I am redirected to home and then i can see the logout button', async () => {
       await page.waitForTimeout(2000);
-      await expect(page).toMatch('Nike Blazer');
+      await expect(page).toMatch('Nike Blazer blancas');
       await page.goto("http://localhost:3000/perfil", {waitUntil: "networkidle0"}).catch(() => {});
       await expect(page).toMatch("Logout");
       await page.waitForTimeout(2000);
