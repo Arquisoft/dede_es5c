@@ -2,7 +2,7 @@ name: CI for radarin
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ uo277516_heroku ]
 
 jobs:
   build-test-webapp:
