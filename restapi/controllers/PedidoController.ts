@@ -34,7 +34,7 @@ export const addPedido = async (req: Request, res: Response): Promise<Response> 
 }
 
 export const findPedidoByClientEmail = async (req: Request, res: Response): Promise<Response> => {
-    const p = await PedidoModel.find({email_dest: req.params.email_dest})
+    const p = await PedidoModel.find({email: req.params.email})
     return res.json(p);
 
 };
