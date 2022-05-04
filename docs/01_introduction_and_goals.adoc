@@ -22,17 +22,17 @@ DeDe (Decentralized Delivery) es un sistema de venta online a crear por una empr
 
 === Objetivos de calidad
 
-
+Ordenados de mayor a menor prioridad:
 
 
 [options="header",cols="1,2,2"]
 |===
-|ID|Prioridad|Objetivo|Descripción
-|RC1| 1 | Privacidad | El sistema deberá prestar especial atención a la seguridad y al respeto de la privacidad de los usuarios
-|RC2| 2 | Usabilidad | La aplicación debe ser fácil e intuitiva de usar para todos los usuarios, estos no deberían de tener dudas de cómo se usa.
-|RC3| 3 | Rendimiento | La aplicación deberá de tener una capacidad de respuesta lo suficientemente rápida.
-|RC4| 4 | Mantenible | El sistema seguirá unos estándares los cuales permitirán que los cambios que se quieran realizar sean fáciles de integrar.
-|RC5| 5 | Calidad | Se creará un sistema con calidad, testeando este con diferentes pruebas unitarias y con personas reales antes de la solución final.
+|ID|Objetivo|Descripción
+|RC1 | Privacidad | El sistema deberá prestar especial atención a la seguridad y al respeto de la privacidad de los usuarios
+|RC2 | Usabilidad | La aplicación debe ser fácil e intuitiva de usar para todos los usuarios, estos no deberían de tener dudas de cómo se usa.
+|RC3 | Rendimiento | La aplicación deberá de tener una capacidad de respuesta lo suficientemente rápida.
+|RC4 | Mantenible | El sistema seguirá unos estándares los cuales permitirán que los cambios que se quieran realizar sean fáciles de integrar.
+|RC5 | Calidad | Se creará un sistema con calidad, testeando este con diferentes pruebas unitarias y con personas reales antes de la solución final.
 |===
 
 
