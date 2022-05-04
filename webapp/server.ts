@@ -2,9 +2,14 @@ import express,{Application} from 'express';
 //for using an import here we need to configure the tsconfig.json
 //setting the option module to commonjs
 
-var app: Application = express()
-const port: number = Number(process.env.PORT);
+//process.env.PORT
 
+var app: Application = express()
+//const port: number = process.env.PORT;
+let port: number = 3000
+if(process.env.PORT) {
+ port = parseInt(process.env.PORT)
+}
 app.use(express.static('build'))
 
 app.listen(port, ():void => {

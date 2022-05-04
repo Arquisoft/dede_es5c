@@ -1,9 +1,14 @@
 import express, { Request, Response, Router } from 'express';
 import {check} from 'express-validator';
-import {findProductByName, findProducts, addProducto} from "./models/controllers/ProductController";
-import {addPedido, findPedidos} from "./models/controllers/PedidoController";
-import {createUser, findUsers, findUsersByEmail, deleteUser} from "./models/controllers/UserController";
-import {addOrderProduct, findAllOrderProducts} from "./models/controllers/PedidoProductoController";
+import {findProductByName, findProducts, addProducto, findProductByCategory} from "./controllers/ProductController";
+import {
+    addPedido,
+    calculatePrice,
+    findPedidoByClientEmail,
+    findPedidos
+} from "./controllers/PedidoController";
+import {createUser, findUsers, findUsersByEmail, deleteUser} from "./controllers/UserController";
+import {addOrderProduct, findAllOrderProducts, findAllProductsForOrder} from "./controllers/PedidoProductoController";
 
 const bodyParser = require('body-parser')
 
@@ -50,11 +55,15 @@ api.post(
 api.get("/products/list", findProducts)
 api.post("/products/add", addProducto)
 api.get("/products/:name", findProductByName)
+api.get("/products/category/:category", findProductByCategory)
 
 
 //-------pedidos
 api.post("/pedido/add", addPedido)
 api.get("/pedido/list", findPedidos)
+api.get("/pedido/:email", findPedidoByClientEmail)
+api.get("/pedido/price/:direccion", calculatePrice)
+
 
 //-------usuarios
 api.get("/users/list", findUsers)
@@ -65,6 +74,8 @@ api.post("/users/delete/:email", deleteUser)
 //-------pedido-producto
 api.post("/pedidoProducto/add",addOrderProduct)
 api.get("/pedidoProducto/list",findAllOrderProducts)
+api.get("/pedidoProducto/list/:id_pedido",findAllProductsForOrder)
+
 
 
 

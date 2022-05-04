@@ -1,26 +1,48 @@
 import "./Carrito.css";
 import React, { useState, useEffect } from "react";
-import { Product } from "../../shared/shareddtypes";
-import { getCarrito, getProducts } from "../../api/api";
+import { Product, ProductoCarrito } from "../../shared/shareddtypes";
+import { getCarrito, removeCarrito } from "../../api/api";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import {Link} from 'react-router-dom';
+import { useSession, SessionProvider } from "@inrupt/solid-ui-react";
 
 
-function Carrito() {
-    const [products, setProducts] = useState<Product[]>([]);
+function Carrito(): JSX.Element {
 
-    const refreshProducts = async () => {
-        setProducts(await getProducts());
-      }
-    
-      useEffect(()=>{
-        refreshProducts();
-      },[]);
+    const { session } = useSession();
 
-      console.log("Productos: " + products.length);
+    const [isLoggedIn, setIsLoggedIn] = useState(session.info != null);
 
+    //We have logged in
+  session.onLogin(()=>{
+    setIsLoggedIn(true)
+  })
+
+  //We have logged out
+  session.onLogout(()=>{
+    setIsLoggedIn(false)
+  })
+
+    const [products,setProducts] = useState<ProductoCarrito[]>([]);
+
+    const refreshProducts = () => {
+      setProducts(getCarrito());
+    }
+  
+    useEffect(()=>{
+      refreshProducts();
+    },[]);
+
+    const eliminarProducto = (product: ProductoCarrito) => {
+        removeCarrito(product);
+        window.location.reload();
+    }
+
+    console.log(isLoggedIn)
     if (products.length > 0) {
         return (
-            <Container fluid>
+            <SessionProvider sessionId="solid-login">
+            <Container className="m-5">
             <h2>Carrito de la compra</h2>
             <table>
                 <tr>
@@ -29,11 +51,15 @@ function Carrito() {
                     <th>Descripcion</th>
                     <th>Categoría</th>
                     <th>Color</th>
+                    <th>Talla</th>
+                    <th>Cantidad</th>
                     <th>Precio</th>
+                    <th>Opciones</th>
                 </tr>
     
             
-            {products.map((product: Product) => {
+            {products.map((product: ProductoCarrito) => {
+                console.log(product.name)
                 return(
     
                 <tr>
@@ -45,7 +71,10 @@ function Carrito() {
                     <td>{product.description}</td>
                     <td>{product.category}</td>
                     <td>{product.color}</td>
-                    <td>{product.price} €</td>
+                    <td>{product.talla}</td>
+                    <td>{product.amount}</td>
+                    <td>{product.price * product.amount} €</td>
+                    <td><Button className="eliminar" onClick={() => eliminarProducto(product)}>Eliminar</Button></td>
                 </tr>
                 
                     
@@ -53,16 +82,24 @@ function Carrito() {
                 
             })}
             </table>
-            <div className='BuyButton'>
-                <form action= {`/pay`}><button id='buyButton'>Comprar</button></form>
-            </div>
+            {(isLoggedIn) ? 
+                <div className="BuyButton">
+                <br/>
+                <Link className="nav-link" to="/pay">
+                    <Button>Comprar</Button>
+                </Link>
+                </div>
+            : <div></div>
+            }
+            
             
             </Container>
+            </SessionProvider>
         )
     }
     else {
         return (
-            <Container fluid>
+            <Container  className="m-5">
             <h2>Carrito de la compra</h2>
             <table>
                 <tr>
@@ -75,7 +112,7 @@ function Carrito() {
                 </tr>
             </table>
        
-            <Button>Comprar</Button>
+            
             </Container>
         )
     }

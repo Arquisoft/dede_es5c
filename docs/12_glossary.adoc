@@ -10,4 +10,11 @@
 | Term         | Definition
 | SOLID     | Proyecto de descentralización de datos cuyo objetivo es que el sea usuario quien decide dónde almacenar sus datos.
 | Pod     | Almacenamiento personal de datos alojado en un servidor elegido por el usuario.
+|  Descentralizado            | Los usuarios pueden elegir donde almacenar sus datos
+| MongoDB |  Sistema de base de datos NoSQL, orientado a documentos y de código abierto.
+| NoSql | Base de datos no relacional
+| API | Protocolo que se utiliza para diseñar  el software de las aplicaciones.
+| React | Biblioteca Javascrypt que nos ayuda a crear interfaces de usuario de forma sencilla.
+| Heroku | Plataforma que nos permite desplegar nuestra aplicación
+|Whitebox| Componente que muestra  componentes que tiene dentro de el
 |===

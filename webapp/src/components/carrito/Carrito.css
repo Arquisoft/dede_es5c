@@ -3,3 +3,27 @@ table, th, td {
     padding-left: 1em;
     padding-right: 1em;
   }
+
+.eliminar{
+    background-color: dimgray;
+    border: none;
+}
+
+.eliminar:hover{
+    background-color: maroon;
+}
+
+.BuyButton Button{
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: larger;
+    border: 3px solid crimson;
+    background-color: white;
+    color: black;
+}
+
+.BuyButton Button:hover{
+    background-color: darksalmon;
+    border: 3px solid crimson;
+    color: black;
+}
