@@ -211,7 +211,7 @@ function PaymentForm() {
                                     </div>
                                     <div>
                                         <h6>Gastos de envío</h6> {/*Esto vendría de los pods*/}
-                                        <p>{gastoEnvio?.toFixed(2).toString()}</p>
+                                        <p>{gastoEnvio?.toString()}</p>
                                     </div>
                                     <hr />
 
