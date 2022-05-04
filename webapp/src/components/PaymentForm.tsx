@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ProductoCarrito } from "../shared/shareddtypes";
 import { useNavigate } from "react-router-dom";
-import { addPedido, addProductoPedido, getCarrito, getPedidosByEmail, getShipping } from "../api/api";
+import {addCarrito, addPedido, addProductoPedido, getCarrito, getPedidosByEmail, getShipping} from "../api/api";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { VCARD } from "@inrupt/lit-generated-vocab-common";
 import { useSession } from "@inrupt/solid-ui-react";
@@ -113,6 +113,30 @@ function PaymentForm() {
 
     console.log(webId);
 
+    const checkFields = (event: React.MouseEvent<HTMLButtonElement>) => {
+        if (cvc == undefined) {
+            alert("El código de seguridad debe rellenarse");
+            return false;
+        }
+        else if (cvc.toString().length>3){
+            alert("Código demasiado largo")
+            return false;
+        }
+        else if (cvc.toString().length<3){
+            alert("Código demasiado pequeño")
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
+    const [cvc, setCvc] = useState<number>();
+
+    const refreshCvc = (event: any) => {
+        setCvc(event.target.value);
+    }
+
     return (
 
         <React.Fragment>
@@ -201,14 +225,17 @@ function PaymentForm() {
                                         <div>
                                             <h6>Código de seguridad</h6>
                                             <div>
-                                                <div> <label ><input type="text" className="form-control" placeholder=" " /></label> </div>
+                                                <div> <label ><input type="text" className="form-control" placeholder=" " onChange={refreshCvc} /></label> </div>
                                             </div>
                                         </div>
                                     </div>
                                     
                                 </div>
                                 <br/>
-                                <Button onClick={() => pagar(email, gastoEnvio!)}>Pagar</Button>
+                                <Button onClick={() => {
+                                    if (!{checkFields}) {
+                                        pagar(email, gastoEnvio!);
+                                    }}}>Pagar</Button>
                             </div>
                         </div>
                     </div>
