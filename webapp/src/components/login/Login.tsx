@@ -7,7 +7,7 @@ const LoginForm = () => {
   const [currentUrl, setCurrentUrl] = useState('http://localhost:3000');
 
   useEffect(() => {
-    setCurrentUrl(window.location.href);
+    setCurrentUrl(window.location.origin);
   }, [setCurrentUrl]);
 
   return (
