@@ -6,7 +6,10 @@ import express,{Application} from 'express';
 
 var app: Application = express()
 //const port: number = process.env.PORT;
-const port: number =  Number(process.env.PORT);
+let port: number = 3000
+if(process.env.PORT) {
+ port = parseInt(process.env.PORT)
+}
 app.use(express.static('build'))
 
 app.listen(port, ():void => {
