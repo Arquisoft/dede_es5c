@@ -57,7 +57,10 @@ function NavBar() {
                 </Link>
                 <div className="navbar-login">
                 {(!isLoggedIn) ?
-                    <Button href="/login" style={{float: "right"}}>Login</Button> :
+                    <Link className="nav-link" to="/login">
+                        <Button style={{float: "right"}}>Login</Button>
+                    </Link>
+                     :
                     <LogoutButton >
                         <Button color="primary">
                             Logout
