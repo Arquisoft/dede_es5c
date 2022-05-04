@@ -8,6 +8,7 @@
 [options="header"]
 |===
 |Restricción|Descripción
+| Despliegue | La aplicación debe de estar desplegada
 | SOLID - PODs | La aplicación debe de ser compatible con la tecnología SOLID,
                                     almacenando los datos en los PODs de los usuarios.
 | Pruebas | Se deben realizar pruebas a lo largo del desarrollo del sistema para comprobar
@@ -38,7 +39,7 @@ de entrega asignada.
 |Restricción|Descripción
 |Presupuesto | Las herramientas usadas son gratuitas.
 |arc42 | La documentación debe seguir arc42.
-| Idioma | La aplicación en su totalidad será desarrollada en Español.
+
 |===
 
 
