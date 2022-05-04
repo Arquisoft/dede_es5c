@@ -100,3 +100,7 @@ jobs:
           usedocker: true
           appdir: "restapi"
           branch: "develop"
+          docker_build_args: |
+            MONGO_URI
+        env:
+          MONGO_URI: "mongodb+srv://dede_5c:cuentademongo@dede.irypt.mongodb.net/DeDe_ASW?retryWrites=true&w=majority"
