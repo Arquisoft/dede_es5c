@@ -110,7 +110,7 @@ function PaymentForm() {
         else if (!cardCode.match("[0-9]*")) {
             alert("Introduce dígitos");
         }
-        else if (!cardExpDate.match("[0-9]{2}/[0-9]{2}" )) {
+        else if (!cardExpDate.match("[0-9]{2}/[0-9]{2}" ) || !chechvalido(cardExpDate)) {
             alert("Introduce una fecha valida");
         }
         else if(cardNumber.length != 6) {
@@ -132,6 +132,14 @@ function PaymentForm() {
             navigate("/pedidos")
         }
 
+    }
+
+    const chechvalido = (fecha: string) => {
+        let fechas = fecha.split("/");
+        console.log("fehcas:" + fechas);
+        if(parseInt(fechas[0]) >= 5 && parseInt(fechas[1]) >= 22 || parseInt(fechas[1]) >= 23)
+            return true;
+        return false;
     }
 
     const validateCVC = (element: React.FocusEvent<HTMLInputElement>) => {
