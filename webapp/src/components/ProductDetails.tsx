@@ -3,9 +3,6 @@ import { getProduct, addCarrito } from '../api/api';
 import { useParams } from "react-router-dom";
 import { Product } from '../shared/shareddtypes';
 import { Button } from 'react-bootstrap';
-import TextField from '@material-ui/core/TextField';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import {Alert} from "@mui/material";
 
 function ProductDetails() {
 
