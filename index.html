@@ -465,7 +465,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#section-solution-strategy">4. Estrategia de Solución</a>
 <ul class="sectlevel2">
 <li><a href="#_decisiones_tecnológicas">4.1. Decisiones tecnológicas</a></li>
-<li><a href="#_objetivos_de_calidad_2">4.2. Objetivos de calidad</a></li>
+<li><a href="#_decisiones_organizativas">4.2. Decisiones organizativas</a></li>
+<li><a href="#_objetivos_de_calidad_2">4.3. Objetivos de calidad</a></li>
 </ul>
 </li>
 <li><a href="#section-building-block-view">5. Vista de bloque de creación</a>
@@ -483,7 +484,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#section-deployment-view">7. Vista de Despliegue</a></li>
 <li><a href="#section-concepts">8. Conceptos Transversales</a>
 <ul class="sectlevel2">
-<li><a href="#_modelo_de_dominio">8.1. Modelo de Dominio</a></li>
+<li><a href="#_modelo_de_dominio">8.1. <em>Modelo de Dominio</em></a></li>
 <li><a href="#_seguridad">8.2. <em>Seguridad</em></a></li>
 <li><a href="#_logging">8.3. <em>Logging</em></a></li>
 <li><a href="#_internacionalización">8.4. <em>Internacionalización</em></a></li>
@@ -895,7 +896,31 @@ propio de cada usuario donde se guarda su información.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="_objetivos_de_calidad_2">4.2. Objetivos de calidad</h3>
+<h3 id="_decisiones_organizativas">4.2. Decisiones organizativas</h3>
+<div class="paragraph">
+<p>Se tendrán en cuenta los siguientes aspectos desde el punto de vista organizativo</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Reuniones</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Realizaremos una reunión semanal en la que cada componente del grupo indcará lo que ha hecho respecto a la anterior
+reunión, lo que hará antes de la siguiente reunión y si algún factor le esta bloqueando en su tranajo.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GitHub</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cada componente del grupo trabajará en su propia rama . Así mismo tendremos una rama develop para juntar las ramas individuales
+del proyecto en desarrollo, y una rama master en la cual se encontrará el producto final.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_objetivos_de_calidad_2">4.3. Objetivos de calidad</h3>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
@@ -1003,7 +1028,7 @@ propio de cada usuario donde se guarda su información.</p>
 <p>Para que la aplicación funcione correctamente primero hay que desplegar el docker del back, es decir, la API REST de la aplicación, y luego el docker del front, la aplicación web.</p>
 </div>
 <div class="paragraph">
-<p>Se realizarán consultas a la API de Google.</p>
+<p>Se realizarán consultas a la API de MapBox.</p>
 </div>
 <div class="paragraph">
 <p>La base de datos estará alojada en la nube de MongoDB.</p>
@@ -1018,7 +1043,11 @@ propio de cada usuario donde se guarda su información.</p>
 <h2 id="section-concepts">8. Conceptos Transversales</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_modelo_de_dominio">8.1. Modelo de Dominio</h3>
+<h3 id="_modelo_de_dominio">8.1. <em>Modelo de Dominio</em></h3>
+<div class="paragraph">
+<p>En nuestro caso, solo tendremos un Centro de Distribución para todos nuestros
+pedidos, facilitando así el añadir un producto no siendo necesario buscar el centro más cercano ni nada por el estilo.</p>
+</div>
 <div class="paragraph">
 <p><span class="image"><img src="./images/08_modelo_dominio.png" alt="Modelo de dominio"></span></p>
 </div>
@@ -1164,6 +1193,10 @@ Tendremos que estar atentos constantemente para reducir al máximo la deuda téc
 podría conllevar un crecimiento exponencial de la misma que podría dar lugar a bloqueos que podemos evitar prestándole
 atención a que la deuda no se dispare.</p>
 </li>
+<li>
+<p>Heroku:
+Falta de experiencia del equipo realizando despliegues de aplicación con heroku.</p>
+</li>
 </ul>
 </div>
 <div style="page-break-after: always;"></div>
@@ -1211,6 +1244,14 @@ atención a que la deuda no se dispare.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">React</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Biblioteca Javascrypt que nos ayuda a crear interfaces de usuario de forma sencilla.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Heroku</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Plataforma que nos permite desplegar nuestra aplicación</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whitebox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Componente que muestra  componentes que tiene dentro de el</p></td>
 </tr>
 </tbody>
 </table>
