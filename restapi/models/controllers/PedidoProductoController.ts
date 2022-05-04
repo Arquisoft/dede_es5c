@@ -1,14 +1,9 @@
-require("../database")
+require("../../database")
 import { Request, Response } from 'express';
-import ProductoPedido from '../models/PedidoProductoModel';
+import ProductoPedido from '../PedidoProductoModel';
 
 export const findAllOrderProducts = async (req: Request, res: Response): Promise<Response> => {
     const orderProducts = await ProductoPedido.find({});
-
-    return res.json(orderProducts);
-};
-export const findAllProductsForOrder = async (req: Request, res: Response): Promise<Response> => {
-    const orderProducts = await ProductoPedido.find({id_pedido: req.params.id_pedido});
 
     return res.json(orderProducts);
 };
