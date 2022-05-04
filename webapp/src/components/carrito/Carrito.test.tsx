@@ -2,18 +2,19 @@ import React from 'react'
 import { render,screen } from "@testing-library/react";
 import Carrito from "./Carrito";
 import * as api from '../../api/api';
-import { Product } from "../../shared/shareddtypes";
+import { Product, ProductoCarrito } from "../../shared/shareddtypes";
 import { act } from 'react-dom/test-utils';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 
 test('check that everything is rendering propertly', async () => {
 
   function miGetProducts() {
-    return Promise.resolve([]);
+    return [] as ProductoCarrito[];
   }
 
-  jest.spyOn(api, 'getProducts').mockImplementation(miGetProducts);
+  jest.spyOn(api, 'getCarrito').mockImplementation(miGetProducts);
 
   const container =document.createElement('div'); ;
   await act (async () => {
@@ -24,24 +25,27 @@ test('check that everything is rendering propertly', async () => {
 test('check that everything is rendering propertly', async () => {
 
   function miGetProducts() {
-    return Promise.resolve([{
+    return [{
+      amount: 1,
+      talla: 'S',
       id: '1',
       description:'Sudadera amarilla',
       name: "Sudadera gap", 
       price:10.0, 
       category: 'Partes de arriba', 
       color: "amarillo", 
-      talla_stock:[{talla: "S"}, {stock:10}], 
       url: "PruebaURL"
-    } as Product
+    } as ProductoCarrito
 
-    ]);
+    ];
   }
 
-  jest.spyOn(api, 'getProducts').mockImplementation(miGetProducts);
+  jest.spyOn(api, 'getCarrito').mockImplementation(miGetProducts);
 
   const container =document.createElement('div'); ;
   await act (async () => {
-  ReactDOM.render(<Carrito/>, container);});
+    ReactDOM.render(<BrowserRouter><Carrito/></BrowserRouter>, container);
+  });
+  console.log(container.innerHTML);
   expect(container.querySelectorAll('tr').length).toBe(2);
 });
