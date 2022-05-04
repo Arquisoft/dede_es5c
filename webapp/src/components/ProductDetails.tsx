@@ -11,6 +11,7 @@ function ProductDetails() {
             alert("Debes seleccionar una talla");
         }
         else {
+            alert("Producto añadido correctamente");
             addCarrito(product!, amountp, tallap!)
         }
 
