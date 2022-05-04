@@ -4,11 +4,14 @@ import { Button, TextField, FormGroup, Container } from "@material-ui/core";
 
 const LoginForm = () => {
   const [idp, setIdp] = useState("https://inrupt.net");
-  const [currentUrl, setCurrentUrl] = useState("https://localhost:3000");
+  const [currentUrl, setCurrentUrl] = useState("https://dede5cwebapp.herokuapp.com/");
 
   useEffect(() => {
     //setCurrentUrl(window.location.href);
-    setCurrentUrl("http://localhost:3000");
+    setCurrentUrl("https://dede5cwebapp.herokuapp.com/");
+    if(process.env.PORT) {
+      setCurrentUrl('http://localhost:3000')
+  }
   }, [setCurrentUrl]);
 
   return (
