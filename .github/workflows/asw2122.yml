@@ -1,90 +1,76 @@
-name: CI for ASW2122
+name: CI for radarin
 
 on:
-  release:
-    types: [published]
+  push:
+    branches: [ develop ]
 
 jobs:
-  unit-test-webapp:
+  build-test-webapp:
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: webapp
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v1
         with:
-          node-version: 16
+          node-version: 12.14.1
       - run: npm ci
+      - run: npm run build
       - run: npm test
-      - uses: codecov/codecov-action@v2
-  unit-test-restapi:
+      - uses: codecov/codecov-action@v1
+  build-test-restapi:
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: restapi
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v1
         with:
-          node-version: 16
+          node-version: 12.14.1
       - run: npm ci
       - run: npm test
-      - uses: codecov/codecov-action@v2
   e2e-tests:
-    needs: [unit-test-webapp, unit-test-restapi]
+    needs: [build-test-webapp, build-test-restapi]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v1
         with:
-          node-version: 16
+          node-version: 12.14.1
       - run: npm --prefix webapp install
       - run: npm --prefix restapi install
-      #- run: npm --prefix webapp run build
-      #- run: npm --prefix webapp run test:e2e
-  docker-push-webapp:
-    name: Push webapp Docker Image to GitHub Packages
-    runs-on: ubuntu-latest
+      - run: npm --prefix webapp run test:e2e
+  deploy-webapp:
     needs: [e2e-tests]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Publish to Registry
-        uses: elgohr/Publish-Docker-Github-Action@3.04
+      - uses: akhileshns/heroku-deploy@v3.8.9 # This is the action
         with:
-          name: arquisoft/dede_es5c/webapp
-          username: ${{ github.actor }}
-          password: ${{ secrets.DOCKER_PUSH_TOKEN }}
-          registry: ghcr.io
-          workdir: webapp
-  docker-push-restapi:
-    name: Push restapi Docker Image to GitHub Packages
-    runs-on: ubuntu-latest
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "dede5cwebapp" #Must be unique in Heroku
+          heroku_email: "mongomasterdede5c@gmail.com"
+          usedocker: true
+          appdir: "webapp"
+          docker_build_args: |
+            API_URI
+        env:
+          API_URI: "https://dede5crestapi.herokuapp.com/api"
+  deploy-restapi:
     needs: [e2e-tests]
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Publish to Registry
-        uses: elgohr/Publish-Docker-Github-Action@3.04
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
-          name: arquisoft/dede_es5c/restapi
-          username: ${{ github.actor }}
-          password: ${{ secrets.DOCKER_PUSH_TOKEN }}
-          registry: ghcr.io
-          workdir: restapi
-  deploy:
-    name: Deploy over SSH
-    runs-on: ubuntu-latest
-    needs: [docker-push-restapi,docker-push-webapp]
-    steps:
-      - name: Deploy over SSH
-        uses: fifsky/ssh-action@master
-        with:
-          host: ${{ secrets.DEPLOY_HOST_ }}
-          user: ${{ secrets.DEPLOY_USER_ }}
-          key: ${{ secrets.DEPLOY_KEY_ }}
-          command: |
-            wget https://raw.githubusercontent.com/Arquisoft/dede_es5c/uo277516_deployaws/docker-compose-deploy.yml -O docker-compose.yml
-            docker-compose stop
-            docker-compose rm -f
-            docker-compose pull   
-            docker-compose up -d
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "dede5cwebapp" #Must be unique in Heroku
+          heroku_email: "mongomasterdede5c@gmail.com"
+          usedocker: true
+          appdir: "restapi"
+          docker_build_args: |
+            MONGO_URI
+        env:
+          MONGO_URI: "mongodb+srv://dede_5c:cuentademongo@dede.irypt.mongodb.net/DeDe_ASW?retryWrites=true&w=majority"
