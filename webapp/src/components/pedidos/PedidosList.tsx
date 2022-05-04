@@ -9,6 +9,7 @@ import {
 } from "@inrupt/solid-client";
 
 async function retirevePODEmail(webID: string): Promise<string> {
+    if (!webID) {return ""};
     let profileDocumentURI = webID.split("#")[0]
     let myDataSet = await getSolidDataset(profileDocumentURI)
     let profile = getThing(myDataSet, webID)

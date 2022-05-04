@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { ReactHTMLElement, useEffect, useState } from 'react';
 import { ProductoCarrito } from "../shared/shareddtypes";
 import { useNavigate } from "react-router-dom";
 import { addPedido, addProductoPedido, getCarrito, getPedidosByEmail, getShipping } from "../api/api";
@@ -15,11 +15,11 @@ async function retrievePODAddress(webID: string): Promise<string> {
     let profile = getThing(myDataSet, webID)
     let urlAddress = getUrl(profile as Thing, VCARD.hasAddress) as string
     let addressProfile = await getThing(myDataSet, urlAddress)
-    let ret= getStringNoLocale(addressProfile as Thing, VCARD.country_name) as string+" "+
-    getStringNoLocale(addressProfile as Thing, VCARD.region) as string+" "+
-    getStringNoLocale(addressProfile as Thing, VCARD.locality) as string+" "+
-    getStringNoLocale(addressProfile as Thing, VCARD.postal_code) as string+" "+
-    getStringNoLocale(addressProfile as Thing, VCARD.street_address) as string;
+    let ret = getStringNoLocale(addressProfile as Thing, VCARD.country_name) as string + " " +
+        getStringNoLocale(addressProfile as Thing, VCARD.region) as string + " " +
+        getStringNoLocale(addressProfile as Thing, VCARD.locality) as string + " " +
+        getStringNoLocale(addressProfile as Thing, VCARD.postal_code) as string + " " +
+        getStringNoLocale(addressProfile as Thing, VCARD.street_address) as string;
     return ret
 }
 
@@ -41,15 +41,15 @@ async function retirevePODName(webID: string): Promise<string> {
 
 function PaymentForm() {
 
-    const [products,setProducts] = useState<ProductoCarrito[]>([]);
+    const [products, setProducts] = useState<ProductoCarrito[]>([]);
 
     const refreshProducts = () => {
         setProducts(getCarrito());
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         refreshProducts();
-    },[]);
+    }, []);
 
     const { session } = useSession();
     const { webId } = session.info;
@@ -58,29 +58,36 @@ function PaymentForm() {
 
     const [address, setAddress] = React.useState("");
 
-    const getPODAddress = async () => {setAddress(await retrievePODAddress(webId!))
-        }
-    ;
+    const getPODAddress = async () => {
+        setAddress(await retrievePODAddress(webId!))
+    }
+        ;
 
     const [email, setEmail] = React.useState("");
 
-    const getPODEmail = async () => {setEmail(await retirevePODEmail(webId!))
-        }
-    ;
+    const [cardNumber, setCardNumber] = React.useState("");
+    const [cardCode, setCardCode] = React.useState("");
+    const [cardExpDate, setCardExpDate] = React.useState("");
+
+    const getPODEmail = async () => {
+        setEmail(await retirevePODEmail(webId!))
+    }
+        ;
 
     const [name, setName] = React.useState("");
 
-    const getPODName = async () => {setName(await retirevePODName(webId!))
-        }
-    ;
+    const getPODName = async () => {
+        setName(await retirevePODName(webId!))
+    }
+        ;
 
     const [gastoEnvio, setGastoEnvio] = React.useState<number>();
 
     const getGastoEnvio = async () => {
-            console.log('ey');
-            setGastoEnvio(await getShipping(address));
-        }
-    ;
+        console.log('ey');
+        setGastoEnvio(await getShipping(address));
+    }
+        ;
 
 
     useEffect(() => {
@@ -90,25 +97,53 @@ function PaymentForm() {
         console.log(email);
         console.log(address);
         getGastoEnvio();
-        console.log("gastos "+gastoEnvio);
+        console.log("gastos " + gastoEnvio);
 
     })
 
 
 
     const pagar = async (emailu: string, gasto: number) => {
-        var precio = 0;
-        products.map((product: ProductoCarrito) =>{
-            precio += product.amount * product.price;
-        })
-        addPedido(emailu, precio + gasto);
-        console.log("ey:" + emailu)
-        var pedidos = getPedidosByEmail(emailu);
-        var pedido = (await pedidos).pop();
-        products.map((product: ProductoCarrito) => {
-            addProductoPedido(product.amount, product, pedido!);
-        });
-        navigate("/pedidos")
+        if (cardCode.length != 3) {
+            alert("El código debe tener 3 digitos");
+        }
+        else if (!cardCode.match("[0-9]*")) {
+            alert("Introduce dígitos");
+        }
+        else if (!cardExpDate.match("[0-9]{2}/[0-9]{2}" )) {
+            alert("Introduce una fecha valida");
+        }
+        else if(cardNumber.length != 6) {
+            alert("La longitud de la tarjeta debe ser 6 digitos");
+
+        }
+        else {
+            var precio = 0;
+            products.map((product: ProductoCarrito) => {
+                precio += product.amount * product.price;
+            })
+            addPedido(emailu, precio + gasto);
+            console.log("ey:" + emailu)
+            var pedidos = getPedidosByEmail(emailu);
+            var pedido = (await pedidos).pop();
+            products.map((product: ProductoCarrito) => {
+                addProductoPedido(product.amount, product, pedido!);
+            });
+            navigate("/pedidos")
+        }
+
+    }
+
+    const validateCVC = (element: React.FocusEvent<HTMLInputElement>) => {
+        if (element.target.value.length < 3 || element.target.value.length > 3) {
+            alert("El código debe tener 3 digitos");
+            element.target.value = "";
+        }
+        else if (!element.target.value.match("[0-9]*")) {
+            alert("Introduce un dígito");
+            element.target.value = "";
+        }
+
     }
 
     console.log(webId);
@@ -133,12 +168,12 @@ function PaymentForm() {
 
                     {products.map((product: ProductoCarrito) => {
                         console.log(product.name)
-                        return(
+                        return (
 
                             <tr>
                                 <td>
 
-                                    <img src = {product?.url.toString()} alt={product?.name.toString()} width="100" height="100" />
+                                    <img src={product?.url.toString()} alt={product?.name.toString()} width="100" height="100" />
                                 </td>
                                 <td>{product.name}</td>
                                 <td>{product.description}</td>
@@ -185,7 +220,7 @@ function PaymentForm() {
                                         <div>
                                             <h6>Número de tarjeta</h6>
                                             <div>
-                                                <div> <label ><input type="text" name="cardNumber" className="form-control" placeholder=" " /></label> </div>
+                                                <div> <label ><input type="text" name="cardNumber" className="form-control" placeholder=" " onChange={(e) => setCardNumber(e.target.value)} /></label> </div>
                                             </div>
                                         </div>
 
@@ -194,7 +229,7 @@ function PaymentForm() {
                                         <div>
                                             <h6>Fecha en formato MM/YY</h6>
                                             <div>
-                                                <div> <label ><input type="text" name="expDate" className="form-control" placeholder=" " /></label> </div>
+                                                <div> <label ><input type="text" name="expDate" className="form-control" placeholder=" " onChange={(e) => setCardExpDate(e.target.value)} /></label> </div>
                                             </div>
                                         </div>
 
@@ -203,14 +238,14 @@ function PaymentForm() {
                                         <div>
                                             <h6>Código de seguridad</h6>
                                             <div>
-                                                <div> <label ><input type="text" name="cvc" className="form-control" placeholder=" " /></label> </div>
+                                                <div> <label ><input type="text" name="cvc" className="form-control" placeholder=" " onChange={(e) => setCardCode(e.target.value)} /></label> </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
-                            <br/>
+                            <br />
                             <Button onClick={() => pagar(email, gastoEnvio!)}>Pagar</Button>
                         </div>
                     </div>
