@@ -33,19 +33,19 @@ defineFeature(feature, test => {
     when('I select a certain product and add it to the shopping cart', async () => {
       await page.setViewport({width: 1200, height: 1300});
       await page
-      .goto("http://localhost:3000/product/Nike%20Blazer", {
+      .goto("http://localhost:3000/product/Nike%20Blazer%20blancas", {
         waitUntil: "networkidle0",
       });
       await page.waitForTimeout(2000);
-      await expect(page).toClick('button[name="AddCarrito"]');
+      await expect(page).toClick('button[name="addCarrito"]');
       await page.goto("http://localhost:3000/carrito", {waitUntil: "networkidle0"}).catch(() => {});
     });
 
     then('The product should be in the shopping cart', async () => {
       await page.waitForTimeout(2000);
       await expect(page).toMatch('Carrito de la compra');
-      await expect(page).toMatch('Nike Blazer');
-      await expect(page).toMatch('New model of Nike Blazer');
+      await expect(page).toMatch('Nike Blazer blancas');
+      await expect(page).toMatch('Nike Blazer blancas con símbolo de Nike en negro');
       await expect(page).toMatch('97.8 €');
     });
   })

@@ -82,7 +82,7 @@ function ProductDetails() {
                         </div>
 
                         <span id="price" className="h4">{product!.price} €</span>
-                        <Button className="mx-5" onClick={() => addCarrito(product!, amountp, tallap!)}>Añadir al carrito</Button>
+                        <Button className="mx-5" name= "addCarrito" onClick={() => addCarrito(product!, amountp, tallap!)}>Añadir al carrito</Button>
                     </div>
                 </div>
 

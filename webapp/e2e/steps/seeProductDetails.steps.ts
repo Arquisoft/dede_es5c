@@ -27,21 +27,21 @@ defineFeature(feature, test => {
     let productName:string;
 
     given('An unregistered user in the home view', () => {
-      productName = "Nike Blazer";
+      productName = "Nike Blazer blancas";
     });
 
     when('I click in a certain product', async () => {
       await page.setViewport({width: 1200, height: 1300});
       await page
-      .goto("http://localhost:3000/product/Nike%20Blazer", {
+      .goto("http://localhost:3000/product/Nike%20Blazer%20blancas", {
         waitUntil: "networkidle0",
       }).catch(() => {});
     });
 
     then('I can see the details of that product', async () => {
-      await page.waitForTimeout(1500);
-      await expect(page).toMatch('Nike Blazer');
-      await expect(page).toMatch('New model of Nike Blazer');
+      await page.waitForTimeout(2000);
+      await expect(page).toMatch('Nike Blazer blancas');
+      await expect(page).toMatch('Nike Blazer blancas con símbolo de Nike en negro');
       await expect(page).toMatch('97.8 €');
     });
   })
