@@ -62,7 +62,7 @@ function NavBar() {
                     </Link>
                      :
                     <LogoutButton >
-                        <Button  href="/"  color="primary">
+                        <Button color="primary">
                             Logout
                         </Button>
                     </LogoutButton>}
