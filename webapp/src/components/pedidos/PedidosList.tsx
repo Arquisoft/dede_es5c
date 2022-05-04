@@ -61,7 +61,7 @@ function PedidosList() {
                 <tr>
                     <td>{pedido.estado}</td>
                     <td>{pedido.email}</td>
-                    <td>{pedido.precio_final}</td>
+                    <td>{pedido.precio_final.toFixed(2)}</td>
                 </tr>
                 
 

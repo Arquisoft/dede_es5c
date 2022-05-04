@@ -5,7 +5,7 @@ import promBundle from 'express-prom-bundle';
 import api from "./api"; 
 
 const app: Application = express();
-const port: number = 5000;
+const port = process.env.PORT || 5000;
 
 
 

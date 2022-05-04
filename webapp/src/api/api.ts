@@ -2,9 +2,14 @@
 
 import {User, Product, Pedido, ProductoCarrito} from '../shared/shareddtypes';
 
+let apiEndPoint= "https://dede5crestapi.herokuapp.com/api"
+
+if(process.env.PORT) {
+    apiEndPoint = 'http://localhost:5000/'
+}
 
 export async function addUser(user:User):Promise<boolean>{
-    const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
+    
     let response = await fetch(apiEndPoint+'/users/add', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
@@ -17,22 +22,19 @@ export async function addUser(user:User):Promise<boolean>{
 }
 
 export async function getUsers():Promise<User[]>{
-    const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
     let response = await fetch(apiEndPoint+'/users/list');
     //The objects returned by the api are directly convertible to User objects
     return response.json()
 }
 
 export async function getUserByEmail(email: String): Promise<User[]> {
-  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   let response = await fetch(apiEndPoint+'/users/findEmail/'+ email);
   //The objects returned by the api are directly convertible to User objects
   return response.json();
 }
 
 export async function getProduct(name: String): Promise<Product>{
-    const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api/products'
-    let response = await fetch(`${apiEndPoint}/${name}`);
+    let response = await fetch(apiEndPoint + "/products/" + name);
     let json = response.json();
     console.log(json);
     console.log(json);
@@ -41,14 +43,12 @@ export async function getProduct(name: String): Promise<Product>{
   }
 
   export async function getProducts(): Promise<Product[]> {
-    const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
     let response = await fetch(apiEndPoint+'/products/list');
     //The objects returned by the api are directly convertible to User objects
     return response.json()
   }
 
   export async function getPedidos(): Promise<Pedido[]> {
-    const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
     let response = await fetch(apiEndPoint+'/pedido/list');
     //The objects returned by the api are directly convertible to User objects
     return response.json()
@@ -87,15 +87,20 @@ export async function getProduct(name: String): Promise<Product>{
     localStorage.setItem('carrito', JSON.stringify(carrito));
   }
 
+    export function vaciarCarrito(): void {
+        var carrito = getCarrito();
+        carrito=[];
+        console.log(carrito);
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+    }
+
 export async function filterProducts(type:string): Promise<Product[]> {
-    const apiEndPoint = process.env.REACT_APP_API_URI|| 'http://localhost:5000/api'
     var str: string = apiEndPoint + '/products/category/' + type;
     let response = await fetch(str);
     return response.json();
 }
 
 export async function addPedido(email:string, precio:number): Promise<boolean> {
-  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
     let response = await fetch(apiEndPoint+'/pedido/add', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
@@ -109,7 +114,6 @@ export async function addPedido(email:string, precio:number): Promise<boolean> {
 }
 
 export async function addProductoPedido(cantidad: number, producto:ProductoCarrito, pedido:Pedido): Promise<boolean> {
-  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
     let response = await fetch(apiEndPoint+'/pedidoProducto/add', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
@@ -123,7 +127,6 @@ export async function addProductoPedido(cantidad: number, producto:ProductoCarri
 }
 
 export async function getPedidosByEmail(email: string): Promise<Pedido[]> {
-  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   console.log("getPedidos:" + email);
   let response = await fetch(apiEndPoint+'/pedido/'+email);
   //The objects returned by the api are directly convertible to User objects
@@ -132,7 +135,6 @@ export async function getPedidosByEmail(email: string): Promise<Pedido[]> {
 
 export async function getShipping(direccion: string): Promise<number> {
   console.log("ey x2:" + direccion)
-  const apiEndPoint= process.env.REACT_APP_API_URI || 'http://localhost:5000/api'
   console.log(apiEndPoint+'/pedido/price/' + direccion.toString())
   let response = await fetch(apiEndPoint+'/pedido/price/' + direccion);
   //The objects returned by the api are directly convertible to User objects
