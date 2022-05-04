@@ -473,6 +473,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_sistema_general_de_caja_blanca">5.1. Sistema general de caja blanca</a></li>
 <li><a href="#_nivel_2">5.2. Nivel 2</a></li>
+<li><a href="#_nivel_3">5.3. Nivel 3</a></li>
 </ul>
 </li>
 <li><a href="#section-runtime-view">6. Vista de Tiempo de Ejecución</a>
@@ -596,16 +597,21 @@ For documentation of your own system you use better the <em>plain</em> version.<
 </colgroup>
 <thead>
 <tr>
+<th class="tableblock halign-left valign-top">ID</th>
 <th class="tableblock halign-left valign-top">Prioridad</th>
 <th class="tableblock halign-left valign-top">Objetivo</th>
-<th class="tableblock halign-left valign-top">Descripción</th>
 </tr>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Descripción</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RC1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Privacidad</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">El sistema deberá prestar especial atención a la seguridad y al respeto de la privacidad de los usuarios</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RC2</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
@@ -613,14 +619,19 @@ For documentation of your own system you use better the <em>plain</em> version.<
 <td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación debe ser fácil e intuitiva de usar para todos los usuarios, estos no deberían de tener dudas de cómo se usa.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RC3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Rendimiento</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación deberá de tener una capacidad de respuesta lo suficientemente rápida.</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación deberá de tener una capacidad de respuesta lo suficientemente rápida.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RC4</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Mantenible</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">El sistema seguirá unos estándares los cuales permitirán que los cambios que se quieran realizar sean fáciles de integrar.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RC5</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
@@ -661,6 +672,11 @@ For documentation of your own system you use better the <em>plain</em> version.<
 <td class="tableblock halign-left valign-top"><p class="tableblock">Equipo encargado de llevar a cabo el desarrollo de la aplicación (en este caso, el grupo ES5-C)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Desarrollo de una aplicación segura, que respete la privacidad y con los requisitos establecidos, utilizando las nuevas tecnologías</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Profesores</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supervisión de como se lleva a cabo el proyecto</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prestación de ayuda al equipo de desarrollo y correcciones.</p></td>
+</tr>
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
@@ -684,6 +700,10 @@ For documentation of your own system you use better the <em>plain</em> version.<
 </tr>
 </thead>
 <tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Despliegue</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación debe de estar desplegada</p></td>
+</tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">SOLID - PODs</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación debe de ser compatible con la tecnología SOLID,
@@ -753,10 +773,6 @@ de entrega asignada.</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">arc42</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">La documentación debe seguir arc42.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Idioma</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">La aplicación en su totalidad será desarrollada en Español.</p></td>
 </tr>
 </tbody>
 </table>
@@ -974,8 +990,17 @@ del proyecto en desarrollo, y una rama master en la cual se encontrará el produ
 <div class="paragraph">
 <p>La aplicación consta de dos partes, el front, hecho en React con el cual el usuario va a interactuar, y el back, hecho en Node.js que se encargará de hacer cualquier consulta con la base de datos, el POD del usuario o la API.</p>
 </div>
-<div style="page-break-after: always;"></div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_nivel_3">5.3. Nivel 3</h3>
+<div class="paragraph">
+<p><span class="image"><img src="./images/level3.PNG" alt="Diagrama nivel 3"></span></p>
+</div>
+<div class="paragraph">
+<p>Front end y back end desarrollado</p>
+</div>
+<div style="page-break-after: always;"></div>
 </div>
 </div>
 </div>
@@ -1008,7 +1033,7 @@ del proyecto en desarrollo, y una rama master en la cual se encontrará el produ
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./images/Sequence%20diagram%202.png" alt="Sequence diagram 2" width="639" height="552">
+<img src="./images/Sequence%20diagram%202.png" alt="Sequence diagram 2" width="811" height="647">
 </div>
 </div>
 <div style="page-break-after: always;"></div>
@@ -1049,7 +1074,7 @@ del proyecto en desarrollo, y una rama master en la cual se encontrará el produ
 pedidos, facilitando así el añadir un producto no siendo necesario buscar el centro más cercano ni nada por el estilo.</p>
 </div>
 <div class="paragraph">
-<p><span class="image"><img src="./images/08_modelo_dominio.png" alt="Modelo de dominio"></span></p>
+<p><span class="image"><img src="./images/08_modelo_dominio.jpg" alt="Modelo de dominio"></span></p>
 </div>
 </div>
 <div class="sect2">
