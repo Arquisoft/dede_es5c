@@ -137,7 +137,7 @@ function PaymentForm() {
     const chechvalido = (fecha: string) => {
         let fechas = fecha.split("/");
         console.log("fehcas:" + fechas);
-        if(parseInt(fechas[0]) >= 5 && parseInt(fechas[1]) >= 22 || parseInt(fechas[1]) >= 23)
+        if(((parseInt(fechas[0]) >= 5 && parseInt(fechas[0]) <= 12) && parseInt(fechas[1]) >= 22) || (parseInt(fechas[0]) <= 12) && (parseInt(fechas[1]) >= 23))
             return true;
         return false;
     }
