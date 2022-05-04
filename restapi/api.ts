@@ -55,7 +55,7 @@ api.post(
 api.get("/products/list", findProducts)
 api.post("/products/add", addProducto)
 api.get("/products/:name", findProductByName)
-api.get("/products/:category", findProductByCategory)
+api.get("/products/category/:category", findProductByCategory)
 
 
 //-------pedidos

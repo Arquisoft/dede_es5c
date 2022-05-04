@@ -5,26 +5,39 @@ import CardMedia from '@mui/material/CardMedia';
 import { CardActionArea } from "@mui/material";
 import Typography from '@mui/material/Typography';
 import { Product } from "../shared/shareddtypes";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { getProducts } from "../api/api";
+import { filterProducts, getProducts } from "../api/api";
 import { ProductoCarrito } from "../shared/shareddtypes"
 
 
 function Home() {
     const [products,setProducts] = useState<Product[]>([]);
+    const [filtro, setFiltro] = useState<string>('todos');
 
-    const refreshProducts = async () => {
-      setProducts(await getProducts());
+    const refreshProducts = async (filtro: string) => {
+      if (filtro == 'todos') {
+        setProducts(await getProducts());
+
+      }
+      else {
+        setProducts(await filterProducts(filtro));
+    }
     }
   
     useEffect(()=>{
-      refreshProducts();
-    },[]);
+      refreshProducts(filtro);
+    },[filtro]);
 
     return(
         
         <Container fluid>
+            <Button name="Sneakers" onClick={() => setFiltro('Sneakers')}>Filtrar por zapatillas</Button>
+            <Button name="Jeans" onClick={() => setFiltro('Jeans')}>Filtrar por vaqueros</Button>
+            <Button name="Falda" onClick={() => setFiltro('Falda')}>Filtrar por faldas</Button>
+            <Button name="Chaqueta" onClick={() => setFiltro('Chaqueta')}>Filtrar por chaquetas</Button>
+            <Button name="Sudadera" onClick={() => setFiltro('Sudadera')}>Filtrar por sudaderas</Button>
+            <Button name="Todos" onClick={() => setFiltro('todos')}>Deshacer filtro</Button>
             <Row>
         {products.map((product: Product) => {
             return(
