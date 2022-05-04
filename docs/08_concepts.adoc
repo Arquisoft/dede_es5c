@@ -8,7 +8,7 @@
 En nuestro caso, solo tendremos un Centro de Distribución para todos nuestros
 pedidos, facilitando así el añadir un producto no siendo necesario buscar el centro más cercano ni nada por el estilo.
 
-image:08_modelo_dominio.png["Modelo de dominio"]
+image:08_modelo_dominio.jpg["Modelo de dominio"]
 
 
 
