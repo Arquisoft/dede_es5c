@@ -76,6 +76,8 @@ export const calculatePrice = async (req: Request, res: Response): Promise<Respo
     var coordenadasCliente = await calcularCoordenadas (direccion);
     var distancia = await calcularDistancia(coordenadasCliente);
     var coste = PRECIO_KILOMETRO * distancia;
+    var rounding = Number((Math.abs(coste) * 100).toPrecision(15));
+    coste = Math.round(rounding) / 100 * Math.sign(coste);
     return res.json(coste);
 
 }
