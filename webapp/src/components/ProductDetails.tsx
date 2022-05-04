@@ -5,8 +5,19 @@ import { Product } from '../shared/shareddtypes';
 import { Button } from 'react-bootstrap';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
+import {Alert} from "@mui/material";
 
 function ProductDetails() {
+
+    const helloThere = (event: React.MouseEvent<HTMLButtonElement>) => {
+        if (tallap == undefined) {
+            alert("Debes seleccionar una talla");
+        }
+        else {
+            addCarrito(product!, amountp, tallap!)
+        }
+
+    }
 
 
     const [product,setProduct] = useState<Product>({name:"Nombre", description:"Description", category: "Category", color:"Color", price:55, talla_stock:[{talla:"talla"},{stock:50}], url:"", id: ""});
@@ -14,6 +25,13 @@ function ProductDetails() {
     type ProductoName = {
         name: string;
     }
+
+
+
+    const [addable, setAddable] = React.useState(false)
+
+
+
 
     const {name} = useParams<ProductoName>();
 
@@ -82,7 +100,7 @@ function ProductDetails() {
                         </div>
 
                         <span id="price" className="h4">{product!.price} €</span>
-                        <Button className="mx-5" name= "addCarrito" onClick={() => addCarrito(product!, amountp, tallap!)}>Añadir al carrito</Button>
+                        <Button className="mx-5" name= "addCarrito" onClick={helloThere}>Añadir al carrito</Button>
                     </div>
                 </div>
 
