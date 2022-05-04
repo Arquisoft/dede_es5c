@@ -51,15 +51,12 @@ jobs:
       - uses: actions/checkout@v2
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@3.04
-        env:
-          API_URI: http://${{ secrets.DEPLOY_HOST_ }}:5000/api
         with:
-          name: pglez82/asw2122_0/webapp
+          name: arquisoft/dede_es5c/webapp
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKER_PUSH_TOKEN }}
           registry: ghcr.io
           workdir: webapp
-          buildargs: API_URI
   docker-push-restapi:
     name: Push restapi Docker Image to GitHub Packages
     runs-on: ubuntu-latest
@@ -69,7 +66,7 @@ jobs:
       - name: Publish to Registry
         uses: elgohr/Publish-Docker-Github-Action@3.04
         with:
-          name: pglez82/asw2122_0/restapi
+          name: arquisoft/dede_es5c/restapi
           username: ${{ github.actor }}
           password: ${{ secrets.DOCKER_PUSH_TOKEN }}
           registry: ghcr.io
@@ -82,11 +79,11 @@ jobs:
       - name: Deploy over SSH
         uses: fifsky/ssh-action@master
         with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          user: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_KEY }}
+          host: ${{ secrets.DEPLOY_HOST_ }}
+          user: ${{ secrets.DEPLOY_USER_ }}
+          key: ${{ secrets.DEPLOY_KEY_ }}
           command: |
-            wget https://raw.githubusercontent.com/pglez82/asw2122_0/master/docker-compose-deploy.yml -O docker-compose.yml
+            wget https://raw.githubusercontent.com/Arquisoft/dede_es5c/uo277516_deployaws/docker-compose-deploy.yml -O docker-compose.yml
             docker-compose stop
             docker-compose rm -f
             docker-compose pull   
