@@ -6,14 +6,19 @@ import { Button } from 'react-bootstrap';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import {Alert} from "@mui/material";
+import { toast } from "react-toastify";
+
 
 function ProductDetails() {
 
     const helloThere = (event: React.MouseEvent<HTMLButtonElement>) => {
+        console.log(tallap);
         if (tallap == undefined) {
+            console.log("entra")
             alert("Debes seleccionar una talla");
         }
         else {
+            toast.success("Añadido correctamente")
             addCarrito(product!, amountp, tallap!)
         }
 

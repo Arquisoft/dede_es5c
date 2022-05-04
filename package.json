@@ -3,6 +3,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "mongoose": "^6.2.10",
+    "react-toastify": "^9.0.0",
     "supertest": "^6.2.2"
   },
   "devDependencies": {
