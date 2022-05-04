@@ -11,7 +11,9 @@ function Carrito(): JSX.Element {
 
     const { session } = useSession();
 
-    const [isLoggedIn, setIsLoggedIn] = useState(session.info != null);
+    const [isLoggedIn, setIsLoggedIn] = useState(session.info.isLoggedIn);
+
+    console.log(session.info)
 
     //We have logged in
   session.onLogin(()=>{
