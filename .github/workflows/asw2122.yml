@@ -76,16 +76,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.8.9 # This is the action
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "dede5cbwebapp" #Must be unique in Heroku
+          heroku_app_name: "dede5cwebapp" #Must be unique in Heroku
           heroku_email: "mongomasterdede5c@gmail.com"
           usedocker: true
           dontuseforce: true
           appdir: "webapp"
-          docker_build_args: |
-            API_URI
+          branch: "develop"
         env:
           API_URI: "https://dede5crestapi.herokuapp.com/api"
   deploy-restapi:
@@ -93,13 +92,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.8.9 # This is the action
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "dede5crestapi" #Must be unique in Heroku
           heroku_email: "mongomasterdede5c@gmail.com"
           usedocker: true
           appdir: "restapi"
+          branch: "develop"
           docker_build_args: |
             MONGO_URI
         env:

@@ -4,11 +4,10 @@ import { Button, TextField, FormGroup, Container } from "@material-ui/core";
 
 const LoginForm = () => {
   const [idp, setIdp] = useState("https://inrupt.net");
-  const [currentUrl, setCurrentUrl] = useState("https://localhost:3000");
+  const [currentUrl, setCurrentUrl] = useState('http://localhost:3000');
 
   useEffect(() => {
-    //setCurrentUrl(window.location.href);
-    setCurrentUrl("http://localhost:3000");
+    setCurrentUrl(window.location.href);
   }, [setCurrentUrl]);
 
   return (
