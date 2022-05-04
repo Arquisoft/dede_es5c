@@ -57,22 +57,7 @@ describe('user ', () => {
         expect(response.statusCode).toBe(200);
     });
 
-    /**
-     * Tests that a user can be created through the productService without throwing any errors.
-     */
-    it('can be created correctly', async () => {
-        let name:string = 'Marcos'
-        let surname:string = 'Gonzalez'
-        let email:string = 'unusuario@uniovi.es'
-        let password:string = "123"
-        const response:Response = await request(app).post('/api/users/add').send({name: name, surname: surname,
-            email: email, password:password}).
-        set('Accept', 'application/json')
-        expect(response.statusCode).toBe(200);
-    });
-
-
-
+    
     /**
      * Test that we can get a user from the database without error
      */
