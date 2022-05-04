@@ -235,7 +235,7 @@ function PaymentForm() {
                                         <hr />
 
                                         <div>
-                                            <h6>Código de seguridad</h6>
+                                            <h6>Código de seguridad (3 dígitos)</h6>
                                             <div>
                                                 <div> <label ><input type="text" name="cvc" className="form-control" placeholder=" " onChange={(e) => setCardCode(e.target.value)} /></label> </div>
                                             </div>
