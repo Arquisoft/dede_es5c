@@ -37,7 +37,7 @@ function Carrito(): JSX.Element {
 
     const eliminarProducto = (product: ProductoCarrito) => {
         removeCarrito(product);
-        window.location.reload();
+        refreshProducts();
     }
 
     console.log(isLoggedIn)
