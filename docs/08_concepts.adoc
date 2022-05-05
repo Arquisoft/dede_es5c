@@ -22,3 +22,31 @@ se mostrará un mensaje de error y seguirá en la vista de identificación.
 === _Internacionalización_
 La aplicación estará en idioma español, no se realizará en otro idioma.
 
+
+=== Test Carga Añadir Al Carrito
+
+
+
+Resultado del test de carga que simula el añadir un producto al carrito
+
+image:añadirCarritoTest.PNG["Test de carga de añadir al carrito"]
+
+
+=== Test Login
+
+
+
+Resultado del test de carga que simula el proceso de login
+
+image:loginTest.PNG["Test de carga de loging"]
+
+
+
+=== Test Carga Ver Perfil
+
+Resultado del test de carga que simula el ver el perfil del usuario
+
+image:VerPerfilTest.PNG["Test de carga de ver perfil"]
+
+
+
