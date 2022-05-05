@@ -29,7 +29,7 @@ defineFeature(feature, test => {
 
     given('A registered user', () => {
       user = "UO263611";
-      password = "EnolDede5c";
+      password = process.env.PASSWORD1!.toString();
 
     });
 

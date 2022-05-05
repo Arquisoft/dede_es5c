@@ -31,7 +31,7 @@ defineFeature(feature, test => {
     let cvc:string;
     given('A registered user', () => {
       user = "UO263611";
-      password = "EnolDede5c";
+      password = process.env.PASSWORD1!.toString();
       card = "12340";
       expDate = "02/24";
       cvc = "123";
