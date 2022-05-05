@@ -32,7 +32,7 @@ defineFeature(feature, test => {
     given('A registered user', () => {
       user = "UO263611";
       password = "EnolDede5c";
-      card = "12340";
+      card = "123456";
       expDate = "02/24";
       cvc = "123";
     });

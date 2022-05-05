@@ -1,7 +1,7 @@
 import { defineFeature, loadFeature } from 'jest-cucumber';
 import puppeteer from "puppeteer";
 
-const feature = loadFeature('./features/addToShoppingCart.feature');
+const feature = loadFeature('./features/AddToShoppingCart.feature');
 
 let page: puppeteer.Page;
 let browser: puppeteer.Browser;
@@ -35,10 +35,11 @@ defineFeature(feature, test => {
       await page
       .goto("http://localhost:3000/product/Nike%20Blazer%20blancas", {
         waitUntil: "networkidle0",
-      });
+      }).catch(() => {});
       await page.waitForTimeout(2000);
+      await expect(page).toClick('button', {text: '34'});
       await expect(page).toClick('button[name="addCarrito"]');
-      await page.goto("http://localhost:3000/carrito", {waitUntil: "networkidle0"}).catch(() => {});
+            await page.goto("http://localhost:3000/carrito", {waitUntil: "networkidle0"}).catch(() => {});
     });
 
     then('The product should be in the shopping cart', async () => {
