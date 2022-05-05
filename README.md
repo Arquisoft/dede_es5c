@@ -29,6 +29,7 @@ Este comando creará dos imagenes de docker si no existen en tu equipo (la webap
  - [Metricas RestApi - http://localhost:5000/metrics](http://localhost:5000/metrics)
  - [Servidor Prometheus - http://localhost:9090](http://localhost:9090)
  - [Servidor Grafana http://localhost:9091](http://localhost:9091)
+ - [Despliegue Heroku - https://dede5cwebapp.herokuapp.com/](https://dede5cwebapp.herokuapp.com/)
 
  
 Si quieres ejecutar el proyecto sin Docker primero complila y ejecuta la restapi:
