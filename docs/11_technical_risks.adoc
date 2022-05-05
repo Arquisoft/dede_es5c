@@ -18,3 +18,6 @@ de comenzar a utilizarlos.
 Tendremos que estar atentos constantemente para reducir al máximo la deuda técnica, ya que el no prestarle atención
 podría conllevar un crecimiento exponencial de la misma que podría dar lugar a bloqueos que podemos evitar prestándole
 atención a que la deuda no se dispare.
+
+- Heroku:
+Falta de experiencia del equipo realizando despliegues de aplicación con heroku.

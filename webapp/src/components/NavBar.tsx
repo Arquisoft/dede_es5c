@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from 'react-bootstrap/Container';
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -8,29 +8,71 @@ import Button from '@mui/material/Button';
 import logo from '../logo.svg';
 import {Link} from 'react-router-dom';
 import LogoCarrito from "../images/carrito.png";
+import { useSession, SessionProvider, LogoutButton } from "@inrupt/solid-ui-react";
 
 
 
 function NavBar() {
 
+    const { session } = useSession();
+
+    
+    const [isLoggedIn, setIsLoggedIn] = useState(session.info.isLoggedIn);
+
+    
+
+    //We have logged in
+  session.onLogin(()=>{
+    setIsLoggedIn(true)
+  })
+
+  //We have logged out
+  session.onLogout(()=>{
+    setIsLoggedIn(false)
+  })
+
     return (
-        <Navbar bg="dark" variant="dark">
+        <SessionProvider sessionId="solid-login">
+            <Navbar className="navbar-custom" variant="dark">
             <Container>
-            <Grid item xs={1}>
-                <img src={logo} className="App-logo" alt="logo" />
-            </Grid>
-            <Navbar.Brand>DeDe</Navbar.Brand>
+            <Navbar.Brand>
+                <img src={logo} className="pe-4" alt="logo" />
+                DeDe
+            </Navbar.Brand>
             <Nav className="me-auto">
                 <Link className="nav-link" to="/">Home</Link>
-                <Link className="nav-link" to="/welcome">Welcome</Link>
-                <Link className="nav-link" to="/perfil">Perfil</Link>
-                <Link className="nav-link" to="/carrito">
+
+                {(isLoggedIn) ?
+                <Nav>
+                    <Link className="nav-link" to="/perfil">Perfil</Link>
+                    <Link className="nav-link" to="/pedidos">Pedidos</Link>
+                </Nav>
+                : <Nav/>}
+
+
+            </Nav>
+            <Nav className="justify-content-end">
+                <Link className="nav-link " to="/carrito">
                     <img src={LogoCarrito} className="logo" alt="carrito" />
                 </Link>
+                <div className="navbar-login">
+                {(!isLoggedIn) ?
+                    <Link className="nav-link" to="/login">
+                        <Button style={{float: "right"}}>Login</Button>
+                    </Link>
+                     :
+                    <LogoutButton >
+                        <Button color="primary">
+                            Logout
+                        </Button>
+                    </LogoutButton>}
+            </div>
             </Nav>
-            <Button href="/login" style={{float: "right"}}>Login</Button>
+
+            
             </Container>
-        </Navbar>
+            </Navbar>
+        </SessionProvider>
         
     );
 }

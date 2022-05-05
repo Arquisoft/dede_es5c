@@ -9,15 +9,15 @@
 [plantuml,"Sequence diagram 1",png]
 ----
 actor Usuario
-participant Aplicación
+participant WebApp
 participant "Login de Solid" as Login
 database POD
-Usuario -> Aplicación: click en iniciar sesión
-Aplicación -> Login: llama a
+Usuario -> WebApp: click en iniciar sesión
+WebApp -> Login: llama a
 Usuario -> Login: se logea
-Login -> Aplicación: le devuelve el POD del usuario
-Aplicación -> POD: pide acceso
-Aplicación -> Usuario: le notifica el inicio de sesión
+Login -> WebApp: le devuelve el POD del usuario
+WebApp -> POD: pide acceso
+WebApp -> Usuario: le notifica el inicio de sesión
 ----
 === Comprar producto
 
@@ -26,19 +26,24 @@ Aplicación -> Usuario: le notifica el inicio de sesión
 [plantuml,"Sequence diagram 2",png]
 ----
 actor Usuario
-participant Aplicación
+participant WebApp
+participant RestAPI
 database Mongo
 database POD
-Usuario -> Aplicación: selecciona los productos
-Aplicación-> Mongo: pide los datos de los productos
-Aplicación-> Usuario: muestra los datos de los productos
-Usuario -> Aplicación: hace click en comprar
-Aplicación-> POD: pide la dirección del usuario
-Aplicación-> Aplicación: calcula costes de envío
-Aplicación -> Usuario: muestra el precio y pide confirmación
-Usuario -> Aplicación: confirma la compra
-Aplicación-> Mongo: elimina los productos del stock
-Mongo -> Mongo: se actualiza la BBDD
-Aplicación -> Usuario: muestra el envío del pedido
+Usuario -> WebApp: selecciona los productos
+WebApp-> RestAPI: pide los detalles de los productos
+RestAPI-> Mongo: rescata los datos de los productos
+RestAPI--> WebApp: dispone los detalles de los productos
+WebApp-> Usuario: muestra los datos de los productos
+Usuario -> WebApp: hace click en comprar
+WebApp-> POD: pide la dirección del usuario
+WebApp-> RestAPI: calcula costes de envío
+RestAPI--> WebApp: devuelve el coste del envío
+WebApp -> Usuario: muestra el precio y pide confirmación
+Usuario -> WebApp: confirma la compra
+WebApp-> RestAPI: elimina los productos del stock
+RestAPI -> Mongo: actualiza la BBDD
+RestAPI--> WebApp: confirma el pedido
+WebApp -> Usuario: muestra el envío del pedido
 ----
 

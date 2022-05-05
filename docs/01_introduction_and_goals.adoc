@@ -22,17 +22,17 @@ DeDe (Decentralized Delivery) es un sistema de venta online a crear por una empr
 
 === Objetivos de calidad
 
-
+Ordenados de mayor a menor prioridad:
 
 
 [options="header",cols="1,2,2"]
 |===
-|Prioridad|Objetivo|Descripción
-| 1 | Privacidad | El sistema deberá prestar especial atención a la seguridad y al respeto de la privacidad de los usuarios
-| 2 | Usabilidad | La aplicación debe ser fácil e intuitiva de usar para todos los usuarios, estos no deberían de tener dudas de cómo se usa.
-| 3 | Rendimiento | La aplicación deberá de tener una capacidad de respuesta lo suficientemente rápida.
-| 4 | Mantenible | El sistema seguirá unos estándares los cuales permitirán que los cambios que se quieran realizar sean fáciles de integrar.
-| 5 | Calidad | Se creará un sistema con calidad, testeando este con diferentes pruebas unitarias y con personas reales antes de la solución final.
+|ID|Objetivo|Descripción
+|RC1 | Privacidad | El sistema deberá prestar especial atención a la seguridad y al respeto de la privacidad de los usuarios
+|RC2 | Usabilidad | La aplicación debe ser fácil e intuitiva de usar para todos los usuarios, estos no deberían de tener dudas de cómo se usa.
+|RC3 | Rendimiento | La aplicación deberá de tener una capacidad de respuesta lo suficientemente rápida.
+|RC4 | Mantenible | El sistema seguirá unos estándares los cuales permitirán que los cambios que se quieran realizar sean fáciles de integrar.
+|RC5 | Calidad | Se creará un sistema con calidad, testeando este con diferentes pruebas unitarias y con personas reales antes de la solución final.
 |===
 
 
@@ -47,4 +47,5 @@ DeDe (Decentralized Delivery) es un sistema de venta online a crear por una empr
 | Clientes | Profesores de la asignatura de Arquitectura del Software | Son los encargados de supervisar el proyecto, asegurándose de que este cumpla los requisitos establecidos
 | Usuarios | Usuarios de la aplicación | Interés en la aplicación final y el uso de esta
 | Equipo de desarollo | Equipo encargado de llevar a cabo el desarrollo de la aplicación (en este caso, el grupo ES5-C) | Desarrollo de una aplicación segura, que respete la privacidad y con los requisitos establecidos, utilizando las nuevas tecnologías
+| Profesores | Supervisión de como se lleva a cabo el proyecto | Prestación de ayuda al equipo de desarrollo y correcciones.
 |===

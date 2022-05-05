@@ -3,16 +3,14 @@
 
 
 
-=== Modelo de Dominio
+=== _Modelo de Dominio_
 
-Principales elementos de DeDe:
+En nuestro caso, solo tendremos un Centro de Distribución para todos nuestros
+pedidos, facilitando así el añadir un producto no siendo necesario buscar el centro más cercano ni nada por el estilo.
 
-* Usuario: persona que utiliza la aplicación web.
-* Administrador: persona que se encarga de realizar modificaciones en la aplicación.
-* POD: sistema que almacena la información del usuario. Permite descentralizar los datos del usuario y es éste el que debe proporcionar el acceso a estos datos.
-* Servidor web: contiene la aplicación web(front) y la API REST(back).
-* Base de Datos: alojada en MongoDB y contendrá todos los productos de la tienda.
-* Distance Matrix: nos da información de la distancia que separa las direcciones de origen y de entrega del pedido.
+image:08_modelo_dominio.jpg["Modelo de dominio"]
+
+
 
 === _Seguridad_
 La aplicación es segura debido a que el usuario tiene el control sobre los datos que usa la aplicación. Además se controlará el acceso a la aplicación mediante un sistema de roles.
@@ -22,5 +20,5 @@ El usuario se identificará en la aplicación con su usuario y contraseña utili
 se mostrará un mensaje de error y seguirá en la vista de identificación.
 
 === _Internacionalización_
-La aplicación estará en idioma español aunque el equipo está valorando internacionalizar la aplicación para que esté también disponible en idioma inglés
+La aplicación estará en idioma español, no se realizará en otro idioma.
 
