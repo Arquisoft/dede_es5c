@@ -7,7 +7,7 @@ import api from "./api";
 const app: Application = express();
 const port = process.env.PORT || 5000;
 
-
+const cors = require('cors');
 
 const db= require('./database')
 
@@ -18,7 +18,7 @@ const options: cors.CorsOptions = {
 const metricsMiddleware:RequestHandler = promBundle({includeMethod: true});
 app.use(metricsMiddleware);
 
-app.use(cors());
+app.use(cors);
 app.use(bp.json());
 
 app.use("/api", api)
